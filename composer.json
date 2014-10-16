@@ -1,6 +1,6 @@
 {
     "name":        "webino/webino-dev",
-    "description": "Webino developers module for Zend Framework 2",
+    "description": "Webino developer's module for Zend Framework 2",
     "type":        "library",
     "license":     "BSD-3-Clause",
     "keywords":    ["webino", "developers", "dev", "zf2"],
