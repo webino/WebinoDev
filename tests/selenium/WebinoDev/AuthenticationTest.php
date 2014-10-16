@@ -10,7 +10,7 @@ use WebinoDev\Test\Selenium\AbstractAuthenticationTestCase;
 class AuthenticationTest extends AbstractAuthenticationTestCase
 {
     /**
-     * Opens URI check tat there are no errors and authenticate
+     * Opens URI, check for no errors and authenticates
      */
     public function testAuthentication()
     {
