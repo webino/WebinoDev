@@ -15,9 +15,10 @@ Module to ease development of the Webino modules.
 
 ## Setup
 
-1. Open terminal and go to your application directory
-2. Run `php composer.phar require webino/webino-dev:dev-develop`
-3. Add `WebinoDev` to the enabled modules list
+Open terminal and go to your application directory
+
+1. Run `php composer.phar require webino/webino-dev:dev-develop`
+- Add `WebinoDev` to the enabled modules list
 
   *NOTE: Considering a zf2-skeleton or very similar application.*
 
