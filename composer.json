@@ -1,0 +1,38 @@
+{
+    "name":        "webino/webino-dev",
+    "description": "Webino developers module for Zend Framework 2",
+    "type":        "library",
+    "license":     "BSD-3-Clause",
+    "keywords":    ["webino", "developers", "dev", "zf2"],
+    "homepage":    "http://github.com/webino/WebinoDev",
+    "authors": [
+        {
+            "name":     "Webino, s. r. o.",
+            "email":    "info@webino.sk",
+            "homepage": "http://webino.sk",
+            "role":     "Developer"
+        },
+        {
+            "name":     "Peter Bacinsky",
+            "email":    "peter@bacinsky.sk",
+            "homepage": "http://bacinsky.sk",
+            "role":     "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4",
+        "zendframework/zend-modulemanager": "2.*",
+        "zendframework/zend-di": "2.*",
+        "zendframework/zend-code": "2.*",
+        "zendframework/zend-developer-tools": "dev-master",
+        "element-34/php-webdriver": "1.*"
+    },
+    "require-dev": {
+        "zendframework/zendframework": "2.*",
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-0": {"WebinoDev": "src/"}
+    }
+}
