@@ -22,6 +22,16 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers WebinoDev\Module::init
+     */
+    public function testInit()
+    {
+        $this->object->init();
+        $this->assertTrue(function_exists('d'));
+        $this->assertTrue(function_exists('dd'));
+    }
+
+    /**
      * @covers WebinoDev\Module::getConfig
      */
     public function testGetConfig()

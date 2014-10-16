@@ -10,7 +10,7 @@ class Module
     /**
      * Module initialization
      */
-    public function onInit()
+    public function init()
     {
         require_once __DIR__ . '/../../inc/functions.php';
     }
