@@ -4,9 +4,9 @@ Module to ease development of the Webino modules.
 
 ## Features
 
+- Utility functions
 - Smart dependency injection definition generator
 - Base classes for Selenium WebDriver tests
-- Utility functions
 
 ## Requirements
 
@@ -23,6 +23,13 @@ Open terminal and go to your application directory
   *NOTE: Considering a zf2-skeleton or very similar application.*
 
 ## QuickStart
+
+### Utility functions
+
+```php
+d();  // var_dump();
+dd(); // var_dump();exit;
+```
 
 ### Dependency injection definition generator
 
