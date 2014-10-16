@@ -33,7 +33,14 @@ dd(); // var_dump();exit;
 
 ### Dependency injection definition generator
 
+Create file `bin/definition_generator` in your module, with following code:
+
 ```php
+#!/usr/bin/env php
+<?php
+
+namespace WebinoExample;
+
 use WebinoDev\Di\Definition\Generator;
 
 // Autoloader
@@ -43,6 +50,9 @@ $loader->add(__NAMESPACE__, __DIR__ . '/../src');
 // Dump DI definition
 (new Generator(__DIR__))->compile()->dump();
 ```
+
+*NOTE: Assuming `WebinoExample/bin/` and `WebinoExample/vendor/` directories.* <br />
+*NOTE: Use your namespace instead of WebinoExample.*
 
 With custom paths, relative to vendor directory:
 
