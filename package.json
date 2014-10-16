@@ -1,5 +1,9 @@
 {
     "name": "WebinoDev",
     "repository": "Not a NPM package",
-    "devDependencies": {"grunt": "0.4.*", "shelljs": "~0.3"}
+    "devDependencies": {
+        "grunt": "0.4.*",
+        "grunt-cli": "0.1.*",
+        "shelljs": "~0.3"
+    }
 }
