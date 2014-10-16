@@ -67,11 +67,32 @@ return array (
     'instantiator' => NULL,
     'methods' => 
     array (
-      'setUp' => 0,
+      'setIdentity' => 0,
+      'setCredential' => 0,
       'setAuthenticatedCallback' => 0,
     ),
     'parameters' => 
     array (
+      'setIdentity' => 
+      array (
+        'WebinoDev\\Test\\Selenium\\AuthenticationTrait::setIdentity:0' => 
+        array (
+          0 => 'identity',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setCredential' => 
+      array (
+        'WebinoDev\\Test\\Selenium\\AuthenticationTrait::setCredential:0' => 
+        array (
+          0 => 'credential',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
       'setAuthenticatedCallback' => 
       array (
         'WebinoDev\\Test\\Selenium\\AuthenticationTrait::setAuthenticatedCallback:0' => 
@@ -351,6 +372,8 @@ return array (
       'setResult' => 0,
       'setOutputCallback' => 0,
       'setTestResultObject' => 0,
+      'setIdentity' => 0,
+      'setCredential' => 0,
       'setAuthenticatedCallback' => 0,
     ),
     'parameters' => 
@@ -545,6 +568,26 @@ return array (
         array (
           0 => 'result',
           1 => 'PHPUnit_Framework_TestResult',
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setIdentity' => 
+      array (
+        'WebinoDev\\Test\\Selenium\\AbstractAuthenticationTestCase::setIdentity:0' => 
+        array (
+          0 => 'identity',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setCredential' => 
+      array (
+        'WebinoDev\\Test\\Selenium\\AbstractAuthenticationTestCase::setCredential:0' => 
+        array (
+          0 => 'credential',
+          1 => NULL,
           2 => true,
           3 => NULL,
         ),
