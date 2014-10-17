@@ -1,10 +1,20 @@
 var root;
 if (undefined === process.env.NODE_PATH) {
-    require('shelljs/global');
-    process.env.NODE_PATH = root = exec('npm root -g', {silent: true}).output.trim() + '/';
+    console.error('NODE_PATH is not configured, trying to resolve.');
+    root = (function () {
+        try {
+            require('shelljs/global');
+            return exec('npm root -g', {silent: true}).output.trim() + '/';
+        } catch(exc) {
+            console.error('Assuming default NODE_PATH, did you initialize the module?');
+        }
+    })();
+
+    root ? root : root = '/usr/lib/node_modules/';
+    root && (process.env.NODE_PATH = root);
 }
 module.exports = function(grunt) {
     grunt.initConfig((function () {
         return require(root + 'webino-devkit');
-    })().config(grunt, ['zend', 'module', 'auth']));
+    })().config(grunt, ['zend', 'module']));
 };
