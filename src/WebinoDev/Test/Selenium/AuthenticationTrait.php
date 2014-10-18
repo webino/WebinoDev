@@ -63,6 +63,25 @@ trait AuthenticationTrait
     protected $authSuccessLocator;
 
     /**
+     * Enters the input value
+     *
+     * @param string $name
+     * @param string $value
+     * @param callable $callback
+     * @return self
+     */
+    abstract protected function enterInput($name, $value, callable $callback = null);
+
+    /**
+     * Wait for something, then do something else
+     *
+     * @param callable $action
+     * @param callable $callback
+     * @return self
+     */
+    abstract protected function waitFor(callable $action, callable $callback = null);
+
+    /**
      * Resolve test identity from an environment variable
      *
      * @return string
