@@ -149,7 +149,7 @@ trait AuthenticationTrait
      *
      * @return self
      */
-    protected function authenticate(callback $callback = null)
+    protected function authenticate(callable $callback = null)
     {
         $this
             ->enterIdentity()
