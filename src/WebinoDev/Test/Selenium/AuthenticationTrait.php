@@ -10,7 +10,6 @@
 namespace WebinoDev\Test\Selenium;
 
 use PHPWebDriver_WebDriverBy as By;
-use PHPWebDriver_WebDriverWait as Wait;
 use RuntimeException;
 
 /**
@@ -43,32 +42,25 @@ trait AuthenticationTrait
     protected $credential;
 
     /**
-     * Login input CSS selector
+     * Login input name
      *
      * @var string
      */
-    protected $identityName = 'identity';
+    public $identityName = 'identity';
 
     /**
-     * Password input CSS selector
+     * Password input name
      *
      * @var string
      */
-    protected $creadentialName = 'credential';
+    public $credentialName = 'credential';
 
     /**
      * CSS selector of element to assert after successful authentication
      *
      * @var string
      */
-    protected $authenticatedCssSelector;
-
-    /**
-     * Called on element after successful authnetication, if set
-     *
-     * @var callable
-     */
-    protected $authenticatedCallback;
+    protected $authSuccessLocator;
 
     /**
      * Resolve test identity from an environment variable
@@ -108,14 +100,14 @@ trait AuthenticationTrait
 
     /**
      * @return string
-     * @throws RuntimeException Use setAuthenticatedCssSelector() first
+     * @throws RuntimeException Use setAuthSuccessLocator() first
      */
-    protected function getAuthenticatedCssSelector()
+    protected function getAuthSuccessLocator()
     {
-        if (empty($this->authenticatedCssSelector)) {
-            throw new RuntimeException('You have to call setAuthenticatedCssSelector() first');
+        if (empty($this->authSuccessLocator)) {
+            throw new RuntimeException('You have to call setAuthSuccessLocator() first');
         }
-        return $this->authenticatedCssSelector;
+        return $this->authSuccessLocator;
     }
 
     /**
@@ -143,42 +135,12 @@ trait AuthenticationTrait
     }
 
     /**
-     * @param string $identityName
+     * @param string $locator CSS selector
      * @return self
      */
-    protected function setIdentityCssSelector($identityName)
+    protected function setAuthSuccessLocator($locator)
     {
-        $this->identityName = (string) $identityName;
-        return $this;
-    }
-
-    /**
-     * @param string $creadentialName
-     * @return self
-     */
-    protected function setCreadentialCssSelector($creadentialName)
-    {
-        $this->creadentialName = (string) $creadentialName;
-        return $this;
-    }
-
-    /**
-     * @param string $authenticatedCssSelector
-     * @return self
-     */
-    protected function setAuthenticatedCssSelector($authenticatedCssSelector)
-    {
-        $this->authenticatedCssSelector = (string) $authenticatedCssSelector;
-        return $this;
-    }
-
-    /**
-     * @param callable $authenticatedCallback
-     * @return self
-     */
-    public function setAuthenticatedCallback(callable $authenticatedCallback)
-    {
-        $this->authenticatedCallback = $authenticatedCallback;
+        $this->authSuccessLocator = (string) $locator;
         return $this;
     }
 
@@ -187,14 +149,14 @@ trait AuthenticationTrait
      *
      * @return self
      */
-    protected function authenticate()
+    protected function authenticate(callback $callback = null)
     {
         $this
             ->enterIdentity()
             ->enterCredential(function ($elm) {
                 $elm->submit();
             })
-            ->waitToBeAuthenticated($this->authenticatedCallback);
+            ->waitToBeAuthenticated($callback);
 
         return $this;
     }
@@ -207,9 +169,7 @@ trait AuthenticationTrait
      */
     protected function enterIdentity(callable $callback = null)
     {
-        $elm = $this->session->element(By::NAME, $this->identityName);
-        $elm->sendKeys($this->getIdentity());
-        !$callback or call_user_func($callback, $elm);
+        $this->enterInput($this->identityName, $this->getIdentity(), $callback);
         return $this;
     }
 
@@ -221,9 +181,7 @@ trait AuthenticationTrait
      */
     protected function enterCredential(callable $callback = null)
     {
-        $elm = $this->session->element(By::NAME, $this->creadentialName);
-        $elm->sendKeys($this->getCredential());
-        !$callback or call_user_func($callback, $elm);
+        $this->enterInput($this->credentialName, $this->getCredential(), $callback);
         return $this;
     }
 
@@ -235,13 +193,12 @@ trait AuthenticationTrait
      */
     protected function waitToBeAuthenticated(callable $callback = null)
     {
-        $elm = (new Wait($this->session))->until(
+        $this->waitFor(
             function () {
-                 return $this->session->element(By::CSS_SELECTOR, $this->getAuthenticatedCssSelector());
-            }
+                 return $this->session->element(By::CSS_SELECTOR, $this->getAuthSuccessLocator());
+            },
+            $callback
         );
-
-        !$callback or call_user_func($callback, $elm);
         return $this;
     }
 }

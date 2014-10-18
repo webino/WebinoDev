@@ -10,6 +10,8 @@
 namespace WebinoDev\Test\Selenium;
 
 use PHPWebDriver_WebDriver;
+use PHPWebDriver_WebDriverBy as By;
+use PHPWebDriver_WebDriverWait as Wait;
 use RuntimeException;
 
 /**
@@ -79,5 +81,35 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $src = $this->session->source();
         $this->assertNotContains('Error', $src);
         $this->assertNotContains('Exception', $src);
+    }
+
+    /**
+     * Enters the input value
+     *
+     * @param string $name
+     * @param string $value
+     * @param callable $callback
+     * @return self
+     */
+    protected function enterInput($name, $value, callable $callback = null)
+    {
+        $elm = $this->session->element(By::NAME, $name);
+        $elm->sendKeys($value);
+        !$callback or call_user_func($callback, $elm);
+        return $this;
+    }
+
+    /**
+     * Wait for something, then do something else
+     *
+     * @param callable $action
+     * @param callable $callback
+     * @return self
+     */
+    protected function waitFor(callable $action, callable $callback = null)
+    {
+        $elm = (new Wait($this->session))->until($action);
+        !$callback or call_user_func($callback, $elm);
+        return $this;
     }
 }
