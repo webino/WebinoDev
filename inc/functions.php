@@ -33,7 +33,7 @@ function dd($subject) {
  * @param bool $return
  */
 function p($subject) {
-    print_r($subject, $return);
+    print_r($subject);
 }
 
 /**
@@ -43,7 +43,7 @@ function p($subject) {
  * @param bool $return
  */
 function pd($subject) {
-    print_r($subject, $return);
+    print_r($subject);
 }
 
 /**
