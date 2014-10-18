@@ -29,6 +29,10 @@ Open terminal and go to your application directory
 ```php
 d();  // var_dump();
 dd(); // var_dump();exit;
+p();  // print_r();
+pd(); // print_r();exit;
+pr(); // return print_r();
+e();  // throw new \WebinoDev\Exception\DevelopmentException;
 ```
 
 ### Dependency injection definition generator
