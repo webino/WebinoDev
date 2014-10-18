@@ -46,6 +46,60 @@ return array (
       ),
     ),
   ),
+  'WebinoDev\\Exception\\DevelopmentException' => 
+  array (
+    'supertypes' => 
+    array (
+      0 => 'WebinoDev\\Exception\\ExceptionInterface',
+      1 => 'RuntimeException',
+      2 => 'Exception',
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+      '__construct' => 3,
+    ),
+    'parameters' => 
+    array (
+      '__construct' => 
+      array (
+        'WebinoDev\\Exception\\DevelopmentException::__construct:0' => 
+        array (
+          0 => 'message',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+        'WebinoDev\\Exception\\DevelopmentException::__construct:1' => 
+        array (
+          0 => 'code',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+        'WebinoDev\\Exception\\DevelopmentException::__construct:2' => 
+        array (
+          0 => 'previous',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+    ),
+  ),
+  'WebinoDev\\Exception\\ExceptionInterface' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
   'WebinoDev\\Module' => 
   array (
     'supertypes' => 

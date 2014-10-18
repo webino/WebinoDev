@@ -1,4 +1,11 @@
 <?php
+/**
+ * Webino (http://webino.sk/)
+ *
+ * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
+ * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @license     BSD-3-Clause
+ */
 
 namespace WebinoDev\Test\Selenium;
 
@@ -7,7 +14,9 @@ use PHPWebDriver_WebDriverWait as Wait;
 use RuntimeException;
 
 /**
+ * WebDriver test authentication trait
  *
+ * Use this trait when you want a WebDriver test authentication handling.
  */
 trait AuthenticationTrait
 {
