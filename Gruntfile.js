@@ -1,4 +1,4 @@
-var root;
+var root = '';
 if (undefined === process.env.NODE_PATH) {
     console.error('NODE_PATH is not configured, trying to resolve.');
     root = (function () {
@@ -10,8 +10,8 @@ if (undefined === process.env.NODE_PATH) {
         }
     })();
 
-    root ? root : root = '/usr/lib/node_modules/';
-    root && (process.env.NODE_PATH = root);
+    root || (root = '/usr/lib/node_modules/');
+    process.env.NODE_PATH = root;
 }
 module.exports = function(grunt) {
     grunt.initConfig((function () {
