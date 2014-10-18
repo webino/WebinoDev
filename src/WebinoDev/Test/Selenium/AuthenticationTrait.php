@@ -85,7 +85,7 @@ trait AuthenticationTrait
             $this->setIdentity($identity);
         }
 
-        return $identity;
+        return $this->identity;
     }
 
     /**
@@ -100,10 +100,10 @@ trait AuthenticationTrait
             if (empty($credential)) {
                 throw new RuntimeException(sprintf('Expected %s env', $this::$credentialEnv));
             }
-            $this->setCredential($identity);
+            $this->setCredential($credential);
         }
 
-        return $credential;
+        return $this->credential;
     }
 
     /**
