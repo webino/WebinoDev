@@ -100,6 +100,7 @@ trait AuthenticationTrait
             if (empty($credential)) {
                 throw new RuntimeException(sprintf('Expected %s env', $this::$credentialEnv));
             }
+            $this->setCredential($identity);
         }
 
         return $credential;
