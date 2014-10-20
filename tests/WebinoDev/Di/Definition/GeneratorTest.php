@@ -112,6 +112,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @Title("Test that setIgnore() works as expected")
      * @covers WebinoDev\Di\Definition\Generator::setIgnore
      */
     public function testSetIgnore()
@@ -120,6 +121,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @Title("Test that custom compiler can be injected")
      * @covers WebinoDev\Di\Definition\Generator::setCompiler
      */
     public function testSetCompiler()
