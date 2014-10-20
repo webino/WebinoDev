@@ -7,6 +7,9 @@ Module to ease development of the Webino modules.
 - Utility functions
 - Smart dependency injection definition generator
 - Base classes for Selenium WebDriver tests
+  - Authentication testing
+  - Forms testing
+  - Ajax testing
 
 ## Requirements
 
