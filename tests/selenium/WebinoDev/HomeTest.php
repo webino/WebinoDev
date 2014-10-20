@@ -29,7 +29,7 @@ class HomeTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that we can wait for ajax to finish")
+     * @Title("Wait for ajax to finish")
      * @Features({"Ajax testing"})
      */
     public function testWaitForAjax()
