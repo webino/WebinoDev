@@ -135,7 +135,7 @@ trait AuthenticationTrait
      * @param string $identity
      * @return self
      */
-    public function setIdentity($identity)
+    protected function setIdentity($identity)
     {
         $this->identity = (string) $identity;
         return $this;
@@ -147,7 +147,7 @@ trait AuthenticationTrait
      * @param string $credential
      * @return self
      */
-    public function setCredential($credential)
+    protected function setCredential($credential)
     {
         $this->credential = (string) $credential;
         return $this;

@@ -9,19 +9,37 @@
 
 namespace WebinoDev;
 
+use PHPWebDriver_WebDriverBy as By;
 use WebinoDev\Test\Selenium\AbstractTestCase;
+use Yandex\Allure\Adapter\Annotation\Features;
+use Yandex\Allure\Adapter\Annotation\Title;
 
 /**
- * Test abstract test cases for Selenium WebDriver
+ * @Title("Test abstract test cases for Selenium WebDriver")
  */
 class HomeTest extends AbstractTestCase
 {
     /**
-     * Simple web check
+     * @Title("Simple web check")
      */
     public function testHome()
     {
         $this->session->open($this->uri);
         $this->assertNotError();
+    }
+
+    /**
+     * @Title("Test that we can wait for ajax to finish")
+     * @Features({"Ajax testing"})
+     */
+    public function testWaitForAjax()
+    {
+        $this->session->open($this->uri . 'application/index/ajax');
+        $this->assertNotError();
+
+        $this->session->element(By::CLASS_NAME, 'ajax-btn')->click();
+        $elm = $this->session->element(By::CLASS_NAME, 'ajax-content');
+        $this->waitForAjax();
+        $this->assertSame('AJAX TEST', $elm->text());
     }
 }

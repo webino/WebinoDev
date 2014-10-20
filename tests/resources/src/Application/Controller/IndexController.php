@@ -12,7 +12,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 
 /**
- * Test application controller
+ * Testing application controller
  */
 class IndexController extends AbstractActionController
 {
@@ -47,5 +47,22 @@ class IndexController extends AbstractActionController
                 ['controller' => 'index', 'action' => 'authentication-fail']
             );
         }
+    }
+
+    /**
+     * Ajax test view
+     */
+    public function ajaxAction()
+    {
+
+    }
+
+    /**
+     * Wait for a while then return text response
+     */
+    public function ajaxContentAction()
+    {
+        sleep(2);
+        return $this->getResponse()->setContent('AJAX TEST');
     }
 }

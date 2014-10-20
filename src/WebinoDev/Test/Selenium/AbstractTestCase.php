@@ -42,7 +42,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Resolves URI to open session
      */
-    public function setUp()
+    protected function setUp()
     {
         $this->uri       = $this->resolveUri();
         $this->webDriver = new PHPWebDriver_WebDriver(self::WEB_DRIVER_HOST);
@@ -52,7 +52,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      *
      */
-    public function tearDown()
+    protected function tearDown()
     {
         $this->session->close();
     }
@@ -62,7 +62,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      *
      * @return string
      */
-    public function resolveUri()
+    protected function resolveUri()
     {
         $uri = getenv('URI');
         if (empty($uri)) {
@@ -75,7 +75,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Assert that page is without errors
      */
-    public function assertNotError()
+    protected function assertNotError()
     {
         $this->assertNotContains('Error', $this->session->title());
         $src = $this->session->source();
@@ -111,5 +111,17 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $elm = (new Wait($this->session))->until($action);
         !$callback or call_user_func($callback, $elm);
         return $this;
+    }
+
+    /**
+     * Ajax wait
+     *
+     * Depends on jQuery.
+     */
+    protected function waitForAjax()
+    {
+        do {
+            sleep(2);
+        } while ($this->session->execute(['script' => 'return jQuery.active', 'args' => []]));
     }
 }

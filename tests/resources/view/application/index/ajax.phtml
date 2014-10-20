@@ -1,0 +1,12 @@
+<p><input type="button" value="AJAX" class="ajax-btn"/></p>
+<p class="ajax-content"></p>
+<script>
+    (function($) {
+        $('.ajax-btn').click(function() {
+            <?php $url = $this->url('application/default', ['controller' => 'index', 'action' => 'ajax-content']); ?>
+            $.get('<?php echo $url; ?>', function (data) {
+                $('.ajax-content').text(data);
+            });
+        });
+    })(jQuery);
+</script>

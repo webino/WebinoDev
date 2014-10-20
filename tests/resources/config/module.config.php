@@ -15,6 +15,7 @@ namespace WebinoDev;
 return [
     'view_manager' => [
         'template_map' => [
+            'application/index/ajax'                   => __DIR__ . '/../view/application/index/ajax.phtml',
             'application/index/authentication'         => __DIR__ . '/../view/application/index/authentication.phtml',
             'application/index/authentication-success' => __DIR__ . '/../view/application/index/authentication-success.phtml',
             'application/index/authentication-fail'    => __DIR__ . '/../view/application/index/authentication-fail.phtml',

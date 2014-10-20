@@ -10,14 +10,17 @@
 namespace WebinoDev;
 
 use WebinoDev\Test\Selenium\AbstractAuthenticationTestCase;
+use Yandex\Allure\Adapter\Annotation\Features;
+use Yandex\Allure\Adapter\Annotation\Title;
 
 /**
- * Test abstract authenticateion test cases for Selenium WebDriver
+ * @Title("Test abstract authenticateion test cases for Selenium WebDriver")
+ * @Features({"Authentication Testing"})
  */
 class AuthenticationTest extends AbstractAuthenticationTestCase
 {
     /**
-     * Opens URI, check for no errors and authenticates
+     * @Title("Opens URI, check for no errors and authenticates")
      */
     public function testAuthentication()
     {
