@@ -9,6 +9,7 @@
 
 namespace WebinoDev;
 
+use Yandex\Allure\Adapter\Annotation\Title;
 use WebinoDev\Test;
 
 /**
@@ -31,7 +32,7 @@ class AppTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Just check that application is working
+     * @Title("Application works")
      */
     public function testGetServiceManager()
     {
