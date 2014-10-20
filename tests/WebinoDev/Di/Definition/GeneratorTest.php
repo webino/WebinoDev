@@ -112,7 +112,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Test that setIgnore() works as expected")
+     * @Title("setIgnore() works as expected")
      * @covers WebinoDev\Di\Definition\Generator::setIgnore
      */
     public function testSetIgnore()
@@ -121,7 +121,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Test that custom compiler can be injected")
+     * @Title("Custom compiler can be injected")
      * @covers WebinoDev\Di\Definition\Generator::setCompiler
      */
     public function testSetCompiler()
@@ -130,7 +130,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Test basic compilation")
+     * @Title("Basic compilation")
      */
     public function testCompile()
     {
@@ -146,7 +146,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Test that compiler exclude ignored files")
+     * @Title("Compiler exclude ignored files")
      */
     public function testCompileWithIgnore()
     {
@@ -163,7 +163,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Test custom filess compilation")
+     * @Title("Custom files compilation")
      */
     public function testCompileWithCustomFiles()
     {

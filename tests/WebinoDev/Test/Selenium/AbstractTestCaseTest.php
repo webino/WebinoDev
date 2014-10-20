@@ -13,7 +13,7 @@ use Yandex\Allure\Adapter\Annotation\Features;
 use Yandex\Allure\Adapter\Annotation\Title;
 
 /**
- * @Title("Test that abstract class for selenium tests is working as expected")
+ * @Title("Abstract class for selenium tests works")
  * @Features({"Selenium testing"})
  */
 class AbstractTestCaseTest extends AbstractTestCase
@@ -46,7 +46,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that we can setup Selenium WebDriver")
+     * @Title("Setup Selenium WebDriver")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::setUp
      */
     public function testSetUp()
@@ -59,7 +59,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that we can tear down Selenium WebDriver")
+     * @Title("Tear down Selenium WebDriver")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::tearDown
      */
     public function testTearDown()
@@ -73,7 +73,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that we can get the URI fron env vars")
+     * @Title("Get the URI fron env vars")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveUri
      */
     public function testResolveUri()
@@ -85,7 +85,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that URI env var is required")
+     * @Title("URI env var is required")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveUri
      * @expectedException RuntimeException
      */
@@ -95,7 +95,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that assertion for page error is working as expected")
+     * @Title("Assertion for page error works")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::assertNotError
      */
     public function testAssertNotError()
@@ -114,7 +114,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that assertion for page error fails")
+     * @Title("Assertion for page error fails")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::assertNotError
      * @expectedException PHPUnit_Framework_ExpectationFailedException
      */
@@ -130,7 +130,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test sending keys to input")
+     * @Title("Sending keys to input")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::enterInput
      */
     public function testEnterInput()
@@ -151,7 +151,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test sending keys to input with callback")
+     * @Title("Sending keys to input with callback")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::enterInput
      */
     public function testEnterInputWithCallback()
@@ -177,7 +177,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that wait for is working as expected")
+     * @Title("Wait for works")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::waitFor
      */
     public function testWaitFor()
@@ -191,7 +191,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that wait for with callback is working as expected")
+     * @Title("Wait for with callback works")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::waitFor
      */
     public function testWaitForWithCallback()
@@ -212,7 +212,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Test that wait for ajax is working as expected")
+     * @Title("Wait for ajax works")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::waitForAjax
      */
     public function testWaitForAjax()
