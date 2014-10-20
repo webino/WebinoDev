@@ -86,7 +86,7 @@ class HomeTest extends AbstractTestCase
 }
 ```
 
-With authentication:
+#### Testing authentication
 
 ```php
 use WebinoDev\Test\Selenium\AbstractAuthenticationTestCase;
@@ -103,7 +103,7 @@ class AuthenticationTest extends AbstractAuthenticationTestCase
 }
 ```
 
-or use trait:
+**or use trait**
 
 ```php
 use WebinoDev\Test\Selenium\AbstractTestCase;
@@ -112,6 +112,55 @@ class AuthenticationTest extends AbstractTestCase
 {
     use AuthenticationTrait;
 }
+```
+
+#### Testing forms
+
+```php
+use PHPWebDriver_WebDriverBy as By;
+use WebinoDev\Test\Selenium\AbstractTestCase;
+
+class HomeTest extends AbstractTestCase
+{
+    public function testHome()
+    {
+        $this->enterInput(
+            'email',
+            'test@example.com',
+            function ($elm) {
+                $elm->submit();
+            }
+        );
+
+        $this->waitFor(
+            function () {
+                return $this->session->element(By::CLASS_NAME, '.example-success');
+            },
+            function ($elm) {
+                $this->assertSame('example', $elm->text());
+            }
+        );
+    }
+}
+```
+
+#### Testing AJAX
+
+```php
+use PHPWebDriver_WebDriverBy as By;
+use WebinoDev\Test\Selenium\AbstractTestCase;
+
+class HomeTest extends AbstractTestCase
+{
+    public function testHome()
+    {
+        $this->element(By::CLASS_NAME, 'ajax-btn')->click();
+        $this->waitForAjax();
+        $result = $this->element(By::CLASS_NAME, 'ajax-result')->text();
+        $this->assertSame('expected ajax result', $result);
+    }
+}
+
 ```
 
 ## Development
