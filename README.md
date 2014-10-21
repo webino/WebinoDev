@@ -100,7 +100,7 @@ class AuthenticationTest extends AbstractAuthenticationTestCase
     {
         $this->session->open($this->uri);
         $this->assertNotError();
-        $this->setAuthenticatedCssSelector('.authentication-success');
+        $this->setAuthSuccessLocator('.authentication-success');
         $this->authenticate();
     }
 }
