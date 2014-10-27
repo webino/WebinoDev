@@ -13,7 +13,7 @@ use Yandex\Allure\Adapter\Annotation\Features;
 use Yandex\Allure\Adapter\Annotation\Title;
 
 /**
- * @Title("Abstract class for selenium authentication tests works as expected")
+ * @Title("Abstract class for selenium authentication tests works")
  * @Features({"Selenium testing"})
  */
 class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
@@ -49,7 +49,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
 
     /**
      * @Title("Get the identity from env vars")
-     * @covers WebinoDev\Test\Selenium\AbstractAuthenticationTestCase::getIdentity
+     * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getIdentity
      */
     public function testGetIdentity()
     {
@@ -61,7 +61,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
 
     /**
      * @Title("Identity env var is required")
-     * @covers WebinoDev\Test\Selenium\AbstractAuthenticationTestCase::getIdentity
+     * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getIdentity
      * @expectedException RuntimeException
      */
     public function testGetIdentityExpectsIdentityEnv()
@@ -71,7 +71,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
 
     /**
      * @Title("Get the identity fron env vars just once")
-     * @covers WebinoDev\Test\Selenium\AbstractAuthenticationTestCase::getIdentity
+     * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getIdentity
      */
     public function testGetIdentityFromEnvOnce()
     {
@@ -84,7 +84,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
 
     /**
      * @Title("Get the credential from env vars")
-     * @covers WebinoDev\Test\Selenium\AbstractAuthenticationTestCase::getCredential
+     * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getCredential
      */
     public function testGetCredential()
     {
@@ -96,7 +96,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
 
     /**
      * @Title("Credential env var is required")
-     * @covers WebinoDev\Test\Selenium\AbstractAuthenticationTestCase::getCredential
+     * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getCredential
      * @expectedException RuntimeException
      */
     public function testGetCredentialExpectsCredentialEnv()
@@ -106,7 +106,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
 
     /**
      * @Title("Get the credential fron env vars just once")
-     * @covers WebinoDev\Test\Selenium\AbstractAuthenticationTestCase::getCredential
+     * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getCredential
      */
     public function testGetCredentialFromEnvOnce()
     {
@@ -119,7 +119,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
 
     /**
      * @Title("Required to call setAuthSuccessLocator() before authentication()")
-     * @covers WebinoDev\Test\Selenium\AbstractAuthenticationTestCase::getAuthSuccessLocator
+     * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getAuthSuccessLocator
      * @expectedException RuntimeException
      */
     public function testGetAuthSuccessLocatorEmptyThrowsException()

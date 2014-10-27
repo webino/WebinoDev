@@ -7,34 +7,20 @@
  * @license     BSD-3-Clause
  */
 
-namespace WebinoDev\Test\Selenium\WebDriver;
+namespace WebinoDev\Test\Functional;
 
 /**
- * For mocking PHPWebDriver_WebDriverElement
+ * Base test case for mail functional tests
  */
-class TestElement
+abstract class AbstractMailTestCase extends \PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     */
-    public function click()
-    {
-
-    }
+    use MailTrait;
 
     /**
-     *
+     * {@inheritDoc}
      */
-    public function sendKeys()
+    protected function setUp()
     {
-
-    }
-
-    /**
-     *
-     */
-    public function submit()
-    {
-
+        $this->setUpMailVfs();
     }
 }

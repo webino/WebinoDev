@@ -55,7 +55,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * Tears down the fixture, for example, closes a network connection.
+     * This method is called after a test is executed.
      */
     protected function tearDown()
     {
@@ -86,6 +87,21 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $src = $this->session->source();
         $this->assertNotContains('Error', $src);
         $this->assertNotContains('Exception', $src);
+    }
+
+    /**
+     * Clicks on a link
+     *
+     * @param string $linkText
+     * @param callable $callback
+     * @return self
+     */
+    protected function clickLink($linkText, callable $callback = null)
+    {
+        $elm = $this->session->element(By::LINK_TEXT, $linkText);
+        $elm->click();
+        !$callback or call_user_func($callback, $elm);
+        return $this;
     }
 
     /**
@@ -122,11 +138,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * Ajax wait
      *
      * Depends on jQuery.
+     *
+     * @return self
      */
     protected function waitForAjax()
     {
         do {
             sleep(2);
         } while ($this->session->execute(['script' => 'return jQuery.active', 'args' => []]));
+        return $this;
     }
 }

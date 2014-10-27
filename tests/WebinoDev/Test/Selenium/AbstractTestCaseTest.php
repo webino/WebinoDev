@@ -38,7 +38,8 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     *
+     * Tears down the fixture, for example, closes a network connection.
+     * This method is called after a test is executed.
      */
     protected function tearDown()
     {
@@ -130,11 +131,33 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
+     * @Title("Clicking a link works")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::clickLink
+     */
+    public function testClickLink()
+    {
+        $linkText = 'Link example';
+        $element  = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+
+        WebDriver\TestWebDriver::$session->expects($this->once())
+            ->method('element')
+            ->with('link text', $linkText)
+            ->will($this->returnValue($element));
+
+        $element->expects($this->once())
+            ->method('click');
+
+        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->clickLink($linkText);
+    }
+
+    /**
      * @Title("Sending keys to input")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::enterInput
      */
     public function testEnterInput()
     {
+        $value   = 'test_value';
         $element = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
         WebDriver\TestWebDriver::$session->expects($this->once())
@@ -144,10 +167,10 @@ class AbstractTestCaseTest extends AbstractTestCase
 
         $element->expects($this->once())
             ->method('sendKeys')
-            ->with('test_value');
+            ->with($value);
 
         $this->object->session = WebDriver\TestWebDriver::$session;
-        $this->object->enterInput('test_name', 'test_value');
+        $this->object->enterInput('test_name', $value);
     }
 
     /**
@@ -156,7 +179,8 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testEnterInputWithCallback()
     {
-        $elm = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+        $value = 'test_value';
+        $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
         WebDriver\TestWebDriver::$session->expects($this->once())
             ->method('element')
@@ -165,7 +189,7 @@ class AbstractTestCaseTest extends AbstractTestCase
 
         $elm->expects($this->once())
             ->method('sendKeys')
-            ->with('test_value');
+            ->with($value);
 
         $callback = $this->getMock('WebinoDev\Test\Selenium\TestCallback');
         $callback->expects($this->once())
@@ -173,7 +197,7 @@ class AbstractTestCaseTest extends AbstractTestCase
             ->with($elm);
 
         $this->object->session = WebDriver\TestWebDriver::$session;
-        $this->object->enterInput('test_name', 'test_value', $callback);
+        $this->object->enterInput('test_name', $value, $callback);
     }
 
     /**

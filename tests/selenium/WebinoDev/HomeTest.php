@@ -26,6 +26,8 @@ class HomeTest extends AbstractTestCase
     {
         $this->session->open($this->uri);
         $this->assertNotError();
+
+        $this->clickLink('wiki');
     }
 
     /**
