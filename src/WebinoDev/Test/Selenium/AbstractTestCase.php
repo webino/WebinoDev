@@ -27,6 +27,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @var string
      */
+    protected static $browser = 'htmlunit';
+
+    /**
+     * @var string
+     */
     protected $uri;
 
     /**
@@ -46,7 +51,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $this->uri       = $this->resolveUri();
         $this->webDriver = new PHPWebDriver_WebDriver(self::WEB_DRIVER_HOST);
-        $this->session   = $this->webDriver->session('htmlunit');
+        $this->session   = $this->webDriver->session($this::$browser);
     }
 
     /**
