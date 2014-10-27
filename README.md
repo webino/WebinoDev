@@ -6,6 +6,8 @@ Module to ease development of the Webino modules.
 
 - Utility functions
 - Smart dependency injection definition generator
+- DOM testing
+- Mail testing
 - Base classes for Selenium WebDriver tests
   - Authentication testing
   - Forms testing
@@ -85,6 +87,30 @@ class HomeTest extends AbstractTestCase
     {
         $this->session->open($this->uri);
         $this->assertNotError();
+
+        $this->clickLink('Link example');
+    }
+}
+```
+
+#### Testing DOM
+
+```php
+use WebinoDev\Test\DomTrait;
+
+/**
+ * Concrete test trait
+ */
+class DomTestCase extends \PHPUnit_Framework_TestCase
+{
+    use DomTrait;
+
+    public function testDom()
+    {
+        $xhtml = '<html/>';
+        $dom   = $this->createDom($xhtml);
+        $elm   = $dom->xpath->query('//html')->item(0);
+        $this->assertNotNull($elm);
     }
 }
 ```
@@ -164,6 +190,102 @@ class HomeTest extends AbstractTestCase
     }
 }
 
+```
+
+#### Testing mail
+
+Supports functional and selenium mail testing.
+
+##### Functional mail testing
+
+Assumed that mail messages are saved as files to the virtual filesystem `tmp/mail` directory.
+
+*NOTE: Use `org\bovigo\vfs\vfsStream::url('root/tmp/mail')` for virtual filesystem directory path.*
+
+```php
+use WebinoDev\Test\Functional\AbstractMailTestCase;
+
+class MailTest extends AbstractMailTestCase
+{
+    public function testMail()
+    {
+        // ...
+
+        $mail = $this->object->readMail();
+        $this->assertNotNull($mail);
+        $this->assertSame($expectedSubject, $mail->getSubject());
+    }
+}
+```
+
+**or use trait**
+
+```php
+use WebinoDev\Test\Functional\AbstractTestCase;
+use WebinoDev\Test\Functional\MailTrait;
+
+class MailTest extends AbstractTestCase
+{
+    use MailTrait;
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp()
+    {
+        $this->setUpMailVfs();
+    }
+}
+```
+
+##### Testing mail with Selenium
+
+Assumed that mail messages are saved as files to the `tmp/mail` directory, relative to the application.
+
+```php
+use WebinoDev\Test\Selenium\AbstractMailTestCase;
+
+class MailTest extends AbstractMailTestCase
+{
+    public function testMail()
+    {
+        // ...
+
+        $mail = $this->object->readMail();
+        $this->assertNotNull($mail);
+        $this->assertSame($expectedSubject, $mail->getSubject());
+    }
+}
+```
+
+**or use trait**
+
+```php
+use WebinoDev\Test\Selenium\AbstractTestCase;
+use WebinoDev\Test\Selenium\MailTrait;
+
+class MailTest extends AbstractTestCase
+{
+    use MailTrait;
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->setUpMailDir();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown()
+    {
+        parent::tearDown();
+        $this->tearDownMailDir();
+    }
+}
 ```
 
 ## Development
