@@ -837,6 +837,45 @@ return array (
     array (
     ),
   ),
+  'WebinoDev\\Test\\Selenium\\WebDriver\\TestSession' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\WebDriver\\TestElement' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\WebDriver\\TestWebDriver' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
   'WebinoDev\\Test\\Exception\\ExceptionInterface' => 
   array (
     'supertypes' => 
@@ -889,6 +928,19 @@ return array (
           3 => NULL,
         ),
       ),
+    ),
+  ),
+  'WebinoDev\\Test\\Functional\\SeleniumTestTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
     ),
   ),
   'WebinoDev\\Test\\Functional\\AbstractMailTestCase' => 

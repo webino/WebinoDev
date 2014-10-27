@@ -9,6 +9,7 @@
 
 namespace WebinoDev\Test\Selenium;
 
+use WebinoDev\Test\Functional\SeleniumTestTrait;
 use Yandex\Allure\Adapter\Annotation\Features;
 use Yandex\Allure\Adapter\Annotation\Title;
 
@@ -18,6 +19,8 @@ use Yandex\Allure\Adapter\Annotation\Title;
  */
 class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
 {
+    use SeleniumTestTrait;
+
     /**
      * @var AbstractAuthenticationTestCase
      */
@@ -29,11 +32,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
      */
     protected function setUp()
     {
-        WebDriver\TestWebDriver::$session = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestSession');
-
-        class_exists('PHPWebDriver_WebDriver', false) or
-            class_alias('WebinoDev\Test\Selenium\WebDriver\TestWebDriver', 'PHPWebDriver_WebDriver');
-
+        $this->setUpWebDriver();
         $this->object = new AuthenticationTestCase;
     }
 
@@ -142,7 +141,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
         $successElm     = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
         $successLocator = '.test-success';
 
-        WebDriver\TestWebDriver::$session->expects($this->exactly(5))
+        $this->getWebDriverSession()->expects($this->exactly(5))
             ->method('element')
             ->withConsecutive(
                 ['name', 'identity'],
@@ -178,7 +177,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
     {
         $args = $this->prepareAuthenticateTest();
 
-        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->session = $this->getWebDriverSession();
         $this->object->setAuthSuccessLocator($args[0]);
         $this->object->authenticate();
     }
@@ -196,7 +195,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
             ->method('__invoke')
             ->with($args[1]);
 
-        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->session = $this->getWebDriverSession();
         $this->object->setAuthSuccessLocator($args[0]);
         $this->object->authenticate($callback);
     }

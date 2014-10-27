@@ -17,6 +17,14 @@ class TestElement
     /**
      *
      */
+    public function text()
+    {
+
+    }
+
+    /**
+     *
+     */
     public function attribute()
     {
 

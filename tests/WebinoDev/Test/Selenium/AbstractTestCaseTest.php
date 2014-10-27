@@ -9,6 +9,7 @@
 
 namespace WebinoDev\Test\Selenium;
 
+use WebinoDev\Test\Functional\SeleniumTestTrait;
 use Yandex\Allure\Adapter\Annotation\Features;
 use Yandex\Allure\Adapter\Annotation\Title;
 
@@ -18,6 +19,8 @@ use Yandex\Allure\Adapter\Annotation\Title;
  */
 class AbstractTestCaseTest extends AbstractTestCase
 {
+    use SeleniumTestTrait;
+
     /**
      * @var AbstractTestCase
      */
@@ -29,11 +32,7 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     protected function setUp()
     {
-        WebDriver\TestWebDriver::$session = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestSession');
-
-        class_exists('PHPWebDriver_WebDriver', false) or
-            class_alias('WebinoDev\Test\Selenium\WebDriver\TestWebDriver', 'PHPWebDriver_WebDriver');
-
+        $this->setUpWebDriver();
         $this->object = new TestCase;
     }
 
@@ -56,7 +55,7 @@ class AbstractTestCaseTest extends AbstractTestCase
         $this->object->setUp();
         $this->assertInstanceOf('WebinoDev\Test\Selenium\WebDriver\TestWebDriver', $this->object->webDriver);
         $this->assertInstanceOf('WebinoDev\Test\Selenium\WebDriver\TestSession', $this->object->session);
-        $this->assertSame(WebDriver\TestWebDriver::$session, $this->object->session);
+        $this->assertSame($this->getWebDriverSession(), $this->object->session);
     }
 
     /**
@@ -65,7 +64,7 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testTearDown()
     {
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('close');
 
         putenv('URI=test-uri-' . __METHOD__);
@@ -101,11 +100,11 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testAssertNotError()
     {
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('title')
             ->will($this->returnValue(''));
 
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('source')
             ->will($this->returnValue(''));
 
@@ -121,7 +120,7 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testAssertNotErrorScream()
     {
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('title')
             ->will($this->returnValue('Error'));
 
@@ -139,7 +138,7 @@ class AbstractTestCaseTest extends AbstractTestCase
         $linkText = 'Link example';
         $element  = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('element')
             ->with('link text', $linkText)
             ->will($this->returnValue($element));
@@ -147,7 +146,7 @@ class AbstractTestCaseTest extends AbstractTestCase
         $element->expects($this->once())
             ->method('click');
 
-        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->session = $this->getWebDriverSession();
         $this->object->clickLink($linkText);
     }
 
@@ -161,7 +160,7 @@ class AbstractTestCaseTest extends AbstractTestCase
         $value = 'test_value';
         $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('element')
             ->with('name', $name)
             ->will($this->returnValue($elm));
@@ -173,7 +172,7 @@ class AbstractTestCaseTest extends AbstractTestCase
             ->method('sendKeys')
             ->with($value);
 
-        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->session = $this->getWebDriverSession();
         $this->object->enterInput($name, $value);
     }
 
@@ -187,7 +186,7 @@ class AbstractTestCaseTest extends AbstractTestCase
         $value = 'test_value';
         $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('element')
             ->with('name', $name)
             ->will($this->returnValue($elm));
@@ -204,7 +203,7 @@ class AbstractTestCaseTest extends AbstractTestCase
             ->method('__invoke')
             ->with($elm);
 
-        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->session = $this->getWebDriverSession();
         $this->object->enterInput($name, $value, $callback);
     }
 
@@ -218,7 +217,7 @@ class AbstractTestCaseTest extends AbstractTestCase
         $value = 'test_value';
         $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('element')
             ->with('name', $name)
             ->will($this->returnValue($elm));
@@ -228,7 +227,7 @@ class AbstractTestCaseTest extends AbstractTestCase
             ->with('value')
             ->will($this->returnValue($value));
 
-        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->session = $this->getWebDriverSession();
         $this->object->assertInput($name, $value);
     }
 
@@ -242,7 +241,7 @@ class AbstractTestCaseTest extends AbstractTestCase
         $value = 'test_value';
         $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('element')
             ->with('name', $name)
             ->will($this->returnValue($elm));
@@ -257,7 +256,7 @@ class AbstractTestCaseTest extends AbstractTestCase
             ->method('__invoke')
             ->with($elm);
 
-        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->session = $this->getWebDriverSession();
         $this->object->assertInput($name, $value, $callback);
     }
 
@@ -302,10 +301,10 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testWaitForAjax()
     {
-        WebDriver\TestWebDriver::$session->expects($this->once())
+        $this->getWebDriverSession()->expects($this->once())
             ->method('execute');
 
-        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->session = $this->getWebDriverSession();
         $this->object->waitForAjax();
     }
 }

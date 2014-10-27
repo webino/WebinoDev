@@ -9,6 +9,7 @@
 
 namespace WebinoDev\Test\Selenium;
 
+use WebinoDev\Test\Functional\SeleniumTestTrait;
 use Yandex\Allure\Adapter\Annotation\Features;
 use Yandex\Allure\Adapter\Annotation\Title;
 use Zend\Mail\Message;
@@ -19,6 +20,8 @@ use Zend\Mail\Message;
  */
 class AbstractMailTestCaseTest extends AbstractMailTestCase
 {
+    use SeleniumTestTrait;
+
     /**
      * @var AbstractMailTestCase
      */
@@ -30,16 +33,12 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
      */
     protected function setUp()
     {
-        WebDriver\TestWebDriver::$session = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestSession');
-
-        class_exists('PHPWebDriver_WebDriver', false) or
-            class_alias('WebinoDev\Test\Selenium\WebDriver\TestWebDriver', 'PHPWebDriver_WebDriver');
-
+        $this->setUpWebDriver();
         putenv('URI=test-uri-' . __METHOD__);
 
         // create object for testing
         $this->object = new MailTestCase;
-        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->session = $this->getWebDriverSession();
     }
 
     /**

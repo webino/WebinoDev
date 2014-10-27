@@ -8,6 +8,7 @@ Module to ease development of the Webino modules.
 - Smart dependency injection definition generator
 - DOM testing
 - Mail testing
+- Selenium abstract tests testing
 - Base classes for Selenium WebDriver tests
   - Authentication testing
   - Forms testing
@@ -283,6 +284,25 @@ class MailTest extends AbstractTestCase
         $this->tearDownMailDir();
     }
 }
+```
+
+#### Testing abstract selenium tests
+
+```php
+use WebinoDev\Test\Functional\SeleniumTestTrait;
+
+class AbstractSeleniumTestCaseTest extends \PHPUnit_Framework_TestCase
+{
+    use SeleniumTestTrait;
+
+    protected $object;
+
+    protected function setUp()
+    {
+        $this->setUpWebDriver();
+        $this->object = new SeleniumTestCase;
+        $this->object->session = $this->getWebDriverSession();
+    }
 ```
 
 ## Development

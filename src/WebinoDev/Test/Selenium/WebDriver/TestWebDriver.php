@@ -17,7 +17,7 @@ class TestWebDriver
     /**
      * Session mock
      *
-     * @var
+     * @var PHPWebDriver_WebDriverSession
      */
     public static $session;
 
