@@ -31,6 +31,19 @@ class HomeTest extends AbstractTestCase
     }
 
     /**
+     * @Title("Advanced web check")
+     */
+    public function testAdvanced()
+    {
+        $this->session->open($this->uri . 'application/index/test');
+        $this->assertNotError();
+
+        $value = 'Test example value';
+        $this->enterInput('example', $value);
+        $this->assertInput('example', $value);
+    }
+
+    /**
      * @Title("Wait for ajax to finish")
      * @Features({"Ajax testing"})
      */

@@ -24,7 +24,7 @@ Open terminal and go to your application directory
 
 1. Use this module only in your development environment
 - Run `php composer.phar require webino/webino-dev:dev-develop`
-- Add `WebinoDev` to the enabled modules list <br /> 
+- Add `WebinoDev` to the enabled modules list <br />
   *NOTE: Considering a zf2-skeleton or very similar application.*
 
 ## QuickStart
@@ -152,13 +152,11 @@ class HomeTest extends AbstractTestCase
 {
     public function testHome()
     {
-        $this->enterInput(
-            'email',
-            'test@example.com',
-            function ($elm) {
-                $elm->submit();
-            }
-        );
+        $this->enterInput('email', 'test@example.com', function ($elm) {
+            $elm->submit();
+        });
+
+        $this->assertInput('email', 'test@example.com');
 
         $this->waitFor(
             function () {

@@ -74,7 +74,6 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         if (empty($uri)) {
             throw new RuntimeException('Expected URI env');
         }
-
         return $uri;
     }
 
@@ -100,7 +99,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $elm = $this->session->element(By::LINK_TEXT, $linkText);
         $elm->click();
-        !$callback or call_user_func($callback, $elm);
+        $callback and call_user_func($callback, $elm);
         return $this;
     }
 
@@ -115,8 +114,25 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function enterInput($name, $value, callable $callback = null)
     {
         $elm = $this->session->element(By::NAME, $name);
+        $elm->clear();
         $elm->sendKeys($value);
-        !$callback or call_user_func($callback, $elm);
+        $callback and call_user_func($callback, $elm);
+        return $this;
+    }
+
+    /**
+     * Assert that input value is same than expected
+     *
+     * @param string $name
+     * @param string $expectedValue
+     * @param callable $callback
+     * @return self
+     */
+    public function assertInput($name, $expectedValue, callable $callback = null)
+    {
+        $elm = $this->session->element(By::NAME, $name);
+        $this->assertSame($expectedValue, $elm->attribute('value'));
+        $callback and call_user_func($callback, $elm);
         return $this;
     }
 
@@ -130,7 +146,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function waitFor(callable $action, callable $callback = null)
     {
         $elm = (new Wait($this->session))->until($action);
-        !$callback or call_user_func($callback, $elm);
+        $callback and call_user_func($callback, $elm);
         return $this;
     }
 
@@ -146,6 +162,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         do {
             sleep(2);
         } while ($this->session->execute(['script' => 'return jQuery.active', 'args' => []]));
+
         return $this;
     }
 }

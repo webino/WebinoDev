@@ -157,20 +157,24 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testEnterInput()
     {
-        $value   = 'test_value';
-        $element = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+        $name  = 'test_name';
+        $value = 'test_value';
+        $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
         WebDriver\TestWebDriver::$session->expects($this->once())
             ->method('element')
-            ->with('name', 'test_name')
-            ->will($this->returnValue($element));
+            ->with('name', $name)
+            ->will($this->returnValue($elm));
 
-        $element->expects($this->once())
+        $elm->expects($this->once())
+            ->method('clear');
+
+        $elm->expects($this->once())
             ->method('sendKeys')
             ->with($value);
 
         $this->object->session = WebDriver\TestWebDriver::$session;
-        $this->object->enterInput('test_name', $value);
+        $this->object->enterInput($name, $value);
     }
 
     /**
@@ -179,13 +183,17 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testEnterInputWithCallback()
     {
+        $name  = 'test_name';
         $value = 'test_value';
         $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
         WebDriver\TestWebDriver::$session->expects($this->once())
             ->method('element')
-            ->with('name', 'test_name')
+            ->with('name', $name)
             ->will($this->returnValue($elm));
+
+        $elm->expects($this->once())
+            ->method('clear');
 
         $elm->expects($this->once())
             ->method('sendKeys')
@@ -197,7 +205,60 @@ class AbstractTestCaseTest extends AbstractTestCase
             ->with($elm);
 
         $this->object->session = WebDriver\TestWebDriver::$session;
-        $this->object->enterInput('test_name', $value, $callback);
+        $this->object->enterInput($name, $value, $callback);
+    }
+
+    /**
+     * @Title("Asserting input value")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::assertInput
+     */
+    public function testAssertInput()
+    {
+        $name  = 'test_name';
+        $value = 'test_value';
+        $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+
+        WebDriver\TestWebDriver::$session->expects($this->once())
+            ->method('element')
+            ->with('name', $name)
+            ->will($this->returnValue($elm));
+
+        $elm->expects($this->once())
+            ->method('attribute')
+            ->with('value')
+            ->will($this->returnValue($value));
+
+        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->assertInput($name, $value);
+    }
+
+    /**
+     * @Title("Asserting input value")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::assertInput
+     */
+    public function testAssertInputWithCallback()
+    {
+        $name  = 'test_name';
+        $value = 'test_value';
+        $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+
+        WebDriver\TestWebDriver::$session->expects($this->once())
+            ->method('element')
+            ->with('name', $name)
+            ->will($this->returnValue($elm));
+
+        $elm->expects($this->once())
+            ->method('attribute')
+            ->with('value')
+            ->will($this->returnValue($value));
+
+        $callback = $this->getMock('WebinoDev\Test\Selenium\TestCallback');
+        $callback->expects($this->once())
+            ->method('__invoke')
+            ->with($elm);
+
+        $this->object->session = WebDriver\TestWebDriver::$session;
+        $this->object->assertInput($name, $value, $callback);
     }
 
     /**

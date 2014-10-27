@@ -17,7 +17,23 @@ class TestElement
     /**
      *
      */
+    public function attribute()
+    {
+
+    }
+
+    /**
+     *
+     */
     public function click()
+    {
+
+    }
+
+    /**
+     *
+     */
+    public function clear()
     {
 
     }

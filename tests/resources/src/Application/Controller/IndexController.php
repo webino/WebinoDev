@@ -17,6 +17,14 @@ use Zend\Mvc\Controller\AbstractActionController;
 class IndexController extends AbstractActionController
 {
     /**
+     * Testing view
+     */
+    public function testAction()
+    {
+
+    }
+
+    /**
      * Authentication form
      */
     public function authenticationAction()
