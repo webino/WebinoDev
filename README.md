@@ -208,7 +208,7 @@ class MailTest extends AbstractMailTestCase
     {
         // ...
 
-        $mail = $this->object->readMail();
+        $mail = $this->readMail();
         $this->assertNotNull($mail);
         $this->assertSame($expectedSubject, $mail->getSubject());
     }
@@ -248,7 +248,7 @@ class MailTest extends AbstractMailTestCase
     {
         // ...
 
-        $mail = $this->object->readMail();
+        $mail = $this->readMail();
         $this->assertNotNull($mail);
         $this->assertSame($expectedSubject, $mail->getSubject());
     }
