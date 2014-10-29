@@ -104,6 +104,20 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Clicks on ajax-link
+     *
+     * @param string $linkText
+     * @param callable $callback
+     * @return self
+     */
+    public function clickAjaxLink($linkText, callable $callback = null)
+    {
+        $this->clickLink($linkText, $callback);
+        $this->waitForAjax();
+        return $this;
+    }
+
+    /**
      * Enters the input value
      *
      * @param string $name

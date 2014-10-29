@@ -151,6 +151,30 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
+     * @Title("Clicking ajax-link works")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::clickAjaxLink
+     */
+    public function testClickAjaxLink()
+    {
+        $linkText = 'Link example';
+        $element  = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('element')
+            ->with('link text', $linkText)
+            ->will($this->returnValue($element));
+
+        $element->expects($this->once())
+            ->method('click');
+
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('execute');
+
+        $this->object->session = $this->getWebDriverSession();
+        $this->object->clickAjaxLink($linkText);
+    }
+
+    /**
      * @Title("Sending keys to input")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::enterInput
      */

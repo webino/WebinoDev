@@ -53,8 +53,22 @@ class HomeTest extends AbstractTestCase
         $this->assertNotError();
 
         $this->session->element(By::CLASS_NAME, 'ajax-btn')->click();
-        $elm = $this->session->element(By::CLASS_NAME, 'ajax-content');
         $this->waitForAjax();
+        $elm = $this->session->element(By::CLASS_NAME, 'ajax-content');
+        $this->assertSame('AJAX TEST', $elm->text());
+    }
+
+    /**
+     * @Title("Clicking ajax-link")
+     * @Features({"Ajax testing"})
+     */
+    public function testClickAjaxLink()
+    {
+        $this->session->open($this->uri . 'application/index/ajax');
+        $this->assertNotError();
+
+        $this->clickAjaxLink('Ajax link');
+        $elm = $this->session->element(By::CLASS_NAME, 'ajax-content');
         $this->assertSame('AJAX TEST', $elm->text());
     }
 }
