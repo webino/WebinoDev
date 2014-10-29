@@ -30,7 +30,6 @@ function dd($subject) {
  * Alias for print_r() scream
  *
  * @param mixed $subject
- * @param bool $return
  */
 function p($subject) {
     print_r($subject);
@@ -40,7 +39,6 @@ function p($subject) {
  * Dying print_r() scream
  *
  * @param mixed $subject
- * @param bool $return
  */
 function pd($subject) {
     print_r($subject);
@@ -50,7 +48,6 @@ function pd($subject) {
  * Alias for print_r() return
  *
  * @param mixed $subject
- * @param bool $return
  */
 function pr($subject) {
     return print_r($subject, true);
