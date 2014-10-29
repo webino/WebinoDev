@@ -123,8 +123,7 @@ class AuthenticationTest extends AbstractAuthenticationTestCase
 {
     public function testAuthentication()
     {
-        $this->session->open($this->uri);
-        $this->assertNotError();
+        $this->openOk();
         $this->setAuthSuccessLocator('.authentication-success');
         $this->authenticate();
     }
