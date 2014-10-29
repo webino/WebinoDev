@@ -58,7 +58,7 @@ trait MailTrait
     /**
      * Read mail from temporary directory
      *
-     * @return string Source
+     * @return Message
      * @throws RuntimeException
      */
     protected function readMail()
