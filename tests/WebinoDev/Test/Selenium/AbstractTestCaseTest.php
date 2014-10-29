@@ -96,6 +96,32 @@ class AbstractTestCaseTest extends AbstractTestCase
 
     /**
      * @Title("Assertion for page error works")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::openOk
+     */
+    public function testOpenOk()
+    {
+        $uri  = 'test-uri-' . __METHOD__;
+        $path = 'test/page/path';
+
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('open')
+            ->with($uri . $path);
+
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('title')
+            ->will($this->returnValue(''));
+
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('source')
+            ->will($this->returnValue(''));
+
+        putenv('URI=' . $uri);
+        $this->object->setUp();
+        $this->object->openOk($path);
+    }
+
+    /**
+     * @Title("Assertion for page error works")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::assertNotError
      */
     public function testAssertNotError()

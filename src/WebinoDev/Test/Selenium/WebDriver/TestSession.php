@@ -17,6 +17,14 @@ class TestSession
     /**
      *
      */
+    public function open()
+    {
+
+    }
+
+    /**
+     *
+     */
     public function title()
     {
 

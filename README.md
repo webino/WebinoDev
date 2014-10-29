@@ -85,8 +85,7 @@ class HomeTest extends AbstractTestCase
 {
     public function testHome()
     {
-        $this->session->open($this->uri);
-        $this->assertNotError();
+        $this->session->openOk('page/path');
 
         $this->clickLink('Link example');
     }
@@ -181,8 +180,13 @@ class HomeTest extends AbstractTestCase
 {
     public function testHome()
     {
+        $this->clickAjaxLink();
+
+        // or
+
         $this->element(By::CLASS_NAME, 'ajax-btn')->click();
         $this->waitForAjax();
+
         $result = $this->element(By::CLASS_NAME, 'ajax-result')->text();
         $this->assertSame('expected ajax result', $result);
     }

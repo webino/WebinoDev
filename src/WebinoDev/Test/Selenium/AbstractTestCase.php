@@ -78,7 +78,22 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Opens URI and asserts not error
+     *
+     * @param string $path
+     * @return self
+     */
+    protected function openOk($path = '')
+    {
+        $this->session->open($this->uri . $path);
+        $this->assertNotError();
+        return $this;
+    }
+
+    /**
      * Assert that page is without errors
+     *
+     * @return self
      */
     protected function assertNotError()
     {
@@ -86,6 +101,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $src = $this->session->source();
         $this->assertNotContains('Error', $src);
         $this->assertNotContains('Exception', $src);
+        return $this;
     }
 
     /**
@@ -110,7 +126,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param callable $callback
      * @return self
      */
-    public function clickAjaxLink($linkText, callable $callback = null)
+    protected function clickAjaxLink($linkText, callable $callback = null)
     {
         $this->clickLink($linkText, $callback);
         $this->waitForAjax();

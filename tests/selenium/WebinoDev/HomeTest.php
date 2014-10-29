@@ -24,9 +24,7 @@ class HomeTest extends AbstractTestCase
      */
     public function testHome()
     {
-        $this->session->open($this->uri);
-        $this->assertNotError();
-
+        $this->openOk();
         $this->clickLink('wiki');
     }
 
@@ -35,8 +33,7 @@ class HomeTest extends AbstractTestCase
      */
     public function testAdvanced()
     {
-        $this->session->open($this->uri . 'application/index/test');
-        $this->assertNotError();
+        $this->openOk('application/index/test');
 
         $value = 'Test example value';
         $this->enterInput('example', $value);
@@ -49,8 +46,7 @@ class HomeTest extends AbstractTestCase
      */
     public function testWaitForAjax()
     {
-        $this->session->open($this->uri . 'application/index/ajax');
-        $this->assertNotError();
+        $this->openOk('application/index/ajax');
 
         $this->session->element(By::CLASS_NAME, 'ajax-btn')->click();
         $this->waitForAjax();
@@ -64,8 +60,7 @@ class HomeTest extends AbstractTestCase
      */
     public function testClickAjaxLink()
     {
-        $this->session->open($this->uri . 'application/index/ajax');
-        $this->assertNotError();
+        $this->openOk('application/index/ajax');
 
         $this->clickAjaxLink('Ajax link');
         $elm = $this->session->element(By::CLASS_NAME, 'ajax-content');
