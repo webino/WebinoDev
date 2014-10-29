@@ -85,7 +85,7 @@ class HomeTest extends AbstractTestCase
 {
     public function testHome()
     {
-        $this->session->openOk('page/path');
+        $this->openOk('page/path');
 
         $this->clickLink('Link example');
     }
