@@ -9,7 +9,6 @@
 
 namespace WebinoDev;
 
-use PHPWebDriver_WebDriverBy as By;
 use WebinoDev\Test\Selenium\AbstractTestCase;
 use Yandex\Allure\Adapter\Annotation\Features;
 use Yandex\Allure\Adapter\Annotation\Title;
@@ -48,9 +47,9 @@ class HomeTest extends AbstractTestCase
     {
         $this->openOk('application/index/ajax');
 
-        $this->session->element(By::CLASS_NAME, 'ajax-btn')->click();
+        $this->elementByClassName('ajax-btn')->click();
         $this->waitForAjax();
-        $elm = $this->session->element(By::CLASS_NAME, 'ajax-content');
+        $elm = $this->elementByClassName('ajax-content');
         $this->assertSame('AJAX TEST', $elm->text());
     }
 
@@ -63,7 +62,7 @@ class HomeTest extends AbstractTestCase
         $this->openOk('application/index/ajax');
 
         $this->clickAjaxLink('Ajax link');
-        $elm = $this->session->element(By::CLASS_NAME, 'ajax-content');
+        $elm = $this->elementByClassName('ajax-content');
         $this->assertSame('AJAX TEST', $elm->text());
     }
 }

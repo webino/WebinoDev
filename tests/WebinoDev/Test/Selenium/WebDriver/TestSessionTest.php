@@ -61,6 +61,14 @@ class TestSessionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers WebinoDev\Test\Selenium\WebDriver\TestSession::elements
+     */
+    public function testElements()
+    {
+        $this->object->elements();
+    }
+
+    /**
      * @covers WebinoDev\Test\Selenium\WebDriver\TestSession::execute
      */
     public function testExecute()

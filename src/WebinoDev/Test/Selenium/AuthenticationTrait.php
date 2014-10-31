@@ -214,7 +214,7 @@ trait AuthenticationTrait
     {
         $this->waitFor(
             function () {
-                 return $this->session->element(By::CSS_SELECTOR, $this->getAuthSuccessLocator());
+                 return $this->elementByCssSelector($this->getAuthSuccessLocator());
             },
             $callback
         );

@@ -113,6 +113,19 @@ return array (
     array (
     ),
   ),
+  'WebinoDev\\Test\\Selenium\\ElementsTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
   'WebinoDev\\Test\\Selenium\\AuthenticationTrait' => 
   array (
     'supertypes' => 
@@ -822,6 +835,19 @@ return array (
           3 => NULL,
         ),
       ),
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\ElementTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
     ),
   ),
   'WebinoDev\\Test\\Selenium\\MailTrait' => 

@@ -19,6 +19,9 @@ use RuntimeException;
  */
 abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 {
+    use ElementTrait;
+    use ElementsTrait;
+
     /**
      * Selenium Web Driver Host URI
      */
@@ -113,7 +116,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function clickLink($linkText, callable $callback = null)
     {
-        $elm = $this->session->element(By::LINK_TEXT, $linkText);
+        $elm = $this->elementByLinkText($linkText);
         $elm->click();
         $callback and call_user_func($callback, $elm);
         return $this;
@@ -143,7 +146,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function enterInput($name, $value, callable $callback = null)
     {
-        $elm = $this->session->element(By::NAME, $name);
+        $elm = $this->elementByName($name);
         $elm->clear();
         $elm->sendKeys($value);
         $callback and call_user_func($callback, $elm);
@@ -160,7 +163,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     public function assertInput($name, $expectedValue, callable $callback = null)
     {
-        $elm = $this->session->element(By::NAME, $name);
+        $elm = $this->elementByName($name);
         $this->assertSame($expectedValue, $elm->attribute('value'));
         $callback and call_user_func($callback, $elm);
         return $this;

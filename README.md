@@ -88,6 +88,27 @@ class HomeTest extends AbstractTestCase
         $this->openOk('page/path');
 
         $this->clickLink('Link example');
+
+        /**
+         * Use following methods to get a page element
+         *
+         * It's possible to use $this->elementsBy... to get array of elements also.
+         */
+        $this->elementByClassName('class-name');
+
+        $this->elementByCssSelector('.class-name tagname');
+
+        $this->elementById('test-id');
+
+        $this->elementByLinkText('Test link');
+
+        $this->elementByName('test_name');
+
+        $this->elementByPartialLinkText('Link text too long');
+
+        $this->elementByTagName('tagname);
+
+        $this->elementByXpath('//test/xpath');
     }
 }
 ```
@@ -159,7 +180,7 @@ class HomeTest extends AbstractTestCase
 
         $this->waitFor(
             function () {
-                return $this->session->element(By::CLASS_NAME, '.example-success');
+                return $this->elementByClassName('example-success');
             },
             function ($elm) {
                 $this->assertSame('example', $elm->text());
@@ -183,10 +204,10 @@ class HomeTest extends AbstractTestCase
 
         // or
 
-        $this->element(By::CLASS_NAME, 'ajax-btn')->click();
+        $this->elementByClassName('ajax-btn')->click();
         $this->waitForAjax();
 
-        $result = $this->element(By::CLASS_NAME, 'ajax-result')->text();
+        $result = $this->elementByClassName('ajax-result')->text();
         $this->assertSame('expected ajax result', $result);
     }
 }
