@@ -21,7 +21,8 @@ trait ElementsTrait
      *
      * @return \PHPWebDriver_WebDriverSession
      */
-    abstract protected function getSession();
+    // TODO uncomment, https://github.com/phpmd/phpmd/issues/153
+    // abstract protected function getSession();
 
     /**
      * Returns page elements by class name
