@@ -9,7 +9,6 @@
 
 namespace WebinoDev\Test\Selenium;
 
-use PHPWebDriver_WebDriverBy as By;
 use RuntimeException;
 
 /**
@@ -80,6 +79,14 @@ trait AuthenticationTrait
      * @return self
      */
     abstract protected function waitFor(callable $action, callable $callback = null);
+
+    /**
+     * Returns element by CSS selector
+     *
+     * @param string $selector
+     * @return \PHPWebDriver_WebDriverElement
+     */
+    abstract protected function elementByCssSelector($selector);
 
     /**
      * Resolve test identity from an environment variable

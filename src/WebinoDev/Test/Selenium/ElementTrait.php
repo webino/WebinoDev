@@ -17,6 +17,13 @@ use PHPWebDriver_WebDriverBy as By;
 trait ElementTrait
 {
     /**
+     * Returns WebDriver session
+     *
+     * @return \PHPWebDriver_WebDriverSession
+     */
+    abstract protected function getSession();
+
+    /**
      * Returns page element by class name
      *
      * @param string $className
@@ -24,7 +31,7 @@ trait ElementTrait
      */
     protected function elementByClassName($className)
     {
-        return $this->session->element(By::CLASS_NAME, $className);
+        return $this->getSession()->element(By::CLASS_NAME, $className);
     }
 
     /**
@@ -35,7 +42,7 @@ trait ElementTrait
      */
     protected function elementByCssSelector($selector)
     {
-        return $this->session->element(By::CSS_SELECTOR, $selector);
+        return $this->getSession()->element(By::CSS_SELECTOR, $selector);
     }
 
     /**
@@ -46,7 +53,7 @@ trait ElementTrait
      */
     protected function elementById($id)
     {
-        return $this->session->element(By::ID, $id);
+        return $this->getSession()->element(By::ID, $id);
     }
 
     /**
@@ -57,7 +64,7 @@ trait ElementTrait
      */
     protected function elementByLinkText($text)
     {
-        return $this->session->element(By::LINK_TEXT, $text);
+        return $this->getSession()->element(By::LINK_TEXT, $text);
     }
 
     /**
@@ -68,7 +75,7 @@ trait ElementTrait
      */
     protected function elementByName($name)
     {
-        return $this->session->element(By::NAME, $name);
+        return $this->getSession()->element(By::NAME, $name);
     }
 
     /**
@@ -79,7 +86,7 @@ trait ElementTrait
      */
     protected function elementByPartialLinkText($name)
     {
-        return $this->session->element(By::PARTIAL_LINK_TEXT, $name);
+        return $this->getSession()->element(By::PARTIAL_LINK_TEXT, $name);
     }
 
     /**
@@ -90,7 +97,7 @@ trait ElementTrait
      */
     protected function elementByTagName($tag)
     {
-        return $this->session->element(By::TAG_NAME, $tag);
+        return $this->getSession()->element(By::TAG_NAME, $tag);
     }
 
     /**
@@ -101,6 +108,6 @@ trait ElementTrait
      */
     protected function elementByXpath($xpath)
     {
-        return $this->session->element(By::XPATH, $xpath);
+        return $this->getSession()->element(By::XPATH, $xpath);
     }
 }

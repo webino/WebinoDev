@@ -10,7 +10,6 @@
 namespace WebinoDev\Test\Selenium;
 
 use PHPWebDriver_WebDriver;
-use PHPWebDriver_WebDriverBy as By;
 use PHPWebDriver_WebDriverWait as Wait;
 use RuntimeException;
 
@@ -55,6 +54,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->uri       = $this->resolveUri();
         $this->webDriver = new PHPWebDriver_WebDriver(self::WEB_DRIVER_HOST);
         $this->session   = $this->webDriver->session($this::$browser);
+    }
+
+    /**
+     * @return \PHPWebDriver_WebDriverSession
+     */
+    protected function getSession()
+    {
+        return $this->session;
     }
 
     /**

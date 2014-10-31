@@ -15,4 +15,14 @@ namespace WebinoDev\Test\Selenium;
 class ElementTestCase extends \PHPUnit_Framework_TestCase
 {
     use ElementTrait;
+
+    /**
+     * Returns WebDriver session
+     *
+     * @return \PHPWebDriver_WebDriverSession
+     */
+    protected function getSession()
+    {
+        return $this->session;
+    }
 }
