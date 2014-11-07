@@ -42,6 +42,8 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     protected function tearDown()
     {
+        putenv('HOST');
+        putenv('BROWSER');
         putenv('URI');
     }
 
@@ -70,6 +72,52 @@ class AbstractTestCaseTest extends AbstractTestCase
         putenv('URI=test-uri-' . __METHOD__);
         $this->object->setUp();
         $this->object->tearDown();
+    }
+
+    /**
+     * @Title("Get the HOST fron env vars")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveHost
+     */
+    public function testResolveHost()
+    {
+        $expected = 'test-host-' . __METHOD__;
+        putenv('HOST=' . $expected);
+        $host = $this->object->resolveHost();
+        $this->assertSame($expected, $host);
+    }
+
+    /**
+     * @Title("Get the HOST fron env vars")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveHost
+     */
+    public function testResolveDefaultHost()
+    {
+        $expected = TestCase::$webDriverHost;
+        $host = $this->object->resolveHost();
+        $this->assertSame($expected, $host);
+    }
+
+    /**
+     * @Title("Get the BROWSER fron env vars")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveBrowser
+     */
+    public function testResolveBrowser()
+    {
+        $expected = 'test-browser-' . __METHOD__;
+        putenv('BROWSER=' . $expected);
+        $browser = $this->object->resolveBrowser();
+        $this->assertSame($expected, $browser);
+    }
+
+    /**
+     * @Title("Get the BROWSER fron env vars")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveBrowser
+     */
+    public function testResolveDefaultBrowser()
+    {
+        $expected = TestCase::$browser;
+        $host = $this->object->resolveBrowser();
+        $this->assertSame($expected, $host);
     }
 
     /**

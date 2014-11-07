@@ -23,8 +23,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 
     /**
      * Selenium Web Driver Host URI
+     *
+     * @var string
      */
-    const WEB_DRIVER_HOST = 'http://localhost:4444/wd/hub';
+    protected static $webDriverHost = 'http://localhost:4444/wd/hub';
 
     /**
      * @var string
@@ -52,8 +54,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->uri       = $this->resolveUri();
-        $this->webDriver = new PHPWebDriver_WebDriver(self::WEB_DRIVER_HOST);
-        $this->session   = $this->webDriver->session($this::$browser);
+        $this->webDriver = new PHPWebDriver_WebDriver($this->resolveHost());
+        $this->session   = $this->webDriver->session($this->resolveBrowser());
     }
 
     /**
@@ -71,6 +73,30 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         $this->session->close();
+    }
+
+    /**
+     * Resolve Selenium WebDriver host
+     *
+     * @return string
+     */
+    protected function resolveHost()
+    {
+        $host = getenv('HOST');
+        empty($host) || $this::$webDriverHost = $host;
+        return $this::$webDriverHost;
+    }
+
+    /**
+     * Resolve test session browser
+     *
+     * @return string
+     */
+    protected function resolveBrowser()
+    {
+        $browser = getenv('BROWSER');
+        empty($browser) || $this::$browser = $browser;
+        return $this::$browser;
     }
 
     /**
