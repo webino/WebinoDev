@@ -65,7 +65,7 @@ trait MailTrait
     {
         foreach ($this->createMailDirIterator() as $fileInfo) {
             $path = $fileInfo->getPathname();
-            $message = Message::fromString(file_get_contents($path));
+            $message = Message::fromString(join(PHP_EOL, file($path)));
             unlink($path);
             return $message;
         }
