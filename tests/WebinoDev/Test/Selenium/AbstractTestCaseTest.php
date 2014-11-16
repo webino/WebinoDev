@@ -450,7 +450,7 @@ class AbstractTestCaseTest extends AbstractTestCase
      * @Title("Wait for ajax without delay")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::waitForAjax
      */
-    public function testWaitForAjaxWithoutDelay()
+    public function testWaitForAjaxWithDefaultDelay()
     {
         $this->getWebDriverSession()->expects($this->once())
             ->method('execute')
@@ -459,6 +459,7 @@ class AbstractTestCaseTest extends AbstractTestCase
         $this->object->session = $this->getWebDriverSession();
         PHP_Timer::start();
         $this->object->waitForAjax();
-        $this->assertLessThan(.1, PHP_Timer::stop());
+        $this->assertLessThan(.2, PHP_Timer::stop());
+        $this->assertGreaterThan(.1, PHP_Timer::stop());
     }
 }

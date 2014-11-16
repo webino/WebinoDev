@@ -224,7 +224,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param int $delay Seconds
      * @return self
      */
-    protected function waitForAjax($delay = 0)
+    protected function waitForAjax($delay = .1)
     {
         // delay slightly more than required
         $delay and usleep($delay * 1100000);
