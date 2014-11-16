@@ -205,7 +205,10 @@ class HomeTest extends AbstractTestCase
         // or
 
         $this->elementByClassName('ajax-btn')->click();
+
         $this->waitForAjax();
+        // or with delay 2 seconds
+        $this->waitForAjax(2);
 
         $result = $this->elementByClassName('ajax-result')->text();
         $this->assertSame('expected ajax result', $result);

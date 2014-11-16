@@ -9,12 +9,13 @@
 
 namespace WebinoDev\Test\Selenium;
 
+use PHP_Timer;
 use WebinoDev\Test\Functional\SeleniumTestTrait;
 use Yandex\Allure\Adapter\Annotation\Features;
 use Yandex\Allure\Adapter\Annotation\Title;
 
 /**
- * @Title("Abstract class for selenium tests works")
+ * @Title("Abstract class for selenium tests")
  * @Features({"Selenium testing"})
  */
 class AbstractTestCaseTest extends AbstractTestCase
@@ -242,7 +243,8 @@ class AbstractTestCaseTest extends AbstractTestCase
             ->method('click');
 
         $this->getWebDriverSession()->expects($this->once())
-            ->method('execute');
+            ->method('execute')
+            ->will($this->returnValue(true));
 
         $this->object->session = $this->getWebDriverSession();
         $this->object->clickAjaxLink($linkText);
@@ -373,7 +375,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Wait for with callback works")
+     * @Title("Wait for with callback")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::waitFor
      */
     public function testWaitForWithCallback()
@@ -394,15 +396,69 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Wait for ajax works")
+     * @Title("Wait for ajax")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::waitForAjax
      */
     public function testWaitForAjax()
     {
         $this->getWebDriverSession()->expects($this->once())
-            ->method('execute');
+            ->method('execute')
+            ->will($this->returnValue(true));
 
         $this->object->session = $this->getWebDriverSession();
         $this->object->waitForAjax();
+    }
+
+    /**
+     * @Title("Wait for ajax longer")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::waitForAjax
+     */
+    public function testWaitForAjaxLonger()
+    {
+        $result = 0;
+        $this->getWebDriverSession()->expects($this->exactly(3))
+            ->method('execute')
+            ->will(
+                $this->returnCallback(
+                    function () use (&$result) {
+                        return 3 <= ++$result;
+                    }
+                )
+            );
+
+        $this->object->session = $this->getWebDriverSession();
+        $this->object->waitForAjax();
+    }
+
+    /**
+     * @Title("Wait for ajax with delay")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::waitForAjax
+     */
+    public function testWaitForAjaxDelay()
+    {
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('execute')
+            ->will($this->returnValue(true));
+
+        $this->object->session = $this->getWebDriverSession();
+        PHP_Timer::start();
+        $this->object->waitForAjax(2);
+        $this->assertGreaterThan(2, PHP_Timer::stop());
+    }
+
+    /**
+     * @Title("Wait for ajax without delay")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::waitForAjax
+     */
+    public function testWaitForAjaxWithoutDelay()
+    {
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('execute')
+            ->will($this->returnValue(true));
+
+        $this->object->session = $this->getWebDriverSession();
+        PHP_Timer::start();
+        $this->object->waitForAjax();
+        $this->assertLessThan(.1, PHP_Timer::stop());
     }
 }

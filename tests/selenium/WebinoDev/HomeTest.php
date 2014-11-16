@@ -52,6 +52,12 @@ class HomeTest extends AbstractTestCase
         $this->waitForAjax();
         $elm = $this->elementByClassName('ajax-content');
         $this->assertSame('AJAX TEST', $elm->text());
+
+        // ajax with delay
+        $this->elementByClassName('ajax-delay-btn')->click();
+        $this->waitForAjax(2);
+        $elm = $this->elementByClassName('ajax-delay-content');
+        $this->assertSame('AJAX TEST', $elm->text());
     }
 
     /**

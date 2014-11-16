@@ -1,7 +1,13 @@
 <?php $url = $this->url('application/default', ['controller' => 'index', 'action' => 'ajax-content']); ?>
+
 <p><a href="<?php echo $url; ?>" class="ajax-link">Ajax link</a></p>
+
 <p><input type="button" value="AJAX" class="ajax-btn"/></p>
 <p class="ajax-content"></p>
+
+<p><input type="button" value="AJAX with delay" class="ajax-delay-btn"/></p>
+<p class="ajax-delay-content"></p>
+
 <script>
     (function($) {
         $('.ajax-btn,.ajax-link').click(function(event) {
@@ -9,6 +15,14 @@
             $.get('<?php echo $url; ?>', function (data) {
                 $('.ajax-content').text(data);
             });
+        });
+        $('.ajax-delay-btn').click(function(event) {
+            event.preventDefault();
+            setTimeout(function () {
+                $.get('<?php echo $url; ?>', function (data) {
+                    $('.ajax-delay-content').text(data);
+                });
+            }, 2000);
         });
     })(jQuery);
 </script>
