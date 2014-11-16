@@ -227,7 +227,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function waitForAjax($delay = 0)
     {
         // delay slightly more than required
-        $delay and usleep($delay * 1000100);
+        $delay and usleep($delay * 1100000);
 
         $this->waitFor(function () {
             return $this->session->execute(['script' => 'return !jQuery.active', 'args' => []]);

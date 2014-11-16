@@ -443,7 +443,7 @@ class AbstractTestCaseTest extends AbstractTestCase
         $this->object->session = $this->getWebDriverSession();
         PHP_Timer::start();
         $this->object->waitForAjax(2);
-        $this->assertGreaterThan(2, PHP_Timer::stop());
+        $this->assertGreaterThan(2.2, PHP_Timer::stop());
     }
 
     /**
