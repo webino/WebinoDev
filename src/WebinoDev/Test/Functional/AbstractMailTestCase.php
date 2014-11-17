@@ -23,12 +23,4 @@ abstract class AbstractMailTestCase extends \PHPUnit_Framework_TestCase
     {
         $this->setUpMailVfs();
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function tearDown()
-    {
-        $this->tearDownMailVfs();
-    }
 }

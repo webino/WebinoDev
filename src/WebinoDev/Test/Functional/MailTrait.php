@@ -32,14 +32,6 @@ trait MailTrait
     }
 
     /**
-     * Destroy virtual filesystem
-     */
-    protected function tearDownMailVfs()
-    {
-        StreamWrapper::unregister();
-    }
-
-    /**
      * Returns URL to the virtual filesystem mail directory
      *
      * @return string
@@ -47,5 +39,13 @@ trait MailTrait
     protected function getMailDir()
     {
         return vfsStream::url('root/tmp/mail');
+    }
+
+    /**
+     * Destroy virtual filesystem
+     */
+    protected function unregisterMailVfs()
+    {
+        StreamWrapper::unregister();
     }
 }

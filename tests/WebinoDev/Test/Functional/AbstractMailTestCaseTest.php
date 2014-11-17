@@ -56,13 +56,13 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     /**
      * @Title("Mail virtual filesystem works")
      * @covers WebinoDev\Test\Functional\AbstractMaiLTestCase::tearDown
-     * @covers WebinoDev\Test\Functional\MailTrait::tearDownMailVfs
+     * @covers WebinoDev\Test\Functional\MailTrait::unregisterMailVfs
      * @covers WebinoDev\Vfs\StreamWrapper::unregister
      */
-    public function testTearDownMailVfs()
+    public function testUnregisterMailVfs()
     {
         $this->object->setUp();
-        $this->object->tearDown();
+        $this->object->unregisterMailVfs();
         $this->assertNotContains(vfsStream::SCHEME, stream_get_wrappers());
     }
 

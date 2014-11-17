@@ -16,6 +16,7 @@ class StreamWrapper extends vfsStreamWrapper
     public static function unregister()
     {
         self::$registered = false;
-        stream_wrapper_unregister(vfsStream::SCHEME);
+        in_array(vfsStream::SCHEME, stream_get_wrappers()) and
+            stream_wrapper_unregister(vfsStream::SCHEME);
     }
 }
