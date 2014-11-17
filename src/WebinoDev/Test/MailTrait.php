@@ -34,14 +34,23 @@ trait MailTrait
      */
     protected function readMail()
     {
+        $files = [];
         foreach ($this->createMailDirIterator() as $fileInfo) {
-            $path = $fileInfo->getPathname();
-            $message = Message::fromString(join(PHP_EOL, file($path, FILE_IGNORE_NEW_LINES)));
-            unlink($path);
-            return $message;
+            /* @var $fileInfo \SplFileInfo */
+            $files[$fileInfo->getFilename()] = $fileInfo->getPathname();
         }
 
-        throw new RuntimeException('No mail found');
+        if (empty($files)) {
+            throw new RuntimeException('No mail found');
+        }
+
+        ksort($files);
+
+        $path    = current($files);
+        $message = Message::fromString(join(PHP_EOL, file($path, FILE_IGNORE_NEW_LINES)));
+
+        unlink($path);
+        return $message;
     }
 
     /**

@@ -81,7 +81,7 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     }
 
     /**
-     * @Title("Reading mail works")
+     * @Title("Reading mail")
      * @covers WebinoDev\Test\Selenium\MailTrait::readMail
      * @covers WebinoDev\Test\Selenium\MailTrait::createMailDirIterator
      */
@@ -101,7 +101,7 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     }
 
     /**
-     * @Title("Reading no mail works")
+     * @Title("Reading no mail")
      * @covers WebinoDev\Test\Selenium\MailTrait::readMail
      * @expectedException RuntimeException
      */
@@ -109,6 +109,48 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     {
         $this->object->setUp();
         $this->object->readMail();
+        $this->object->tearDown();
+    }
+
+    /**
+     * @Title("Read mail consecutive")
+     * @covers WebinoDev\Test\Functional\MailTrait::readMail
+     */
+    public function testReadMailConsecutive()
+    {
+        $this->object->setUp();
+        $expected = ['Test message subject 01', 'Test message subject 02', 'Test message subject 03'];
+
+        // first
+        $message = new Message;
+        $message->setSubject($expected[0]);
+        file_put_contents(MailTestCase::$mailDir . '/ZendMail_' . microtime(true) . '.eml', $message->toString());
+
+        // second
+        $message = new Message;
+        $message->setSubject($expected[1]);
+        file_put_contents(MailTestCase::$mailDir . '/ZendMail_' . microtime(true) . '.eml', $message->toString());
+
+        // third
+        $message = new Message;
+        $message->setSubject($expected[2]);
+        file_put_contents(MailTestCase::$mailDir . '/ZendMail_' . microtime(true) . '.eml', $message->toString());
+
+        // check first
+        $mail = $this->object->readMail();
+        $this->assertNotNull($mail);
+        $this->assertSame($expected[0], $mail->getSubject());
+
+        // check second
+        $mail = $this->object->readMail();
+        $this->assertNotNull($mail);
+        $this->assertSame($expected[1], $mail->getSubject());
+
+        // check third
+        $mail = $this->object->readMail();
+        $this->assertNotNull($mail);
+        $this->assertSame($expected[2], $mail->getSubject());
+
         $this->object->tearDown();
     }
 }

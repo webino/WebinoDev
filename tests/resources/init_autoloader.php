@@ -7,7 +7,7 @@
  * @license     BSD-3-Clause
  */
 
-namespace WebinoDev\Test;
+namespace WebinoDev;
 
 use RuntimeException;
 
@@ -20,6 +20,6 @@ if (empty($loader)) {
 }
 
 $loader->add('Application', __DIR__ . '/src');
-$loader->add('WebinoDev', __DIR__ . '/src');
-$loader->add('WebinoDev', __DIR__ . '/../../src');
-$loader->add('WebinoDev', __DIR__ . '/..');
+$loader->add(__NAMESPACE__, __DIR__ . '/src');
+$loader->add(__NAMESPACE__, __DIR__ . '/../../src');
+$loader->add(__NAMESPACE__, __DIR__ . '/..');

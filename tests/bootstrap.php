@@ -23,6 +23,5 @@ require __DIR__ . '/resources/init_autoloader.php';
  * Application factory
  */
 function createApp() {
-    require_once 'init_autoloader.php';
     return Application::init(require 'config/application.config.php');
 }

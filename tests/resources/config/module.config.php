@@ -7,7 +7,7 @@
  * @license     BSD-3-Clause
  */
 
-namespace WebinoDev;
+namespace WebinoDev\Test;
 
 /**
  * Tests config

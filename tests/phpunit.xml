@@ -9,7 +9,7 @@
             <directory>WebinoDev</directory>
         </testsuite>
         <testsuite name="functional">
-            <directory>functional</directory>
+            <directory>functional/WebinoDev</directory>
         </testsuite>
     </testsuites>
     <listeners>

@@ -15,7 +15,7 @@ namespace WebinoDev;
 return [
     'modules' => [
         'Application',
-        'WebinoDev',
+        __NAMESPACE__,
     ],
     'module_listener_options' => [
         'config_glob_paths' => [
