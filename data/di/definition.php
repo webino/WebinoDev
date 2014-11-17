@@ -1225,4 +1225,17 @@ return array (
     array (
     ),
   ),
+  'WebinoDev\\Test\\MailTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
 );

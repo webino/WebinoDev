@@ -9,10 +9,7 @@
 
 namespace WebinoDev\Test\Selenium;
 
-use DirectoryIterator;
-use RegexIterator;
-use WebinoDev\Test\Exception\RuntimeException;
-use Zend\Mail\Message;
+use WebinoDev\Test\MailTrait as BaseMailTrait;
 
 /**
  * WebDriver test mail trait
@@ -21,10 +18,22 @@ use Zend\Mail\Message;
  */
 trait MailTrait
 {
+    use BaseMailTrait;
+
     /**
      * @var string
      */
     protected static $mailDir = 'tmp/mail';
+
+    /**
+     * Returns mail directory
+     *
+     * @return string
+     */
+    protected function getMailDir()
+    {
+        return $this::$mailDir;
+    }
 
     /**
      * Creates temporary mail directory
@@ -53,33 +62,5 @@ trait MailTrait
             $path = $fileInfo->getPathname();
             unlink($path);
         }
-    }
-
-    /**
-     * Read mail from temporary directory
-     *
-     * @return Message
-     * @throws RuntimeException
-     */
-    protected function readMail()
-    {
-        foreach ($this->createMailDirIterator() as $fileInfo) {
-            $path = $fileInfo->getPathname();
-            $message = Message::fromString(join(PHP_EOL, file($path, FILE_IGNORE_NEW_LINES)));
-            unlink($path);
-            return $message;
-        }
-
-        throw new RuntimeException('No mail found');
-    }
-
-    /**
-     * Returns mail directory iterator
-     *
-     * @return RegexIterator
-     */
-    protected function createMailDirIterator()
-    {
-        return new RegexIterator(new DirectoryIterator($this::$mailDir), '~ZendMail_~');
     }
 }

@@ -9,11 +9,9 @@
 
 namespace WebinoDev\Test\Functional;
 
-use DirectoryIterator;
 use org\bovigo\vfs\vfsStreamWrapper;
 use org\bovigo\vfs\vfsStream;
-use WebinoDev\Test\Exception\RuntimeException;
-use Zend\Mail\Message;
+use WebinoDev\Test\MailTrait as BaseMailTrait;
 
 /**
  * Trait for mail functional testing
@@ -22,6 +20,8 @@ use Zend\Mail\Message;
  */
 trait MailTrait
 {
+    use BaseMailTrait;
+
     /**
      * Setup virtual filesystem
      */
@@ -39,22 +39,5 @@ trait MailTrait
     protected function getMailDir()
     {
         return vfsStream::url('root/tmp/mail');
-    }
-
-    /**
-     * Read mail from virtual filesystem
-     *
-     * @return Message
-     * @throws RuntimeException
-     */
-    protected function readMail()
-    {
-        foreach (new DirectoryIterator($this->getMailDir()) as $fileInfo) {
-            if (!$fileInfo->isDot()) {
-                return Message::fromString(file_get_contents($fileInfo->getPathname()));
-            }
-        }
-
-        throw new RuntimeException('No mail found');
     }
 }
