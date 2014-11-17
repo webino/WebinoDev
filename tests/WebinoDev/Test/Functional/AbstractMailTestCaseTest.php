@@ -9,6 +9,7 @@
 
 namespace WebinoDev\Test\Functional;
 
+use org\bovigo\vfs\vfsStream;
 use Yandex\Allure\Adapter\Annotation\Features;
 use Yandex\Allure\Adapter\Annotation\Title;
 use Zend\Mail\Message;
@@ -25,12 +26,19 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     protected $object;
 
     /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
+     * {@inheritDoc}
      */
     protected function setUp()
     {
         $this->object = new MailTestCase;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function tearDown()
+    {
+       // DO NOT REMOVE !!!
     }
 
     /**
@@ -39,10 +47,23 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
      * @covers WebinoDev\Test\Functional\MailTrait::setUpMailVfs
      * @covers WebinoDev\Test\Functional\MailTrait::getMailDir
      */
-    public function testSetupMailVfs()
+    public function testSetUpMailVfs()
     {
         $this->object->setUp();
         $this->assertFileExists($this->object->getMailDir());
+    }
+
+    /**
+     * @Title("Mail virtual filesystem works")
+     * @covers WebinoDev\Test\Functional\AbstractMaiLTestCase::tearDown
+     * @covers WebinoDev\Test\Functional\MailTrait::tearDownMailVfs
+     * @covers WebinoDev\Vfs\StreamWrapper::unregister
+     */
+    public function testTearDownMailVfs()
+    {
+        $this->object->setUp();
+        $this->object->tearDown();
+        $this->assertNotContains(vfsStream::SCHEME, stream_get_wrappers());
     }
 
     /**

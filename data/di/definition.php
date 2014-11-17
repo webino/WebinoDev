@@ -1238,4 +1238,18 @@ return array (
     array (
     ),
   ),
+  'WebinoDev\\Vfs\\StreamWrapper' => 
+  array (
+    'supertypes' => 
+    array (
+      0 => 'org\\bovigo\\vfs\\vfsStreamWrapper',
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
 );

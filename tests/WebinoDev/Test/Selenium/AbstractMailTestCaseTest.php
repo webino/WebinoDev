@@ -54,15 +54,16 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
      * @Title("Mail testing setup works")
      * @covers WebinoDev\Test\Selenium\AbstractMailTestCase::setUp
      * @covers WebinoDev\Test\Selenium\AbstractMailTestCase::tearDown
+     * @covers WebinoDev\Test\Selenium\MailTrait::getMailDir
      * @covers WebinoDev\Test\Selenium\MailTrait::setUpMailDir
      * @covers WebinoDev\Test\Selenium\MailTrait::tearDownMailDir
      */
     public function testSetUpAndTearDown()
     {
         $this->object->setUp();
-        $this->assertFileExists(MailTestCase::$mailDir);
+        $this->assertFileExists($this->object->getMailDir());
         $this->object->tearDown();
-        $this->assertFileNotExists(MailTestCase::$mailDir);
+        $this->assertFileNotExists($this->object->getMailDir());
     }
 
     /**
@@ -72,7 +73,7 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     public function testCleanMail()
     {
         $this->object->setUp();
-        $mailPath = MailTestCase::$mailDir . '/ZendMail_0.eml';
+        $mailPath = $this->object->getMailDir() . '/ZendMail_0.eml';
         touch($mailPath);
 
         $this->object->cleanMail();
@@ -91,7 +92,7 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
         $message = new Message;
         $message->setSubject('Test message subject');
 
-        $mailPath = MailTestCase::$mailDir . '/ZendMail_0.eml';
+        $mailPath = $this->object->getMailDir() . '/ZendMail_0.eml';
         file_put_contents($mailPath, $message->toString());
 
         $mail = $this->object->readMail();
@@ -124,17 +125,17 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
         // first
         $message = new Message;
         $message->setSubject($expected[0]);
-        file_put_contents(MailTestCase::$mailDir . '/ZendMail_' . microtime(true) . '.eml', $message->toString());
+        file_put_contents($this->object->getMailDir() . '/ZendMail_' . microtime(true) . '.eml', $message->toString());
 
         // second
         $message = new Message;
         $message->setSubject($expected[1]);
-        file_put_contents(MailTestCase::$mailDir . '/ZendMail_' . microtime(true) . '.eml', $message->toString());
+        file_put_contents($this->object->getMailDir() . '/ZendMail_' . microtime(true) . '.eml', $message->toString());
 
         // third
         $message = new Message;
         $message->setSubject($expected[2]);
-        file_put_contents(MailTestCase::$mailDir . '/ZendMail_' . microtime(true) . '.eml', $message->toString());
+        file_put_contents($this->object->getMailDir() . '/ZendMail_' . microtime(true) . '.eml', $message->toString());
 
         // check first
         $mail = $this->object->readMail();

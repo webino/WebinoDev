@@ -9,9 +9,9 @@
 
 namespace WebinoDev\Test\Functional;
 
-use org\bovigo\vfs\vfsStreamWrapper;
 use org\bovigo\vfs\vfsStream;
 use WebinoDev\Test\MailTrait as BaseMailTrait;
+use WebinoDev\Vfs\StreamWrapper;
 
 /**
  * Trait for mail functional testing
@@ -27,8 +27,16 @@ trait MailTrait
      */
     protected function setUpMailVfs()
     {
-        vfsStreamWrapper::register();
-        vfsStreamWrapper::setRoot(vfsStream::setup('root', null, ['tmp' => ['mail' => []]]));
+        StreamWrapper::register();
+        StreamWrapper::setRoot(vfsStream::setup('root', null, ['tmp' => ['mail' => []]]));
+    }
+
+    /**
+     * Destroy virtual filesystem
+     */
+    protected function tearDownMailVfs()
+    {
+        StreamWrapper::unregister();
     }
 
     /**

@@ -40,7 +40,7 @@ trait MailTrait
      */
     protected function setUpMailDir()
     {
-        is_dir($this::$mailDir) or mkdir($this::$mailDir, 0777, true);
+        is_dir($this::$mailDir) or mkdir($this->getMailDir(), 0777, true);
         $this->cleanMail();
     }
 
@@ -50,7 +50,7 @@ trait MailTrait
     protected function tearDownMailDir()
     {
         $this->cleanMail();
-        is_dir($this::$mailDir) and rmdir($this::$mailDir);
+        is_dir($this->getMailDir()) and rmdir($this->getMailDir());
     }
 
     /**
