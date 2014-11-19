@@ -50,7 +50,7 @@ trait MailTrait
     protected function tearDownMailDir()
     {
         $this->cleanMail();
-        is_dir($this->getMailDir()) and rmdir($this->getMailDir());
+        is_dir($this->getMailDir()) and @rmdir($this->getMailDir());
     }
 
     /**
