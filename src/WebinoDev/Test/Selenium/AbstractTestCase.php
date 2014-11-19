@@ -59,6 +59,15 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tears down the fixture, for example, closes a network connection.
+     * This method is called after a test is executed.
+     */
+    protected function tearDown()
+    {
+        $this->session->close();
+    }
+
+    /**
      * @return \PHPWebDriver_WebDriverSession
      */
     protected function getSession()
@@ -67,12 +76,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
+     * @return string
      */
-    protected function tearDown()
+    protected function getSessionId()
     {
-        $this->session->close();
+        return $this->session->getCookie('PHPSESSID')['value'];
     }
 
     /**

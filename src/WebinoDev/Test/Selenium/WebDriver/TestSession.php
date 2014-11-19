@@ -17,6 +17,14 @@ class TestSession
     /**
      *
      */
+    public function getCookie()
+    {
+
+    }
+
+    /**
+     *
+     */
     public function open()
     {
 

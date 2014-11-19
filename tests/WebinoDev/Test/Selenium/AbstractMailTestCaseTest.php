@@ -15,7 +15,7 @@ use Yandex\Allure\Adapter\Annotation\Title;
 use Zend\Mail\Message;
 
 /**
- * @Title("Abstract class for selenium mail tests works")
+ * @Title("Abstract class for selenium mail tests")
  * @Features({"Selenium testing"})
  */
 class AbstractMailTestCaseTest extends AbstractMailTestCase
@@ -51,7 +51,24 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     }
 
     /**
-     * @Title("Mail testing setup works")
+     * @Title("Getting session id")
+     * @covers WebinoDev\Test\Selenium\MailTrait::cleanMail
+     */
+    public function testGetSessionId()
+    {
+        $sess = ['value' => md5(null)];
+
+        $this->object->setUp();
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('getCookie')
+            ->with('PHPSESSID')
+            ->will($this->returnValue($sess));
+
+        $this->assertSame($sess['value'], $this->object->getSessionId());
+    }
+
+    /**
+     * @Title("Mail testing setup")
      * @covers WebinoDev\Test\Selenium\AbstractMailTestCase::setUp
      * @covers WebinoDev\Test\Selenium\AbstractMailTestCase::tearDown
      * @covers WebinoDev\Test\Selenium\MailTrait::getMailDir
@@ -67,7 +84,7 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     }
 
     /**
-     * @Title("Cleaning mail directory works")
+     * @Title("Cleaning mail directory")
      * @covers WebinoDev\Test\Selenium\MailTrait::cleanMail
      */
     public function testCleanMail()
