@@ -33,6 +33,14 @@ class TestSession
     /**
      *
      */
+    public function url()
+    {
+
+    }
+
+    /**
+     *
+     */
     public function title()
     {
 

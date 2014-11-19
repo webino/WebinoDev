@@ -49,6 +49,44 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
+     * @Title("Getting session id")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::getSessionId
+     */
+    public function testGetSessionId()
+    {
+        $sess = ['value' => md5(null)];
+
+        putenv('URI=test-uri-' . __METHOD__);
+        $this->object->setUp();
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('getCookie')
+            ->with('PHPSESSID')
+            ->will($this->returnValue($sess));
+
+        $this->assertSame($sess['value'], $this->object->getSessionId());
+    }
+
+    /**
+     * @Title("Getting server URL")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::getServerUrl
+     */
+    public function testGetServerUrl()
+    {
+        $scheme    = 'http';
+        $host      = 'www.example.com';
+        $serverUrl = $scheme . '://' . $host;
+        $url       = $serverUrl . '/path/sub-path?query-strig=example';
+
+        putenv('URI=test-uri-' . __METHOD__);
+        $this->object->setUp();
+        $this->getWebDriverSession()->expects($this->once())
+            ->method('url')
+            ->will($this->returnValue($url));
+
+        $this->assertSame($serverUrl, $this->object->getServerUrl());
+    }
+
+    /**
      * @Title("Setup Selenium WebDriver")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::setUp
      */

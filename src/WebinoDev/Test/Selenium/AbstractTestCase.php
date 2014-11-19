@@ -84,6 +84,15 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @return string
+     */
+    protected function getServerUrl()
+    {
+        $parts = parse_url($this->session->url());
+        return $parts['scheme'] . '://' . $parts['host'];
+    }
+
+    /**
      * Resolve Selenium WebDriver host
      *
      * @return string

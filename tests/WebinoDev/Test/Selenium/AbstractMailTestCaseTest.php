@@ -51,23 +51,6 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     }
 
     /**
-     * @Title("Getting session id")
-     * @covers WebinoDev\Test\Selenium\MailTrait::cleanMail
-     */
-    public function testGetSessionId()
-    {
-        $sess = ['value' => md5(null)];
-
-        $this->object->setUp();
-        $this->getWebDriverSession()->expects($this->once())
-            ->method('getCookie')
-            ->with('PHPSESSID')
-            ->will($this->returnValue($sess));
-
-        $this->assertSame($sess['value'], $this->object->getSessionId());
-    }
-
-    /**
      * @Title("Mail testing setup")
      * @covers WebinoDev\Test\Selenium\AbstractMailTestCase::setUp
      * @covers WebinoDev\Test\Selenium\AbstractMailTestCase::tearDown
