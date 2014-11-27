@@ -68,6 +68,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @return string
+     */
+    protected function getBrowser()
+    {
+        return $this::$browser;
+    }
+
+    /**
      * @return \PHPWebDriver_WebDriverSession
      */
     protected function getSession()

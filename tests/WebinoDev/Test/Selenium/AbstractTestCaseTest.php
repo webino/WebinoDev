@@ -49,6 +49,30 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
+     * @Title("Get the BROWSER from static property")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::getBrowser
+     */
+    public function testGetBrowserDefault()
+    {
+        $browser = $this->object->getBrowser();
+        $this->assertSame('htmlunit', $browser);
+    }
+
+    /**
+     * @Title("Get the BROWSER from static property")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::getBrowser
+     * @depends testGetBrowserDefault
+     */
+    public function testGetBrowser()
+    {
+        $expected = 'test-browser-' . __METHOD__;
+        putenv('BROWSER=' . $expected);
+        $this->object->resolveBrowser();
+        $browser = $this->object->getBrowser();
+        $this->assertSame($expected, $browser);
+    }
+
+    /**
      * @Title("Getting session id")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::getSessionId
      */
@@ -114,7 +138,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Get the HOST fron env vars")
+     * @Title("Get the HOST from env vars")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveHost
      */
     public function testResolveHost()
@@ -126,7 +150,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Get the HOST fron env vars")
+     * @Title("Get the HOST from env vars")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveHost
      */
     public function testResolveDefaultHost()
@@ -137,7 +161,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Get the BROWSER fron env vars")
+     * @Title("Get the BROWSER from env vars")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveBrowser
      */
     public function testResolveBrowser()
@@ -149,7 +173,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Get the BROWSER fron env vars")
+     * @Title("Get the BROWSER from env vars")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveBrowser
      */
     public function testResolveDefaultBrowser()
@@ -160,7 +184,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Get the URI fron env vars")
+     * @Title("Get the URI from env vars")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveUri
      */
     public function testResolveUri()
