@@ -56,7 +56,7 @@ trait ScreenshotTrait
 
         $path = sys_get_temp_dir() . '/' . md5(__METHOD__) . '.png';
         file_put_contents($path, $data);
-        $this->addAttachment($path, $caption, 'png');
+        $this->addAttachment($path, $caption, 'image/png');
 
         return $this;
     }
