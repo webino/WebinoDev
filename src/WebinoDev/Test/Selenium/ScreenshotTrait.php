@@ -20,13 +20,15 @@ trait ScreenshotTrait
 
     /**
      * @return string
+     * @todo phppmd issue https://github.com/phpmd/phpmd/issues/153
      */
-    abstract protected function getBrowser();
+    //abstract protected function getBrowser();
 
     /**
      * @return \PHPWebDriver_WebDriverSession
+     * @todo phppmd issue https://github.com/phpmd/phpmd/issues/153
      */
-    abstract protected function getSession();
+    //abstract protected function getSession();
 
     /**
      * @param string $caption
