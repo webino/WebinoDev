@@ -54,8 +54,9 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testGetBrowserDefault()
     {
+        $this::$browser = 'test-browser-' . __METHOD__;
         $browser = $this->object->getBrowser();
-        $this->assertSame('htmlunit', $browser);
+        $this->assertSame($this::$browser, $browser);
     }
 
     /**
