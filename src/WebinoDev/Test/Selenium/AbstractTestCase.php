@@ -20,6 +20,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 {
     use ElementTrait;
     use ElementsTrait;
+    use ScreenshotTrait;
 
     /**
      * Selenium Web Driver Host URI
@@ -144,9 +145,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param string $path
      * @return self
      */
-    protected function openOk($path = '')
+    protected function openOk($path = '', $caption = 'Home')
     {
         $this->session->open($this->uri . $path);
+        $this->attachScreenshot($caption);
         $this->assertNotError();
         return $this;
     }
@@ -176,6 +178,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $elm = $this->elementByLinkText($linkText);
         $elm->click();
+        $this->attachScreenshot($linkText);
         $callback and call_user_func($callback, $elm);
         return $this;
     }
@@ -190,6 +193,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function clickAjaxLink($linkText, callable $callback = null)
     {
         $this->clickLink($linkText, $callback);
+        $this->attachScreenshot($linkText);
         $this->waitForAjax();
         return $this;
     }
@@ -207,6 +211,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $elm = $this->elementByName($name);
         $elm->clear();
         $elm->sendKeys($value);
+        $this->attachScreenshot('Input ' . $name);
         $callback and call_user_func($callback, $elm);
         return $this;
     }

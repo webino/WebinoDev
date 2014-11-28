@@ -81,6 +81,14 @@ class TestSession
     /**
      *
      */
+    public function screenshot()
+    {
+
+    }
+
+    /**
+     *
+     */
     public function close()
     {
 

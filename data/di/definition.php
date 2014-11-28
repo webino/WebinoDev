@@ -1160,6 +1160,19 @@ return array (
       ),
     ),
   ),
+  'WebinoDev\\Test\\Selenium\\ScreenshotTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
   'WebinoDev\\Test\\Selenium\\MailTrait' => 
   array (
     'supertypes' => 

@@ -13,6 +13,7 @@ Module to ease development of the Webino modules.
   - Authentication testing
   - Forms testing
   - Ajax testing
+  - Screenshots
 
 ## Requirements
 
@@ -109,6 +110,13 @@ class HomeTest extends AbstractTestCase
         $this->elementByTagName('tagname);
 
         $this->elementByXpath('//test/xpath');
+
+        /**
+         * Screenshots
+         */
+        $data = $this->screenshot();
+        // or
+        $this->attachScreenshot('Example caption');
     }
 }
 ```
