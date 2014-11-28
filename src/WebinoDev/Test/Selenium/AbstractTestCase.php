@@ -178,7 +178,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $elm = $this->elementByLinkText($linkText);
         $elm->click();
-        $this->attachScreenshot($linkText);
+        $this->attachScreenshot('Click ' . $linkText);
         $callback and call_user_func($callback, $elm);
         return $this;
     }
@@ -193,8 +193,9 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function clickAjaxLink($linkText, callable $callback = null)
     {
         $this->clickLink($linkText, $callback);
-        $this->attachScreenshot($linkText);
+        $this->attachScreenshot('Click ' . $linkText);
         $this->waitForAjax();
+        $this->attachScreenshot($linkText);
         return $this;
     }
 
