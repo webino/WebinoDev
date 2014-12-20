@@ -56,7 +56,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $this->uri       = $this->resolveUri();
         $this->webDriver = new PHPWebDriver_WebDriver($this->resolveHost());
-        $this->session   = $this->webDriver->session($this->resolveBrowser());
+        $this->session   = $this->webDriver->session($this->resolveBrowser(), $this->resolveCapabilities());
     }
 
     /**
@@ -123,6 +123,21 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $browser = getenv('BROWSER');
         empty($browser) || $this::$browser = $browser;
         return $this::$browser;
+    }
+
+    /**
+     * Resolve test session capabilities
+     *
+     * @return array
+     */
+    protected function resolveCapabilities()
+    {
+        switch ($this->getBrowser()) {
+            case 'chrome':
+                // Fixes OpenVZ
+                return ['chromeOptions' => ['args' => ['no-sandbox']]];
+        }
+        return [];
     }
 
     /**
