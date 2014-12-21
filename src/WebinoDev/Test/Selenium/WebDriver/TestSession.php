@@ -89,6 +89,14 @@ class TestSession
     /**
      *
      */
+    public function window()
+    {
+        
+    }
+
+    /**
+     *
+     */
     public function close()
     {
 

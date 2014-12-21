@@ -8,7 +8,8 @@
  */
 namespace WebinoDev\Test\Functional;
 
-use WebinoDev\Test\Selenium\WebDriver;
+use WebinoDev\Test\Selenium\WebDriver\TestWebDriver;
+use WebinoDev\Test\Selenium\WebDriver\SimpleItem;
 
 /**
  * Trait for selenium tests functional testing
@@ -22,7 +23,10 @@ trait SeleniumTestTrait
      */
     protected function setUpWebDriver()
     {
-        WebDriver\TestWebDriver::$session = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestSession');
+        TestWebDriver::$session = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestSession');
+        TestWebDriver::$session->expects($this->any())
+            ->method('window')
+            ->will($this->returnValue(new SimpleItem));
 
         class_exists('PHPWebDriver_WebDriver', false) or
             class_alias('WebinoDev\Test\Selenium\WebDriver\TestWebDriver', 'PHPWebDriver_WebDriver');
@@ -37,6 +41,6 @@ trait SeleniumTestTrait
      */
     protected function getWebDriverSession()
     {
-        return WebDriver\TestWebDriver::$session;
+        return TestWebDriver::$session;
     }
 }

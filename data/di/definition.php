@@ -1186,6 +1186,19 @@ return array (
     array (
     ),
   ),
+  'WebinoDev\\Test\\Selenium\\WebDriver\\SimpleItem' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
   'WebinoDev\\Test\\Selenium\\WebDriver\\TestSession' => 
   array (
     'supertypes' => 
