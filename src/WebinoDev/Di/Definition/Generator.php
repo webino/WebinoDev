@@ -119,11 +119,12 @@ class Generator
      */
     public function dump()
     {
-        $target = $this->dir . '/../data/di/definition.php';
-        $dir    = dirname($target);
-        if (!is_dir($dir)) {
+        if (!is_dir($this->dir)) {
             return $this;
         }
+
+        $target = $this->dir . '/../data/di/definition.php';
+        $dir    = dirname($target);
 
         is_dir($dir) or mkdir($dir);
 
