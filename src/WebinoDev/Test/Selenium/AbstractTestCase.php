@@ -57,7 +57,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->uri       = $this->resolveUri();
         $this->webDriver = new PHPWebDriver_WebDriver($this->resolveHost());
         $this->session   = $this->webDriver->session($this->resolveBrowser(), $this->resolveCapabilities());
-        $this->session->window()->maximize() or sleep(.5);
+        $this->session->window()->maximize() or sleep(1);
     }
 
     /**
