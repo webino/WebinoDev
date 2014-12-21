@@ -178,4 +178,16 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('WebinoExample\Module', $definition);
         $this->assertArrayHasKey('WebinoExample\ExampleClass', $definition);
     }
+
+    /**
+     * @Title("Optional compilation")
+     */
+    public function testCompileOptional()
+    {
+        $this->cleanup($this->tmpDir);
+        $this->object->compile()->dump();
+
+        $definitionPath = $this->tmpDir . '/data/di/definition.php';
+        $this->assertFileNotExists($definitionPath);
+    }
 }

@@ -88,6 +88,10 @@ class Generator
      */
     public function compile(array $files = [])
     {
+        if (!is_dir($this->dir)) {
+            return $this;
+        }
+
         $compiler = $this->getCompiler();
         $ignore   = $this->getIgnore();
 
@@ -117,6 +121,9 @@ class Generator
     {
         $target = $this->dir . '/../data/di/definition.php';
         $dir    = dirname($target);
+        if (!is_dir($dir)) {
+            return $this;
+        }
 
         is_dir($dir) or mkdir($dir);
 
