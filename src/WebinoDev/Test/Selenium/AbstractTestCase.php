@@ -23,11 +23,18 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     use ScreenshotTrait;
 
     /**
-     * Selenium Web Driver Host URI
+     * Selenium Web Driver host URI
      *
      * @var string
      */
-    protected static $webDriverHost = 'http://localhost:4444/wd/hub';
+    protected static $webDriverHost = 'http://localhost:%s/wd/hub';
+
+    /**
+     * Selenium Web Driver port
+     *
+     * @var string
+     */
+    protected static $webDriverPort = '4444';
 
     /**
      * @var string
@@ -110,7 +117,19 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $host = getenv('HOST');
         empty($host) || $this::$webDriverHost = $host;
-        return $this::$webDriverHost;
+        return sprintf($this::$webDriverHost, $this->resolvePort());
+    }
+
+    /**
+     * Resolve Selenium WebDriver port
+     *
+     * @return string
+     */
+    protected function resolvePort()
+    {
+        $port = getenv('PORT');
+        empty($port) || $this::$webDriverPort = $port;
+        return $this::$webDriverPort;
     }
 
     /**
