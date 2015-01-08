@@ -33,4 +33,18 @@ trait DomTrait
         $dom->xpath = new DOMXPath($dom);
         return $dom;
     }
+
+    /**
+     * Create DOM document from XML source
+     *
+     * @param string $xml
+     * @return DOMDocument
+     */
+    protected function createXmlDom($xml)
+    {
+        $dom = new DOMDocument;
+        $dom->loadXML($xml);
+        $dom->xpath = new DOMXPath($dom);
+        return $dom;
+    }
 }
