@@ -44,6 +44,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @var string
      */
+    protected $browserBin;
+
+    /**
+     * @var string
+     */
     protected $uri;
 
     /**
@@ -81,6 +86,23 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function getBrowser()
     {
         return $this::$browser;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getBrowserBin()
+    {
+        return $this->browserBin;
+    }
+
+    /**
+     * @return string
+     */
+    protected function setBrowserBin($bin)
+    {
+        $this->browserBin = (string) $bin;
+        return $this;
     }
 
     /**
@@ -141,6 +163,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $browser = getenv('BROWSER');
         empty($browser) || $this::$browser = $browser;
+
+        switch ($this::$browser) {
+            case 'chromium':
+                $this::$browser = 'chrome';
+                $this->setBrowserBin('/usr/bin/chromium-browser');
+                break;
+        }
+
         return $this::$browser;
     }
 
@@ -154,7 +184,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         switch ($this->getBrowser()) {
             case 'chrome':
                 // Fixes OpenVZ
-                return ['chromeOptions' => ['args' => ['no-sandbox', 'start-maximized']]];
+                $opts = ['args' => ['no-sandbox', 'start-maximized']];
+                $bin  = $this->getBrowserBin();
+                $bin and $opts+= ['binary' => $bin];
+                return ['chromeOptions' => $opts];
         }
         return [];
     }
