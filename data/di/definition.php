@@ -1264,6 +1264,172 @@ return array (
     array (
     ),
   ),
+  'WebinoDev\\Mail\\Message' => 
+  array (
+    'supertypes' => 
+    array (
+      0 => 'Zend\\Mail\\Message',
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+      'setEncoding' => 0,
+      'setHeaders' => 0,
+      'setFrom' => 0,
+      'setTo' => 0,
+      'setCc' => 0,
+      'setBcc' => 0,
+      'setReplyTo' => 0,
+      'setSender' => 0,
+      'setSubject' => 0,
+      'setBody' => 0,
+    ),
+    'parameters' => 
+    array (
+      'setEncoding' => 
+      array (
+        'WebinoDev\\Mail\\Message::setEncoding:0' => 
+        array (
+          0 => 'encoding',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setHeaders' => 
+      array (
+        'WebinoDev\\Mail\\Message::setHeaders:0' => 
+        array (
+          0 => 'headers',
+          1 => 'Zend\\Mail\\Headers',
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setFrom' => 
+      array (
+        'WebinoDev\\Mail\\Message::setFrom:0' => 
+        array (
+          0 => 'emailOrAddressList',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Mail\\Message::setFrom:1' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setTo' => 
+      array (
+        'WebinoDev\\Mail\\Message::setTo:0' => 
+        array (
+          0 => 'emailOrAddressList',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Mail\\Message::setTo:1' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setCc' => 
+      array (
+        'WebinoDev\\Mail\\Message::setCc:0' => 
+        array (
+          0 => 'emailOrAddressList',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Mail\\Message::setCc:1' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setBcc' => 
+      array (
+        'WebinoDev\\Mail\\Message::setBcc:0' => 
+        array (
+          0 => 'emailOrAddressList',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Mail\\Message::setBcc:1' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setReplyTo' => 
+      array (
+        'WebinoDev\\Mail\\Message::setReplyTo:0' => 
+        array (
+          0 => 'emailOrAddressList',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Mail\\Message::setReplyTo:1' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setSender' => 
+      array (
+        'WebinoDev\\Mail\\Message::setSender:0' => 
+        array (
+          0 => 'emailOrAddress',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Mail\\Message::setSender:1' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setSubject' => 
+      array (
+        'WebinoDev\\Mail\\Message::setSubject:0' => 
+        array (
+          0 => 'subject',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setBody' => 
+      array (
+        'WebinoDev\\Mail\\Message::setBody:0' => 
+        array (
+          0 => 'body',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+    ),
+  ),
   'WebinoDev\\Vfs\\StreamWrapper' => 
   array (
     'supertypes' => 

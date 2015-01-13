@@ -12,7 +12,7 @@ namespace WebinoDev\Test;
 use DirectoryIterator;
 use RegexIterator;
 use WebinoDev\Test\Exception\RuntimeException;
-use Zend\Mail\Message;
+use WebinoDev\Mail\Message;
 
 /**
  * WebDriver test mail trait
