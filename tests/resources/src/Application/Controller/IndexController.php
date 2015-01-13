@@ -73,4 +73,14 @@ class IndexController extends AbstractActionController
         sleep(2);
         return $this->getResponse()->setContent('AJAX TEST');
     }
+
+    /**
+     * Raw source
+     */
+    public function rawSourceAction()
+    {
+        $sessions = $this->getServiceLocator()->get('Zend\Session\SessionManager');
+        $sessions->start();
+        return $this->getResponse()->setContent($sessions->getId());
+    }
 }

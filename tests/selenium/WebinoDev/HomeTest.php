@@ -72,4 +72,23 @@ class HomeTest extends AbstractTestCase
         $elm = $this->elementByClassName('ajax-content');
         $this->assertSame('AJAX TEST', $elm->text());
     }
+
+    /**
+     * @Title("Getting raw source")
+     * @Features({"Raw source"})
+     */
+    public function testRawSource()
+    {
+        $uri = 'application/index/raw-source';
+
+        // with custom session
+        $sid = 'uclpkf564fo56j0n419vsau524';
+        $src = $this->source($this->uri . $uri, $sid);
+        $this->assertSame($sid, $src);
+
+        // with current session
+        $this->openOk($uri);
+        $src = $this->source($this->uri . $uri);
+        $this->assertSame($this->getSessionId(), $src);
+    }
 }

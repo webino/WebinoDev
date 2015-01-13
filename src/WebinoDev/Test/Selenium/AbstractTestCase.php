@@ -131,6 +131,19 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Get raw source from URL
+     *
+     * @param string $url
+     * @return string
+     */
+    protected function source($url, $sessId = null)
+    {
+        $sid = $sessId ? $sessId : $this->getSessionId();
+        $opts = ['http' => ['header'=> 'Cookie: PHPSESSID=' . $sid ."\r\n"]];
+        return file_get_contents($url, false, stream_context_create($opts));
+    }
+
+    /**
      * Resolve Selenium WebDriver host
      *
      * @return string
