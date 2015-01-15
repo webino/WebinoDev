@@ -37,6 +37,16 @@ class Message extends BaseMessage
     }
 
     /**
+     * Return the message body
+     *
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->getParser()->getMessageBody('html');
+    }
+
+    /**
      * Return array of mail attachments
      *
      * @return \eXorus\PhpMimeMailParser\Attachment[]
