@@ -54,6 +54,35 @@ trait MailTrait
     }
 
     /**
+     * Wait for mail to read
+     *
+     * @return Message
+     * @throws RuntimeException
+     */
+    protected function waitForMail()
+    {
+        $tout = 30;
+        $tn   = 0;
+
+        while (empty($mail)) {
+            $tn++;
+            sleep(1);
+
+            try {
+                $mail = $this->readMail();
+            } catch (\Exception $exc) {
+
+            }
+
+            if ($tn >= $tout) {
+                throw new RuntimeException('Timeout exceeded');
+            }
+        }
+
+        return $mail;
+    }
+
+    /**
      * Returns mail directory iterator
      *
      * @return RegexIterator
