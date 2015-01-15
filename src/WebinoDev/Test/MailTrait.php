@@ -27,6 +27,22 @@ trait MailTrait
     protected abstract function getMailDir();
 
     /**
+     * Assert that no mail was sent
+     *
+     * @return self
+     */
+    protected function assertNoMail()
+    {
+        try {
+            $this->readMail();
+        } catch (\Exception $exc) {
+
+        }
+        $this->assertSame('No mail found', $exc->getMessage());
+        return $this;
+    }
+
+    /**
      * Read mail from temporary directory
      *
      * @return Message
