@@ -31,6 +31,7 @@ class Message extends BaseMessage
     {
         if (null === $this->parser) {
             $this->parser = new Parser;
+            $this->fixUniqueHeaders();
             $this->parser->setText($this->toString());
         }
         return $this->parser;
@@ -54,5 +55,19 @@ class Message extends BaseMessage
     public function getAttachments()
     {
         return $this->getParser()->getAttachments();
+    }
+
+    /**
+     * Fixing headers uniqueness
+     */
+    private function fixUniqueHeaders()
+    {
+        $headers = $this->getHeaders();
+        $headersCopy = clone $headers;
+        $headers->clearHeaders();
+        foreach ($headersCopy as $header) {
+            $name = $header->getFieldName();
+            $headers->has($name) or $headers->addHeader($header);
+        }
     }
 }
