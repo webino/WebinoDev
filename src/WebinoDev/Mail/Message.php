@@ -44,7 +44,10 @@ class Message extends BaseMessage
      */
     public function getBody()
     {
-        return $this->getParser()->getMessageBody('html');
+        if ($this->getAttachments()) {
+            return $this->getParser()->getMessageBody('html');
+        }
+        return parent::getBody();
     }
 
     /**
