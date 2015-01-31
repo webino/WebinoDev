@@ -11,6 +11,7 @@ namespace WebinoDev\Test\Selenium;
 
 use PHPWebDriver_WebDriver;
 use PHPWebDriver_WebDriverWait as Wait;
+use PHPWebDriver_WebDriverElement;
 use RuntimeException;
 
 /**
@@ -282,14 +283,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Enters the input value
      *
-     * @param string $name
+     * @param string|PHPWebDriver_WebDriverElement $name
      * @param string $value
      * @param callable $callback
      * @return self
      */
     protected function enterInput($name, $value, callable $callback = null)
     {
-        $elm = $this->elementByName($name);
+        $elm = ($name instanceof PHPWebDriver_WebDriverElement) ? $name : $this->elementByName($name);
         $elm->clear();
         $elm->sendKeys($value);
         $this->attachScreenshot('Input ' . $name);
@@ -300,14 +301,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Assert that input value is same than expected
      *
-     * @param string $name
+     * @param string|PHPWebDriver_WebDriverElement $name
      * @param string $expectedValue
      * @param callable $callback
      * @return self
      */
     public function assertInput($name, $expectedValue, callable $callback = null)
     {
-        $elm = $this->elementByName($name);
+        $elm = ($name instanceof PHPWebDriver_WebDriverElement) ? $name : $this->elementByName($name);
         $this->assertSame($expectedValue, $elm->attribute('value'));
         $callback and call_user_func($callback, $elm);
         return $this;
