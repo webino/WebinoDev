@@ -25,7 +25,7 @@ class HomeTest extends AbstractTestCase
     {
         $this->openOk();
         $this->elementByClassName('jumbotron');
-        $this->clickLink('wiki');
+        $this->clickLink('issue tracker');
     }
 
     /**

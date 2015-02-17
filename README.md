@@ -1,5 +1,12 @@
 # Webino developer's module <br /> for Zend Framework 2
 
+[![Build Status](https://secure.travis-ci.org/webino/WebinoDev.png?branch=develop)](http://travis-ci.org/webino/WebinoDev "Develop Build Status")
+[![Coverage Status](https://coveralls.io/repos/webino/WebinoDev/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoDev?branch=develop "Develop Coverage Status")
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/webino/WebinoDev/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/webino/WebinoDev/?branch=develop "Develop Quality Score")
+[![Dependency Status](https://www.versioneye.com/user/projects/54e2ff538bd69f54f1000067/badge.svg)](https://www.versioneye.com/user/projects/54e2ff538bd69f54f1000067 "Develop Dependency Status")
+<br />
+[![Latest Stable Version](https://poser.pugx.org/webino/webino-debug/v/stable.svg)](https://packagist.org/packages/webino/webino-debug) [![Total Downloads](https://poser.pugx.org/webino/webino-debug/downloads.svg)](https://packagist.org/packages/webino/webino-debug) [![Latest Unstable Version](https://poser.pugx.org/webino/webino-debug/v/unstable.svg)](https://packagist.org/packages/webino/webino-debug) [![License](https://poser.pugx.org/webino/webino-debug/license.svg)](https://packagist.org/packages/webino/webino-debug)
+
 Module to ease development of the Webino modules.
 
 ## Features
@@ -342,9 +349,11 @@ class AbstractSeleniumTestCaseTest extends \PHPUnit_Framework_TestCase
 
 ## Development
 
+[![Dependency Status](https://www.versioneye.com/user/projects/54e2ff588bd69f07ae000019/badge.svg)](https://www.versioneye.com/user/projects/54e2ff588bd69f07ae000019)
+
 We will appreciate any contributions on development of this module.
 
-Learn [How to develop Webino modules](https://github.com/webino/Webino/wiki/How-to-develop-Webino-modules)
+Learn [How to develop Webino modules](https://github.com/webino/Webino/wiki/How-to-develop-Webino-module)
 
 ## Addendum
 

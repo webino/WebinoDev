@@ -242,7 +242,12 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function assertNotError()
     {
         $this->assertNotContains('Error', $this->session->title());
-        $src = $this->session->source();
+
+        // strip script contents & tags
+        $text = $this->session->source();
+        $expr = '~<(script).*?>.*?</script>~si';
+        $src  = strip_tags(preg_replace($expr, '', $text));
+
         $this->assertNotContains('Error', $src);
         $this->assertNotContains('Exception', $src);
         return $this;
