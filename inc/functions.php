@@ -42,12 +42,14 @@ function p($subject) {
  */
 function pd($subject) {
     print_r($subject);
+    exit;
 }
 
 /**
  * Alias for print_r() return
  *
  * @param mixed $subject
+ * @return string
  */
 function pr($subject) {
     return print_r($subject, true);
