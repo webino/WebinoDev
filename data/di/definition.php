@@ -58,6 +58,7 @@ return array (
   array (
     'supertypes' => 
     array (
+      0 => 'Zend\\ModuleManager\\Feature\\ConfigProviderInterface',
     ),
     'instantiator' => '__construct',
     'methods' => 
@@ -203,6 +204,7 @@ return array (
       'setName' => 0,
       'setDependencies' => 0,
       'setDependencyInput' => 0,
+      'setDisallowChangesToGlobalState' => 0,
       'setBackupGlobals' => 0,
       'setBackupStaticAttributes' => 0,
       'setRunTestInSeparateProcess' => 0,
@@ -323,6 +325,16 @@ return array (
         'WebinoDev\\Test\\Functional\\AbstractMailTestCase::setDependencyInput:0' => 
         array (
           0 => 'dependencyInput',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setDisallowChangesToGlobalState' => 
+      array (
+        'WebinoDev\\Test\\Functional\\AbstractMailTestCase::setDisallowChangesToGlobalState:0' => 
+        array (
+          0 => 'disallowChangesToGlobalState',
           1 => NULL,
           2 => true,
           3 => NULL,
@@ -476,6 +488,7 @@ return array (
       'setName' => 0,
       'setDependencies' => 0,
       'setDependencyInput' => 0,
+      'setDisallowChangesToGlobalState' => 0,
       'setBackupGlobals' => 0,
       'setBackupStaticAttributes' => 0,
       'setRunTestInSeparateProcess' => 0,
@@ -601,6 +614,16 @@ return array (
           3 => NULL,
         ),
       ),
+      'setDisallowChangesToGlobalState' => 
+      array (
+        'WebinoDev\\Test\\Selenium\\AbstractMailTestCase::setDisallowChangesToGlobalState:0' => 
+        array (
+          0 => 'disallowChangesToGlobalState',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
       'setBackupGlobals' => 
       array (
         'WebinoDev\\Test\\Selenium\\AbstractMailTestCase::setBackupGlobals:0' => 
@@ -706,6 +729,7 @@ return array (
       'setName' => 0,
       'setDependencies' => 0,
       'setDependencyInput' => 0,
+      'setDisallowChangesToGlobalState' => 0,
       'setBackupGlobals' => 0,
       'setBackupStaticAttributes' => 0,
       'setRunTestInSeparateProcess' => 0,
@@ -826,6 +850,16 @@ return array (
         'WebinoDev\\Test\\Selenium\\AbstractTestCase::setDependencyInput:0' => 
         array (
           0 => 'dependencyInput',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setDisallowChangesToGlobalState' => 
+      array (
+        'WebinoDev\\Test\\Selenium\\AbstractTestCase::setDisallowChangesToGlobalState:0' => 
+        array (
+          0 => 'disallowChangesToGlobalState',
           1 => NULL,
           2 => true,
           3 => NULL,
@@ -966,6 +1000,7 @@ return array (
       'setName' => 0,
       'setDependencies' => 0,
       'setDependencyInput' => 0,
+      'setDisallowChangesToGlobalState' => 0,
       'setBackupGlobals' => 0,
       'setBackupStaticAttributes' => 0,
       'setRunTestInSeparateProcess' => 0,
@@ -1086,6 +1121,16 @@ return array (
         'WebinoDev\\Test\\Selenium\\AbstractAuthenticationTestCase::setDependencyInput:0' => 
         array (
           0 => 'dependencyInput',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setDisallowChangesToGlobalState' => 
+      array (
+        'WebinoDev\\Test\\Selenium\\AbstractAuthenticationTestCase::setDisallowChangesToGlobalState:0' => 
+        array (
+          0 => 'disallowChangesToGlobalState',
           1 => NULL,
           2 => true,
           3 => NULL,
