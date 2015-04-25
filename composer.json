@@ -21,22 +21,35 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.4",
-        "zendframework/zend-modulemanager": "2.*",
-        "zendframework/zend-di": "2.*",
+        "php": ">=5.5",
         "zendframework/zend-code": "2.*",
-        "zendframework/zend-developer-tools": "dev-master",
-        "allure-framework/allure-phpunit": "1.*",
-        "element-34/php-webdriver": "1.*",
-        "exorus/php-mime-mail-parser": "1.*",
-        "mikey179/vfsStream": "1.*",
-        "phpunit/phpunit": "4.*",
-        "smalot/pdfparser": "0.9.*"
+        "zendframework/zend-di": "2.*",
+        "zendframework/zend-mail": "2.*",
+        "zendframework/zend-modulemanager": "2.*"
     },
     "require-dev": {
-        "zendframework/zendframework": "2.*"
+        "zendframework/zend-cache": "2.*",
+        "zendframework/zend-config": "2.*",
+        "zendframework/zend-console": "2.*",
+        "zendframework/zend-http": "2.*",
+        "zendframework/zend-i18n": "2.*",
+        "zendframework/zend-log": "2.*",
+        "zendframework/zend-mvc": "2.*",
+        "zendframework/zend-session": "2.*",
+        "zendframework/zend-version": "2.*",
+        "zendframework/zend-view": "2.*"
+    },
+    "suggest": {
+      "allure-framework/allure-phpunit": "Test reports",
+      "element-34/php-webdriver": "Selenium tests",
+      "exorus/php-mime-mail-parser": "Mail parser",
+      "mikey179/vfsStream": "Virtual filesystem",
+      "phpunit/phpunit": "PHPUnit testing support (deprecated)",
+      "smalot/pdfparser": "PDF parser",
+      "nette/tester": "Better testing engine (instead of PHPUnit)"
     },
     "autoload": {
-        "psr-0": {"WebinoDev": "src/"}
+        "psr-0": {"WebinoDev": "src/"},
+        "files": ["inc/functions.php"]
     }
 }
