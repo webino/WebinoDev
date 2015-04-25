@@ -4,7 +4,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2015 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -12,9 +12,5 @@ namespace WebinoDev;
 
 use WebinoDev\Di\Definition\Generator;
 
-// Autoloader
-$loader = require __DIR__ . '/../vendor/autoload.php';
-$loader->add(__NAMESPACE__, __DIR__ . '/../src');
-
-// Dump DI definition
+require __DIR__ . '/../tests/resources/init_autoloader.php';
 (new Generator(__DIR__))->compile()->dump();
