@@ -41,6 +41,8 @@ class Bootstrap
 
     protected function resolveRoot()
     {
-        return $this->dir . '/../../._test/ZendSkeletonApplication';
+        $dir  = $this->dir . '/../../._test/';
+        $zend = $dir . 'ZendSkeletonApplication';
+        return file_exists($zend) ? $zend : $dir . 'WebinoSkeletonApplication';
     }
 }
