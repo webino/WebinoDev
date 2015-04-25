@@ -9,19 +9,14 @@
 
 namespace WebinoDev;
 
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
+
 /**
  * WebinoDev module for Zend Framework 2
  */
-class Module
+class Module implements
+    ConfigProviderInterface
 {
-    /**
-     * Module initialization
-     */
-    public function init()
-    {
-        require_once __DIR__ . '/../../inc/functions.php';
-    }
-
     /**
      * @returns array
      */
