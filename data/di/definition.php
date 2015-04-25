@@ -114,6 +114,37 @@ return array (
       ),
     ),
   ),
+  'WebinoDev\\Test\\Autoloader' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+      '__construct' => 3,
+    ),
+    'parameters' => 
+    array (
+      '__construct' => 
+      array (
+        'WebinoDev\\Test\\Autoloader::__construct:0' => 
+        array (
+          0 => 'dir',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Test\\Autoloader::__construct:1' => 
+        array (
+          0 => 'namespace',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+    ),
+  ),
   'WebinoDev\\Test\\Exception\\ExceptionInterface' => 
   array (
     'supertypes' => 

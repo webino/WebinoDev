@@ -10,18 +10,11 @@
 namespace WebinoDev;
 
 use RuntimeException;
+use WebinoDev\Test\Autoloader;
 
-/**
- * Initialize vendor autoloader
- */
 $loader = @include __DIR__ . '/../../vendor/autoload.php';
 if (empty($loader)) {
     throw new RuntimeException('Unable to load. Run `php composer.phar install`.');
 }
 
-$loader->add('Application', __DIR__ . '/src');
-$loader->add(__NAMESPACE__, __DIR__ . '/src');
-$loader->add(__NAMESPACE__, __DIR__ . '/../../src');
-$loader->add(__NAMESPACE__, __DIR__ . '/../functional');
-$loader->add(__NAMESPACE__, __DIR__ . '/../selenium');
-$loader->add(__NAMESPACE__, __DIR__ . '/..');
+call_user_func(new Autoloader(__DIR__, __NAMESPACE__), $loader);
