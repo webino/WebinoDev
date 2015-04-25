@@ -44,12 +44,12 @@
       "element-34/php-webdriver": "Selenium tests",
       "exorus/php-mime-mail-parser": "Mail parser",
       "mikey179/vfsStream": "Virtual filesystem",
-      "phpunit/phpunit": "PHPUnit testing support (deprecated)",
+      "phpunit/phpunit": "PHPUnit tests support (deprecated)",
       "smalot/pdfparser": "PDF parser",
-      "nette/tester": "Better testing engine (instead of PHPUnit)"
+      "nette/tester": "Better tests runner (instead of PHPUnit)"
     },
     "autoload": {
         "psr-0": {"WebinoDev": "src/"},
-        "files": ["inc/functions.php"]
+        "files": ["inc/functions.php", "inc/tester/functions.php"]
     }
 }

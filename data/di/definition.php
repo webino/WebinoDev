@@ -1519,6 +1519,30 @@ return array (
       ),
     ),
   ),
+  'WebinoDev\\Tester\\Bootstrap' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+      '__construct' => 3,
+    ),
+    'parameters' => 
+    array (
+      '__construct' => 
+      array (
+        'WebinoDev\\Tester\\Bootstrap::__construct:0' => 
+        array (
+          0 => 'dir',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+    ),
+  ),
   'WebinoDev\\Vfs\\StreamWrapper' => 
   array (
     'supertypes' => 
