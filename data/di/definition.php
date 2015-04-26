@@ -492,6 +492,247 @@ return array (
     array (
     ),
   ),
+  'WebinoDev\\Test\\TestCase' => 
+  array (
+    'supertypes' => 
+    array (
+      0 => 'PHPUnit_Framework_SelfDescribing',
+      1 => 'Countable',
+      2 => 'PHPUnit_Framework_Test',
+      3 => 'PHPUnit_Framework_TestCase',
+      4 => 'PHPUnit_Framework_Test',
+      5 => 'Countable',
+      6 => 'PHPUnit_Framework_SelfDescribing',
+      7 => 'PHPUnit_Framework_Assert',
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+      '__construct' => 3,
+      'setExpectedException' => 0,
+      'setExpectedExceptionRegExp' => 0,
+      'setUseErrorHandler' => 0,
+      'setName' => 0,
+      'setDependencies' => 0,
+      'setDependencyInput' => 0,
+      'setDisallowChangesToGlobalState' => 0,
+      'setBackupGlobals' => 0,
+      'setBackupStaticAttributes' => 0,
+      'setRunTestInSeparateProcess' => 0,
+      'setPreserveGlobalState' => 0,
+      'setInIsolation' => 0,
+      'setResult' => 0,
+      'setOutputCallback' => 0,
+      'setTestResultObject' => 0,
+    ),
+    'parameters' => 
+    array (
+      '__construct' => 
+      array (
+        'WebinoDev\\Test\\TestCase::__construct:0' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+        'WebinoDev\\Test\\TestCase::__construct:1' => 
+        array (
+          0 => 'data',
+          1 => NULL,
+          2 => false,
+          3 => 
+          array (
+          ),
+        ),
+        'WebinoDev\\Test\\TestCase::__construct:2' => 
+        array (
+          0 => 'dataName',
+          1 => NULL,
+          2 => false,
+          3 => '',
+        ),
+      ),
+      'setExpectedException' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setExpectedException:0' => 
+        array (
+          0 => 'exceptionName',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Test\\TestCase::setExpectedException:1' => 
+        array (
+          0 => 'exceptionMessage',
+          1 => NULL,
+          2 => false,
+          3 => '',
+        ),
+        'WebinoDev\\Test\\TestCase::setExpectedException:2' => 
+        array (
+          0 => 'exceptionCode',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setExpectedExceptionRegExp' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setExpectedExceptionRegExp:0' => 
+        array (
+          0 => 'exceptionName',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Test\\TestCase::setExpectedExceptionRegExp:1' => 
+        array (
+          0 => 'exceptionMessageRegExp',
+          1 => NULL,
+          2 => false,
+          3 => '',
+        ),
+        'WebinoDev\\Test\\TestCase::setExpectedExceptionRegExp:2' => 
+        array (
+          0 => 'exceptionCode',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setUseErrorHandler' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setUseErrorHandler:0' => 
+        array (
+          0 => 'useErrorHandler',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setName' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setName:0' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setDependencies' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setDependencies:0' => 
+        array (
+          0 => 'dependencies',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setDependencyInput' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setDependencyInput:0' => 
+        array (
+          0 => 'dependencyInput',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setDisallowChangesToGlobalState' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setDisallowChangesToGlobalState:0' => 
+        array (
+          0 => 'disallowChangesToGlobalState',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setBackupGlobals' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setBackupGlobals:0' => 
+        array (
+          0 => 'backupGlobals',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setBackupStaticAttributes' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setBackupStaticAttributes:0' => 
+        array (
+          0 => 'backupStaticAttributes',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setRunTestInSeparateProcess' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setRunTestInSeparateProcess:0' => 
+        array (
+          0 => 'runTestInSeparateProcess',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setPreserveGlobalState' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setPreserveGlobalState:0' => 
+        array (
+          0 => 'preserveGlobalState',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setInIsolation' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setInIsolation:0' => 
+        array (
+          0 => 'inIsolation',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setResult' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setResult:0' => 
+        array (
+          0 => 'result',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setOutputCallback' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setOutputCallback:0' => 
+        array (
+          0 => 'callback',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setTestResultObject' => 
+      array (
+        'WebinoDev\\Test\\TestCase::setTestResultObject:0' => 
+        array (
+          0 => 'result',
+          1 => 'PHPUnit_Framework_TestResult',
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+    ),
+  ),
   'WebinoDev\\Test\\Selenium\\AbstractMailTestCase' => 
   array (
     'supertypes' => 

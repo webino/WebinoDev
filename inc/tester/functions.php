@@ -5,25 +5,15 @@ use org\bovigo\vfs\vfsStreamWrapper;
 use Zend\Mvc\Application;
 
 /**
- * Class TestCase
- */
-echo 'sd';
-return;
-class TestCase extends \PHPUnit_Framework_TestCase
-{
-
-}
-
-/**
  * Create a PHPUnit test case
  *
  * For mocking and legacy PHPUnit tests.
  *
- * @return TestCase
+ * @return \WebinoDev\Test\TestCase
  */
 function createTestCase()
 {
-    return new TestCase;
+    return new \WebinoDev\Test\TestCase;
 }
 
 /**
