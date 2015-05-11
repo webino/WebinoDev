@@ -42,18 +42,29 @@ class Autoloader
      */
     public function __invoke($loader)
     {
-        // Initialize Webino-Devkit vendor autoloader
-        if (empty(@include '/var/lib/webino/php/vendor/autoload.php')) {
-            throw new RuntimeException(
-                'Unable to load the Webino-Devkit. Run `wget https://get.webino.org/devkit -qO - | sh`.'
-            );
-        }
-
         $loader->add('Application', $this->dir . '/src');
         $loader->add($this->namespace, $this->dir . '/src');
         $loader->add($this->namespace, $this->dir . '/../../src');
         $loader->add($this->namespace, $this->dir . '/../functional');
         $loader->add($this->namespace, $this->dir . '/../selenium');
         $loader->add($this->namespace, $this->dir . '/..');
+
+        $this->initDevLoader();
+    }
+
+    /**
+     * Initialize Webino-Devkit vendor autoloader
+     */
+    protected function initDevLoader()
+    {
+        $loader = @include '/var/lib/webino/php/vendor/autoload.php';
+        if (empty($loader)) {
+            throw new RuntimeException(
+                'Unable to load the Webino-Devkit. Run `wget https://get.webino.org/devkit -qO - | sh`.'
+            );
+        }
+
+        $loader->unregister();
+        $loader->register(false);
     }
 }
