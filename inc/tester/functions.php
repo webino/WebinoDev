@@ -2,6 +2,8 @@
 
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamWrapper;
+use WebinoBase\Filesystem\Path\BaseModulePath;
+use WebinoDev\Test\TestCase;
 use Zend\Mvc\Application;
 
 /**
@@ -9,17 +11,25 @@ use Zend\Mvc\Application;
  *
  * For mocking and legacy PHPUnit tests.
  *
- * @return \WebinoDev\Test\TestCase
+ * @return TestCase
  */
 function createTestCase()
 {
-    return new \WebinoDev\Test\TestCase;
+    return new TestCase;
 }
 
 /**
  * Application factory
  */
 function createApp() {
+
+    // WebinoBase module support
+    if (class_exists(BaseModulePath::class)) {
+        /** @noinspection PhpIncludeInspection */
+        require (new BaseModulePath) . '/inc/app.php';
+    }
+
+    // common initialization
     /** @noinspection PhpIncludeInspection */
     return Application::init(require 'config/application.config.php');
 }
