@@ -320,6 +320,32 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Focus a browser window
+     *
+     * @param int $index
+     * @return self
+     */
+    protected function focusWindow($index)
+    {
+        $session = $this->getSession();
+        $windows = $session->window_handles();
+        $session->focusWindow($windows[$index]);
+        return $this;
+    }
+
+    /**
+     * Close a browser window
+     *
+     * @return self
+     */
+    protected function closeWindow()
+    {
+        $this->getSession()->deleteWindow();
+        $this->focusWindow(0);
+        return $this;
+    }
+
+    /**
      * Wait for something, then do something else
      *
      * @param callable $action
@@ -338,7 +364,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      *
      * Depends on jQuery.
      *
-     * @param int $delay Seconds
+     * @param float $delay Seconds
      * @return self
      */
     protected function waitForAjax($delay = .1)
