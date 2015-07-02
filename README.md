@@ -24,7 +24,7 @@ Module to ease development of the Webino modules.
   - Forms testing
   - Ajax testing
   - Screenshots
-- Fixed Assetic\Cache\FilesystemCache (chmod g+w)
+- Fixed Assetic\Cache\FilesystemCache file permissions with umask
 
 ## Requirements
 
