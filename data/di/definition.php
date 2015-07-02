@@ -1784,33 +1784,6 @@ return array (
       ),
     ),
   ),
-  'WebinoDev\\Assetic\\Cache\\FilesystemCache' => 
-  array (
-    'supertypes' => 
-    array (
-      0 => 'Assetic\\Cache\\CacheInterface',
-      1 => 'Assetic\\Cache\\FilesystemCache',
-      2 => 'Assetic\\Cache\\CacheInterface',
-    ),
-    'instantiator' => '__construct',
-    'methods' => 
-    array (
-      '__construct' => 3,
-    ),
-    'parameters' => 
-    array (
-      '__construct' => 
-      array (
-        'WebinoDev\\Assetic\\Cache\\FilesystemCache::__construct:0' => 
-        array (
-          0 => 'dir',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-    ),
-  ),
   'WebinoDev\\Vfs\\StreamWrapper' => 
   array (
     'supertypes' => 
