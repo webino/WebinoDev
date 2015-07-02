@@ -24,10 +24,14 @@
         "php": ">=5.5",
         "zendframework/zendframework": "2.*"
     },
+    "require-dev": {
+        "kriswallsmith/assetic": "~1.2.1"
+    },
     "suggest": {
       "allure-framework/allure-phpunit": "Test reports",
       "element-34/php-webdriver": "Selenium tests",
       "exorus/php-mime-mail-parser": "Mail parser",
+      "kriswallsmith/assetic": "Required by AssetManager\\Cache\\FilesystemCache",
       "mikey179/vfsStream": "Virtual filesystem",
       "phpunit/phpunit": "PHPUnit tests support (deprecated)",
       "smalot/pdfparser": "PDF parser",
