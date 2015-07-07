@@ -118,7 +118,7 @@ class HomeTest extends AbstractTestCase
 
         $this->elementByPartialLinkText('Link text too long');
 
-        $this->elementByTagName('tagname);
+        $this->elementByTagName('tagname');
 
         $this->elementByXpath('//test/xpath');
 
@@ -191,6 +191,10 @@ class HomeTest extends AbstractTestCase
 {
     public function testHome()
     {
+        $this->submitImput('email', 'test@example.com');
+    
+        // or
+    
         $this->enterInput('email', 'test@example.com', function ($elm) {
             $elm->submit();
         });
