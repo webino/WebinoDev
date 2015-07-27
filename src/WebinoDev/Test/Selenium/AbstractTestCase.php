@@ -295,8 +295,12 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function enterInput($name, $value, callable $callback = null)
     {
-        $elm = ($name instanceof PHPWebDriver_WebDriverElement) ? $name : $this->elementByName($name);
-        $elm->clear();
+        $resolveElm = function () use ($name) {
+            return ($name instanceof PHPWebDriver_WebDriverElement) ? $name : $this->elementByName($name);
+        };
+
+        $resolveElm()->clear();
+        $elm = $resolveElm();
         $elm->sendKeys($value);
         $this->attachScreenshot('Input ' . $name);
         $callback and call_user_func($callback, $elm);

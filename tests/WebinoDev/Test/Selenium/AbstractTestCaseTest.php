@@ -323,10 +323,16 @@ class AbstractTestCaseTest extends AbstractTestCase
         $value = 'test_value';
         $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
-        $this->getWebDriverSession()->expects($this->once())
+        $this->getWebDriverSession()->expects($this->exactly(2))
             ->method('element')
-            ->with('name', $name)
-            ->will($this->returnValue($elm));
+            ->withConsecutive(
+                ['name', $name],
+                ['name', $name]
+            )
+            ->will($this->onConsecutiveCalls(
+                $this->returnValue($elm),
+                $this->returnValue($elm)
+            ));
 
         $elm->expects($this->once())
             ->method('clear');
@@ -349,10 +355,16 @@ class AbstractTestCaseTest extends AbstractTestCase
         $value = 'test_value';
         $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
-        $this->getWebDriverSession()->expects($this->once())
+        $this->getWebDriverSession()->expects($this->exactly(2))
             ->method('element')
-            ->with('name', $name)
-            ->will($this->returnValue($elm));
+            ->withConsecutive(
+                ['name', $name],
+                ['name', $name]
+            )
+            ->will($this->onConsecutiveCalls(
+                $this->returnValue($elm),
+                $this->returnValue($elm)
+            ));
 
         $elm->expects($this->once())
             ->method('clear');

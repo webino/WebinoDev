@@ -141,18 +141,26 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
         $successElm     = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
         $successLocator = '.test-success';
 
-        $this->getWebDriverSession()->expects($this->exactly(5))
+        $this->getWebDriverSession()->expects($this->exactly(9))
             ->method('element')
             ->withConsecutive(
                 ['name', 'identity'],
+                ['name', 'identity'],
                 ['name', 'credential'],
+                ['name', 'credential'],
+                ['css selector', $successLocator],
                 ['css selector', $successLocator]
             )
             ->will($this->onConsecutiveCalls(
                 $this->returnValue($identityElm),
+                $this->returnValue($identityElm),
+                $this->returnValue($credentialElm),
                 $this->returnValue($credentialElm),
                 $this->returnValue(false),
                 $this->returnValue(false),
+                $this->returnValue(false),
+                $this->returnValue(false),
+                $this->returnValue($successElm),
                 $this->returnValue($successElm)
             ));
 
