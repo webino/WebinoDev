@@ -31,13 +31,12 @@ trait ScreenshotTrait
     //abstract protected function getSession();
 
     /**
-     * @param string $caption
-     * @return self
+     * @return string
      */
     protected function screenshot()
     {
         if ('htmlunit' === $this->getBrowser()) {
-            return null;
+            return '';
         }
 
         return base64_decode($this->getSession()->screenshot());
@@ -45,7 +44,7 @@ trait ScreenshotTrait
 
     /**
      * @param string $caption
-     * @return self
+     * @return $this
      */
     protected function attachScreenshot($caption = '')
     {
