@@ -27,7 +27,7 @@ trait ElementTrait
      * Returns page element by class name
      *
      * @param string $className
-     * @return PHPWebDriver_WebDriverElement
+     * @return \PHPWebDriver_WebDriverElement
      */
     protected function elementByClassName($className)
     {
@@ -38,7 +38,7 @@ trait ElementTrait
      * Returns page element by CSS selector
      *
      * @param string $selector
-     * @return PHPWebDriver_WebDriverElement
+     * @return \PHPWebDriver_WebDriverElement
      */
     protected function elementByCssSelector($selector)
     {
@@ -49,7 +49,7 @@ trait ElementTrait
      * Returns page element by ID
      *
      * @param string $id
-     * @return PHPWebDriver_WebDriverElement
+     * @return \PHPWebDriver_WebDriverElement
      */
     protected function elementById($id)
     {
@@ -60,7 +60,7 @@ trait ElementTrait
      * Returns page element by link text
      *
      * @param string $text
-     * @return PHPWebDriver_WebDriverElement
+     * @return \PHPWebDriver_WebDriverElement
      */
     protected function elementByLinkText($text)
     {
@@ -71,7 +71,7 @@ trait ElementTrait
      * Returns page element by its name
      *
      * @param string $name
-     * @return PHPWebDriver_WebDriverElement
+     * @return \PHPWebDriver_WebDriverElement
      */
     protected function elementByName($name)
     {
@@ -82,7 +82,7 @@ trait ElementTrait
      * Returns page element by partial link text
      *
      * @param string $name
-     * @return PHPWebDriver_WebDriverElement
+     * @return \PHPWebDriver_WebDriverElement
      */
     protected function elementByPartialLinkText($name)
     {
@@ -93,7 +93,7 @@ trait ElementTrait
      * Returns page element by its tag name
      *
      * @param string $tag
-     * @return PHPWebDriver_WebDriverElement
+     * @return \PHPWebDriver_WebDriverElement
      */
     protected function elementByTagName($tag)
     {
@@ -104,7 +104,7 @@ trait ElementTrait
      * Returns page element by XPath
      *
      * @param string $xpath
-     * @return PHPWebDriver_WebDriverElement
+     * @return \PHPWebDriver_WebDriverElement
      */
     protected function elementByXpath($xpath)
     {
