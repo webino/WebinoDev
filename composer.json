@@ -21,21 +21,35 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.5",
-        "zendframework/zendframework": "2.*"
+        "php": ">=5.5"
     },
     "require-dev": {
+        "zendframework/zend-mvc": "2.*",
+        "zendframework/zend-modulemanager": "2.*",
+        "zendframework/zend-code": "2.*",
+        "zendframework/zend-di": "2.*",
+        "zendframework/zend-mail": "2.*",
+        "zendframework/zend-log": "2.*",
+        "zendframework/zend-http": "2.*",
+        "zendframework/zend-view": "2.*",
+        "zendframework/zend-session": "2.*",
+        "zendframework/zend-console": "2.*",
+        "zendframework/zend-version": "2.*",
         "kriswallsmith/assetic": "~1.2.1"
     },
     "suggest": {
       "allure-framework/allure-phpunit": "Test reports",
       "element-34/php-webdriver": "Selenium tests",
       "exorus/php-mime-mail-parser": "Mail parser",
-      "kriswallsmith/assetic": "Required by AssetManager\\Cache\\FilesystemCache",
+      "kriswallsmith/assetic": "Filesystem cache umask fix",
       "mikey179/vfsStream": "Virtual filesystem",
       "phpunit/phpunit": "PHPUnit tests support (deprecated)",
       "smalot/pdfparser": "PDF parser",
-      "nette/tester": "Better tests runner (instead of PHPUnit)"
+      "nette/tester": "Better tests runner (instead of PHPUnit)",
+      "zendframework/zend-mail": "Mail testing",
+      "zendframework/zend-modulemanager": "To use as a Zend Framework module",
+      "zendframework/zend-code": "To use DI definition generator (deprecated)",
+      "zendframework/zend-di": "To use DI definition generator (deprecated)"
     },
     "autoload": {
         "psr-0": {"WebinoDev": "src/"},
