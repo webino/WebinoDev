@@ -42,6 +42,10 @@ class Autoloader
      */
     public function __invoke($loader)
     {
+        if (empty($loader)) {
+            throw new RuntimeException('Unable to load. Run `php composer.phar install`.');
+        }
+
         $loader->add('Application', $this->dir . '/src');
         $loader->add($this->namespace, $this->dir . '/src');
         $loader->add($this->namespace, $this->dir . '/../../src');
