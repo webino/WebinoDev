@@ -20,6 +20,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=5.5"
     },
@@ -35,7 +36,7 @@
         "zendframework/zend-session": "2.*",
         "zendframework/zend-console": "2.*",
         "zendframework/zend-version": "2.*",
-        "kriswallsmith/assetic": "~1.2.1"
+        "kriswallsmith/assetic": "1.*"
     },
     "suggest": {
       "allure-framework/allure-phpunit": "Test reports",

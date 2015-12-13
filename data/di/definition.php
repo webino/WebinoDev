@@ -1,150 +1,5 @@
 <?php 
 return array (
-  'WebinoDev\\Exception\\ExceptionInterface' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => NULL,
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
-  'WebinoDev\\Exception\\DevelopmentException' => 
-  array (
-    'supertypes' => 
-    array (
-      0 => 'WebinoDev\\Exception\\ExceptionInterface',
-      1 => 'RuntimeException',
-      2 => 'Exception',
-    ),
-    'instantiator' => '__construct',
-    'methods' => 
-    array (
-      '__construct' => 3,
-    ),
-    'parameters' => 
-    array (
-      '__construct' => 
-      array (
-        'WebinoDev\\Exception\\DevelopmentException::__construct:0' => 
-        array (
-          0 => 'message',
-          1 => NULL,
-          2 => false,
-          3 => NULL,
-        ),
-        'WebinoDev\\Exception\\DevelopmentException::__construct:1' => 
-        array (
-          0 => 'code',
-          1 => NULL,
-          2 => false,
-          3 => NULL,
-        ),
-        'WebinoDev\\Exception\\DevelopmentException::__construct:2' => 
-        array (
-          0 => 'previous',
-          1 => NULL,
-          2 => false,
-          3 => NULL,
-        ),
-      ),
-    ),
-  ),
-  'WebinoDev\\Module' => 
-  array (
-    'supertypes' => 
-    array (
-      0 => 'Zend\\ModuleManager\\Feature\\ConfigProviderInterface',
-    ),
-    'instantiator' => '__construct',
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
-  'WebinoDev\\Di\\Definition\\Generator' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => '__construct',
-    'methods' => 
-    array (
-      '__construct' => 3,
-      'setIgnore' => 0,
-      'setCompiler' => 0,
-    ),
-    'parameters' => 
-    array (
-      '__construct' => 
-      array (
-        'WebinoDev\\Di\\Definition\\Generator::__construct:0' => 
-        array (
-          0 => 'dir',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setIgnore' => 
-      array (
-        'WebinoDev\\Di\\Definition\\Generator::setIgnore:0' => 
-        array (
-          0 => 'ignore',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setCompiler' => 
-      array (
-        'WebinoDev\\Di\\Definition\\Generator::setCompiler:0' => 
-        array (
-          0 => 'compiler',
-          1 => 'Zend\\Di\\Definition\\CompilerDefinition',
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-    ),
-  ),
-  'WebinoDev\\Test\\Autoloader' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => '__construct',
-    'methods' => 
-    array (
-      '__construct' => 3,
-    ),
-    'parameters' => 
-    array (
-      '__construct' => 
-      array (
-        'WebinoDev\\Test\\Autoloader::__construct:0' => 
-        array (
-          0 => 'dir',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-        'WebinoDev\\Test\\Autoloader::__construct:1' => 
-        array (
-          0 => 'namespace',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-    ),
-  ),
   'WebinoDev\\Test\\Exception\\ExceptionInterface' => 
   array (
     'supertypes' => 
@@ -199,7 +54,46 @@ return array (
       ),
     ),
   ),
+  'WebinoDev\\Test\\MailTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
   'WebinoDev\\Test\\DomTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Functional\\MailTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Functional\\SeleniumTestTrait' => 
   array (
     'supertypes' => 
     array (
@@ -453,45 +347,6 @@ return array (
       ),
     ),
   ),
-  'WebinoDev\\Test\\Functional\\SeleniumTestTrait' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => NULL,
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
-  'WebinoDev\\Test\\Functional\\MailTrait' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => NULL,
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
-  'WebinoDev\\Test\\PdfTrait' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => NULL,
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
   'WebinoDev\\Test\\TestCase' => 
   array (
     'supertypes' => 
@@ -731,6 +586,76 @@ return array (
           3 => NULL,
         ),
       ),
+    ),
+  ),
+  'WebinoDev\\Test\\Autoloader' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+      '__construct' => 3,
+    ),
+    'parameters' => 
+    array (
+      '__construct' => 
+      array (
+        'WebinoDev\\Test\\Autoloader::__construct:0' => 
+        array (
+          0 => 'dir',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Test\\Autoloader::__construct:1' => 
+        array (
+          0 => 'namespace',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\MailTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\ScreenshotTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\ElementsTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
     ),
   ),
   'WebinoDev\\Test\\Selenium\\AbstractMailTestCase' => 
@@ -978,6 +903,84 @@ return array (
       ),
     ),
   ),
+  'WebinoDev\\Test\\Selenium\\AuthenticationTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\WebDriver\\TestWebDriver' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\WebDriver\\TestElement' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\WebDriver\\TestSession' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\WebDriver\\SimpleItem' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
+  'WebinoDev\\Test\\Selenium\\ElementTrait' => 
+  array (
+    'supertypes' => 
+    array (
+    ),
+    'instantiator' => NULL,
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
   'WebinoDev\\Test\\Selenium\\AbstractTestCase' => 
   array (
     'supertypes' => 
@@ -1217,32 +1220,6 @@ return array (
           3 => NULL,
         ),
       ),
-    ),
-  ),
-  'WebinoDev\\Test\\Selenium\\ElementTrait' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => NULL,
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
-  'WebinoDev\\Test\\Selenium\\AuthenticationTrait' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => NULL,
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
     ),
   ),
   'WebinoDev\\Test\\Selenium\\AbstractAuthenticationTestCase' => 
@@ -1490,7 +1467,7 @@ return array (
       ),
     ),
   ),
-  'WebinoDev\\Test\\Selenium\\ScreenshotTrait' => 
+  'WebinoDev\\Test\\PdfTrait' => 
   array (
     'supertypes' => 
     array (
@@ -1503,7 +1480,7 @@ return array (
     array (
     ),
   ),
-  'WebinoDev\\Test\\Selenium\\MailTrait' => 
+  'WebinoDev\\Exception\\ExceptionInterface' => 
   array (
     'supertypes' => 
     array (
@@ -1516,77 +1493,54 @@ return array (
     array (
     ),
   ),
-  'WebinoDev\\Test\\Selenium\\WebDriver\\SimpleItem' => 
+  'WebinoDev\\Exception\\DevelopmentException' => 
   array (
     'supertypes' => 
     array (
+      0 => 'WebinoDev\\Exception\\ExceptionInterface',
+      1 => 'RuntimeException',
+      2 => 'Exception',
     ),
     'instantiator' => '__construct',
     'methods' => 
     array (
+      '__construct' => 3,
     ),
     'parameters' => 
     array (
+      '__construct' => 
+      array (
+        'WebinoDev\\Exception\\DevelopmentException::__construct:0' => 
+        array (
+          0 => 'message',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+        'WebinoDev\\Exception\\DevelopmentException::__construct:1' => 
+        array (
+          0 => 'code',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+        'WebinoDev\\Exception\\DevelopmentException::__construct:2' => 
+        array (
+          0 => 'previous',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
     ),
   ),
-  'WebinoDev\\Test\\Selenium\\WebDriver\\TestSession' => 
+  'WebinoDev\\Module' => 
   array (
     'supertypes' => 
     array (
+      0 => 'Zend\\ModuleManager\\Feature\\ConfigProviderInterface',
     ),
     'instantiator' => '__construct',
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
-  'WebinoDev\\Test\\Selenium\\WebDriver\\TestWebDriver' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => '__construct',
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
-  'WebinoDev\\Test\\Selenium\\WebDriver\\TestElement' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => '__construct',
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
-  'WebinoDev\\Test\\Selenium\\ElementsTrait' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => NULL,
-    'methods' => 
-    array (
-    ),
-    'parameters' => 
-    array (
-    ),
-  ),
-  'WebinoDev\\Test\\MailTrait' => 
-  array (
-    'supertypes' => 
-    array (
-    ),
-    'instantiator' => NULL,
     'methods' => 
     array (
     ),
@@ -1760,6 +1714,20 @@ return array (
       ),
     ),
   ),
+  'WebinoDev\\Vfs\\StreamWrapper' => 
+  array (
+    'supertypes' => 
+    array (
+      0 => 'org\\bovigo\\vfs\\vfsStreamWrapper',
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+    ),
+    'parameters' => 
+    array (
+    ),
+  ),
   'WebinoDev\\Tester\\Bootstrap' => 
   array (
     'supertypes' => 
@@ -1784,18 +1752,50 @@ return array (
       ),
     ),
   ),
-  'WebinoDev\\Vfs\\StreamWrapper' => 
+  'WebinoDev\\Di\\Definition\\Generator' => 
   array (
     'supertypes' => 
     array (
-      0 => 'org\\bovigo\\vfs\\vfsStreamWrapper',
     ),
     'instantiator' => '__construct',
     'methods' => 
     array (
+      '__construct' => 3,
+      'setIgnore' => 0,
+      'setCompiler' => 0,
     ),
     'parameters' => 
     array (
+      '__construct' => 
+      array (
+        'WebinoDev\\Di\\Definition\\Generator::__construct:0' => 
+        array (
+          0 => 'dir',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setIgnore' => 
+      array (
+        'WebinoDev\\Di\\Definition\\Generator::setIgnore:0' => 
+        array (
+          0 => 'ignore',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setCompiler' => 
+      array (
+        'WebinoDev\\Di\\Definition\\Generator::setCompiler:0' => 
+        array (
+          0 => 'compiler',
+          1 => 'Zend\\Di\\Definition\\CompilerDefinition',
+          2 => true,
+          3 => NULL,
+        ),
+      ),
     ),
   ),
 );
