@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2015 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -36,9 +36,11 @@ trait MailTrait
         try {
             $this->readMail();
         } catch (\Exception $exc) {
-
+            $this->assertSame('No mail found', $exc->getMessage());
+            return $this;
         }
-        $this->assertSame('No mail found', $exc->getMessage());
+
+        $this->fail();
         return $this;
     }
 
