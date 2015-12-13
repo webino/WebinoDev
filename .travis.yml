@@ -16,6 +16,6 @@ after_success:
 env:
   global:
     - URI=http://localhost:8000/
-    - BROWSER=chrome
+    - BROWSER=firefox
     - GH_REF=github.com/webino/WebinoDev
     - secure: Q/YU5hwfkcGFKniOEAuXbEf/MXi5+l8LtIw5XYg963DLLhqCqZ55GshsZp1btL32ftM6K5qkZuxMLQQAlPA8LCKzte9KN8z/NIWsBlOJl6uv1fPBKD2BILlPBw11VYEaPexDMvOL1HRP3kxYNUmQ179Fg2WmnMjpB3OpuNkoBTE=
