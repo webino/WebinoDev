@@ -184,7 +184,6 @@ class AuthenticationTest extends AbstractTestCase
 #### Testing forms
 
 ```php
-use PHPWebDriver_WebDriverBy as By;
 use WebinoDev\Test\Selenium\AbstractTestCase;
 
 class HomeTest extends AbstractTestCase
@@ -216,7 +215,6 @@ class HomeTest extends AbstractTestCase
 #### Testing AJAX
 
 ```php
-use PHPWebDriver_WebDriverBy as By;
 use WebinoDev\Test\Selenium\AbstractTestCase;
 
 class HomeTest extends AbstractTestCase
