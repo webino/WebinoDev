@@ -1,240 +1,73 @@
 <?php 
 return array (
-  'WebinoDev\\Test\\PdfTestCase' => 
+  'Application\\Controller\\IndexController' => 
   array (
     'supertypes' => 
     array (
-      0 => 'PHPUnit_Framework_SelfDescribing',
-      1 => 'Countable',
-      2 => 'PHPUnit_Framework_Test',
-      3 => 'PHPUnit_Framework_TestCase',
-      4 => 'PHPUnit_Framework_Test',
-      5 => 'Countable',
-      6 => 'PHPUnit_Framework_SelfDescribing',
-      7 => 'PHPUnit_Framework_Assert',
+      0 => 'Zend\\Stdlib\\DispatchableInterface',
+      1 => 'Zend\\EventManager\\EventManagerAwareInterface',
+      2 => 'Zend\\EventManager\\EventsCapableInterface',
+      3 => 'Zend\\Mvc\\InjectApplicationEventInterface',
+      4 => 'Zend\\ServiceManager\\ServiceLocatorAwareInterface',
+      5 => 'Zend\\Mvc\\Controller\\AbstractActionController',
+      6 => 'Zend\\ServiceManager\\ServiceLocatorAwareInterface',
+      7 => 'Zend\\Mvc\\InjectApplicationEventInterface',
+      8 => 'Zend\\EventManager\\EventsCapableInterface',
+      9 => 'Zend\\EventManager\\EventManagerAwareInterface',
+      10 => 'Zend\\Stdlib\\DispatchableInterface',
+      11 => 'Zend\\Mvc\\Controller\\AbstractController',
+      12 => 'Zend\\Stdlib\\DispatchableInterface',
+      13 => 'Zend\\EventManager\\EventManagerAwareInterface',
+      14 => 'Zend\\EventManager\\EventsCapableInterface',
+      15 => 'Zend\\Mvc\\InjectApplicationEventInterface',
+      16 => 'Zend\\ServiceManager\\ServiceLocatorAwareInterface',
     ),
     'instantiator' => '__construct',
     'methods' => 
     array (
-      '__construct' => 3,
-      'setExpectedException' => 0,
-      'setExpectedExceptionRegExp' => 0,
-      'setUseErrorHandler' => 0,
-      'setName' => 0,
-      'setDependencies' => 0,
-      'setDependencyInput' => 0,
-      'setDisallowChangesToGlobalState' => 0,
-      'setBackupGlobals' => 0,
-      'setBackupStaticAttributes' => 0,
-      'setRunTestInSeparateProcess' => 0,
-      'setPreserveGlobalState' => 0,
-      'setInIsolation' => 0,
-      'setResult' => 0,
-      'setOutputCallback' => 0,
-      'setTestResultObject' => 0,
+      'setEventManager' => 3,
+      'setEvent' => 0,
+      'setServiceLocator' => 3,
+      'setPluginManager' => 0,
     ),
     'parameters' => 
     array (
-      '__construct' => 
+      'setEventManager' => 
       array (
-        'WebinoDev\\Test\\PdfTestCase::__construct:0' => 
+        'Application\\Controller\\IndexController::setEventManager:0' => 
         array (
-          0 => 'name',
-          1 => NULL,
-          2 => false,
-          3 => NULL,
-        ),
-        'WebinoDev\\Test\\PdfTestCase::__construct:1' => 
-        array (
-          0 => 'data',
-          1 => NULL,
-          2 => false,
-          3 => 
-          array (
-          ),
-        ),
-        'WebinoDev\\Test\\PdfTestCase::__construct:2' => 
-        array (
-          0 => 'dataName',
-          1 => NULL,
-          2 => false,
-          3 => '',
-        ),
-      ),
-      'setExpectedException' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setExpectedException:0' => 
-        array (
-          0 => 'exceptionName',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-        'WebinoDev\\Test\\PdfTestCase::setExpectedException:1' => 
-        array (
-          0 => 'exceptionMessage',
-          1 => NULL,
-          2 => false,
-          3 => '',
-        ),
-        'WebinoDev\\Test\\PdfTestCase::setExpectedException:2' => 
-        array (
-          0 => 'exceptionCode',
-          1 => NULL,
-          2 => false,
-          3 => NULL,
-        ),
-      ),
-      'setExpectedExceptionRegExp' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setExpectedExceptionRegExp:0' => 
-        array (
-          0 => 'exceptionName',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-        'WebinoDev\\Test\\PdfTestCase::setExpectedExceptionRegExp:1' => 
-        array (
-          0 => 'exceptionMessageRegExp',
-          1 => NULL,
-          2 => false,
-          3 => '',
-        ),
-        'WebinoDev\\Test\\PdfTestCase::setExpectedExceptionRegExp:2' => 
-        array (
-          0 => 'exceptionCode',
-          1 => NULL,
-          2 => false,
-          3 => NULL,
-        ),
-      ),
-      'setUseErrorHandler' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setUseErrorHandler:0' => 
-        array (
-          0 => 'useErrorHandler',
-          1 => NULL,
+          0 => 'eventManager',
+          1 => 'Zend\\EventManager\\EventManagerInterface',
           2 => true,
           3 => NULL,
         ),
       ),
-      'setName' => 
+      'setEvent' => 
       array (
-        'WebinoDev\\Test\\PdfTestCase::setName:0' => 
+        'Application\\Controller\\IndexController::setEvent:0' => 
         array (
-          0 => 'name',
-          1 => NULL,
+          0 => 'e',
+          1 => 'Zend\\EventManager\\EventInterface',
           2 => true,
           3 => NULL,
         ),
       ),
-      'setDependencies' => 
+      'setServiceLocator' => 
       array (
-        'WebinoDev\\Test\\PdfTestCase::setDependencies:0' => 
+        'Application\\Controller\\IndexController::setServiceLocator:0' => 
         array (
-          0 => 'dependencies',
-          1 => NULL,
+          0 => 'serviceLocator',
+          1 => 'Zend\\ServiceManager\\ServiceLocatorInterface',
           2 => true,
           3 => NULL,
         ),
       ),
-      'setDependencyInput' => 
+      'setPluginManager' => 
       array (
-        'WebinoDev\\Test\\PdfTestCase::setDependencyInput:0' => 
+        'Application\\Controller\\IndexController::setPluginManager:0' => 
         array (
-          0 => 'dependencyInput',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setDisallowChangesToGlobalState' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setDisallowChangesToGlobalState:0' => 
-        array (
-          0 => 'disallowChangesToGlobalState',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setBackupGlobals' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setBackupGlobals:0' => 
-        array (
-          0 => 'backupGlobals',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setBackupStaticAttributes' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setBackupStaticAttributes:0' => 
-        array (
-          0 => 'backupStaticAttributes',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setRunTestInSeparateProcess' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setRunTestInSeparateProcess:0' => 
-        array (
-          0 => 'runTestInSeparateProcess',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setPreserveGlobalState' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setPreserveGlobalState:0' => 
-        array (
-          0 => 'preserveGlobalState',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setInIsolation' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setInIsolation:0' => 
-        array (
-          0 => 'inIsolation',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setResult' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setResult:0' => 
-        array (
-          0 => 'result',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setOutputCallback' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setOutputCallback:0' => 
-        array (
-          0 => 'callback',
-          1 => NULL,
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setTestResultObject' => 
-      array (
-        'WebinoDev\\Test\\PdfTestCase::setTestResultObject:0' => 
-        array (
-          0 => 'result',
-          1 => 'PHPUnit_Framework_TestResult',
+          0 => 'plugins',
+          1 => 'Zend\\Mvc\\Controller\\PluginManager',
           2 => true,
           3 => NULL,
         ),
@@ -968,6 +801,247 @@ return array (
       ),
     ),
   ),
+  'WebinoDev\\Test\\PdfTestCase' => 
+  array (
+    'supertypes' => 
+    array (
+      0 => 'PHPUnit_Framework_SelfDescribing',
+      1 => 'Countable',
+      2 => 'PHPUnit_Framework_Test',
+      3 => 'PHPUnit_Framework_TestCase',
+      4 => 'PHPUnit_Framework_Test',
+      5 => 'Countable',
+      6 => 'PHPUnit_Framework_SelfDescribing',
+      7 => 'PHPUnit_Framework_Assert',
+    ),
+    'instantiator' => '__construct',
+    'methods' => 
+    array (
+      '__construct' => 3,
+      'setExpectedException' => 0,
+      'setExpectedExceptionRegExp' => 0,
+      'setUseErrorHandler' => 0,
+      'setName' => 0,
+      'setDependencies' => 0,
+      'setDependencyInput' => 0,
+      'setDisallowChangesToGlobalState' => 0,
+      'setBackupGlobals' => 0,
+      'setBackupStaticAttributes' => 0,
+      'setRunTestInSeparateProcess' => 0,
+      'setPreserveGlobalState' => 0,
+      'setInIsolation' => 0,
+      'setResult' => 0,
+      'setOutputCallback' => 0,
+      'setTestResultObject' => 0,
+    ),
+    'parameters' => 
+    array (
+      '__construct' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::__construct:0' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+        'WebinoDev\\Test\\PdfTestCase::__construct:1' => 
+        array (
+          0 => 'data',
+          1 => NULL,
+          2 => false,
+          3 => 
+          array (
+          ),
+        ),
+        'WebinoDev\\Test\\PdfTestCase::__construct:2' => 
+        array (
+          0 => 'dataName',
+          1 => NULL,
+          2 => false,
+          3 => '',
+        ),
+      ),
+      'setExpectedException' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setExpectedException:0' => 
+        array (
+          0 => 'exceptionName',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Test\\PdfTestCase::setExpectedException:1' => 
+        array (
+          0 => 'exceptionMessage',
+          1 => NULL,
+          2 => false,
+          3 => '',
+        ),
+        'WebinoDev\\Test\\PdfTestCase::setExpectedException:2' => 
+        array (
+          0 => 'exceptionCode',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setExpectedExceptionRegExp' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setExpectedExceptionRegExp:0' => 
+        array (
+          0 => 'exceptionName',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+        'WebinoDev\\Test\\PdfTestCase::setExpectedExceptionRegExp:1' => 
+        array (
+          0 => 'exceptionMessageRegExp',
+          1 => NULL,
+          2 => false,
+          3 => '',
+        ),
+        'WebinoDev\\Test\\PdfTestCase::setExpectedExceptionRegExp:2' => 
+        array (
+          0 => 'exceptionCode',
+          1 => NULL,
+          2 => false,
+          3 => NULL,
+        ),
+      ),
+      'setUseErrorHandler' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setUseErrorHandler:0' => 
+        array (
+          0 => 'useErrorHandler',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setName' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setName:0' => 
+        array (
+          0 => 'name',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setDependencies' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setDependencies:0' => 
+        array (
+          0 => 'dependencies',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setDependencyInput' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setDependencyInput:0' => 
+        array (
+          0 => 'dependencyInput',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setDisallowChangesToGlobalState' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setDisallowChangesToGlobalState:0' => 
+        array (
+          0 => 'disallowChangesToGlobalState',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setBackupGlobals' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setBackupGlobals:0' => 
+        array (
+          0 => 'backupGlobals',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setBackupStaticAttributes' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setBackupStaticAttributes:0' => 
+        array (
+          0 => 'backupStaticAttributes',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setRunTestInSeparateProcess' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setRunTestInSeparateProcess:0' => 
+        array (
+          0 => 'runTestInSeparateProcess',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setPreserveGlobalState' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setPreserveGlobalState:0' => 
+        array (
+          0 => 'preserveGlobalState',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setInIsolation' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setInIsolation:0' => 
+        array (
+          0 => 'inIsolation',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setResult' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setResult:0' => 
+        array (
+          0 => 'result',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setOutputCallback' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setOutputCallback:0' => 
+        array (
+          0 => 'callback',
+          1 => NULL,
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+      'setTestResultObject' => 
+      array (
+        'WebinoDev\\Test\\PdfTestCase::setTestResultObject:0' => 
+        array (
+          0 => 'result',
+          1 => 'PHPUnit_Framework_TestResult',
+          2 => true,
+          3 => NULL,
+        ),
+      ),
+    ),
+  ),
   'WebinoDev\\Test\\Selenium\\ElementTestCase' => 
   array (
     'supertypes' => 
@@ -1222,18 +1296,26 @@ return array (
     array (
     ),
   ),
-  'WebinoDev\\Test\\Selenium\\ElementsTestCase' => 
+  'WebinoDev\\Test\\Selenium\\AuthenticationTestCase' => 
   array (
     'supertypes' => 
     array (
       0 => 'PHPUnit_Framework_SelfDescribing',
       1 => 'Countable',
       2 => 'PHPUnit_Framework_Test',
-      3 => 'PHPUnit_Framework_TestCase',
+      3 => 'WebinoDev\\Test\\Selenium\\AbstractAuthenticationTestCase',
       4 => 'PHPUnit_Framework_Test',
       5 => 'Countable',
       6 => 'PHPUnit_Framework_SelfDescribing',
-      7 => 'PHPUnit_Framework_Assert',
+      7 => 'WebinoDev\\Test\\Selenium\\AbstractTestCase',
+      8 => 'PHPUnit_Framework_SelfDescribing',
+      9 => 'Countable',
+      10 => 'PHPUnit_Framework_Test',
+      11 => 'PHPUnit_Framework_TestCase',
+      12 => 'PHPUnit_Framework_Test',
+      13 => 'Countable',
+      14 => 'PHPUnit_Framework_SelfDescribing',
+      15 => 'PHPUnit_Framework_Assert',
     ),
     'instantiator' => '__construct',
     'methods' => 
@@ -1259,14 +1341,14 @@ return array (
     array (
       '__construct' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::__construct:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::__construct:0' => 
         array (
           0 => 'name',
           1 => NULL,
           2 => false,
           3 => NULL,
         ),
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::__construct:1' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::__construct:1' => 
         array (
           0 => 'data',
           1 => NULL,
@@ -1275,7 +1357,7 @@ return array (
           array (
           ),
         ),
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::__construct:2' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::__construct:2' => 
         array (
           0 => 'dataName',
           1 => NULL,
@@ -1285,21 +1367,21 @@ return array (
       ),
       'setExpectedException' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedException:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedException:0' => 
         array (
           0 => 'exceptionName',
           1 => NULL,
           2 => true,
           3 => NULL,
         ),
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedException:1' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedException:1' => 
         array (
           0 => 'exceptionMessage',
           1 => NULL,
           2 => false,
           3 => '',
         ),
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedException:2' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedException:2' => 
         array (
           0 => 'exceptionCode',
           1 => NULL,
@@ -1309,21 +1391,21 @@ return array (
       ),
       'setExpectedExceptionRegExp' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedExceptionRegExp:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedExceptionRegExp:0' => 
         array (
           0 => 'exceptionName',
           1 => NULL,
           2 => true,
           3 => NULL,
         ),
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedExceptionRegExp:1' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedExceptionRegExp:1' => 
         array (
           0 => 'exceptionMessageRegExp',
           1 => NULL,
           2 => false,
           3 => '',
         ),
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedExceptionRegExp:2' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedExceptionRegExp:2' => 
         array (
           0 => 'exceptionCode',
           1 => NULL,
@@ -1333,7 +1415,7 @@ return array (
       ),
       'setUseErrorHandler' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setUseErrorHandler:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setUseErrorHandler:0' => 
         array (
           0 => 'useErrorHandler',
           1 => NULL,
@@ -1343,7 +1425,7 @@ return array (
       ),
       'setName' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setName:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setName:0' => 
         array (
           0 => 'name',
           1 => NULL,
@@ -1353,7 +1435,7 @@ return array (
       ),
       'setDependencies' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setDependencies:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setDependencies:0' => 
         array (
           0 => 'dependencies',
           1 => NULL,
@@ -1363,7 +1445,7 @@ return array (
       ),
       'setDependencyInput' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setDependencyInput:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setDependencyInput:0' => 
         array (
           0 => 'dependencyInput',
           1 => NULL,
@@ -1373,7 +1455,7 @@ return array (
       ),
       'setDisallowChangesToGlobalState' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setDisallowChangesToGlobalState:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setDisallowChangesToGlobalState:0' => 
         array (
           0 => 'disallowChangesToGlobalState',
           1 => NULL,
@@ -1383,7 +1465,7 @@ return array (
       ),
       'setBackupGlobals' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setBackupGlobals:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setBackupGlobals:0' => 
         array (
           0 => 'backupGlobals',
           1 => NULL,
@@ -1393,7 +1475,7 @@ return array (
       ),
       'setBackupStaticAttributes' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setBackupStaticAttributes:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setBackupStaticAttributes:0' => 
         array (
           0 => 'backupStaticAttributes',
           1 => NULL,
@@ -1403,7 +1485,7 @@ return array (
       ),
       'setRunTestInSeparateProcess' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setRunTestInSeparateProcess:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setRunTestInSeparateProcess:0' => 
         array (
           0 => 'runTestInSeparateProcess',
           1 => NULL,
@@ -1413,7 +1495,7 @@ return array (
       ),
       'setPreserveGlobalState' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setPreserveGlobalState:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setPreserveGlobalState:0' => 
         array (
           0 => 'preserveGlobalState',
           1 => NULL,
@@ -1423,7 +1505,7 @@ return array (
       ),
       'setInIsolation' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setInIsolation:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setInIsolation:0' => 
         array (
           0 => 'inIsolation',
           1 => NULL,
@@ -1433,7 +1515,7 @@ return array (
       ),
       'setResult' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setResult:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setResult:0' => 
         array (
           0 => 'result',
           1 => NULL,
@@ -1443,7 +1525,7 @@ return array (
       ),
       'setOutputCallback' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setOutputCallback:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setOutputCallback:0' => 
         array (
           0 => 'callback',
           1 => NULL,
@@ -1453,7 +1535,7 @@ return array (
       ),
       'setTestResultObject' => 
       array (
-        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setTestResultObject:0' => 
+        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setTestResultObject:0' => 
         array (
           0 => 'result',
           1 => 'PHPUnit_Framework_TestResult',
@@ -1708,26 +1790,18 @@ return array (
       ),
     ),
   ),
-  'WebinoDev\\Test\\Selenium\\AuthenticationTestCase' => 
+  'WebinoDev\\Test\\Selenium\\ElementsTestCase' => 
   array (
     'supertypes' => 
     array (
       0 => 'PHPUnit_Framework_SelfDescribing',
       1 => 'Countable',
       2 => 'PHPUnit_Framework_Test',
-      3 => 'WebinoDev\\Test\\Selenium\\AbstractAuthenticationTestCase',
+      3 => 'PHPUnit_Framework_TestCase',
       4 => 'PHPUnit_Framework_Test',
       5 => 'Countable',
       6 => 'PHPUnit_Framework_SelfDescribing',
-      7 => 'WebinoDev\\Test\\Selenium\\AbstractTestCase',
-      8 => 'PHPUnit_Framework_SelfDescribing',
-      9 => 'Countable',
-      10 => 'PHPUnit_Framework_Test',
-      11 => 'PHPUnit_Framework_TestCase',
-      12 => 'PHPUnit_Framework_Test',
-      13 => 'Countable',
-      14 => 'PHPUnit_Framework_SelfDescribing',
-      15 => 'PHPUnit_Framework_Assert',
+      7 => 'PHPUnit_Framework_Assert',
     ),
     'instantiator' => '__construct',
     'methods' => 
@@ -1753,14 +1827,14 @@ return array (
     array (
       '__construct' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::__construct:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::__construct:0' => 
         array (
           0 => 'name',
           1 => NULL,
           2 => false,
           3 => NULL,
         ),
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::__construct:1' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::__construct:1' => 
         array (
           0 => 'data',
           1 => NULL,
@@ -1769,7 +1843,7 @@ return array (
           array (
           ),
         ),
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::__construct:2' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::__construct:2' => 
         array (
           0 => 'dataName',
           1 => NULL,
@@ -1779,21 +1853,21 @@ return array (
       ),
       'setExpectedException' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedException:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedException:0' => 
         array (
           0 => 'exceptionName',
           1 => NULL,
           2 => true,
           3 => NULL,
         ),
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedException:1' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedException:1' => 
         array (
           0 => 'exceptionMessage',
           1 => NULL,
           2 => false,
           3 => '',
         ),
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedException:2' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedException:2' => 
         array (
           0 => 'exceptionCode',
           1 => NULL,
@@ -1803,21 +1877,21 @@ return array (
       ),
       'setExpectedExceptionRegExp' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedExceptionRegExp:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedExceptionRegExp:0' => 
         array (
           0 => 'exceptionName',
           1 => NULL,
           2 => true,
           3 => NULL,
         ),
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedExceptionRegExp:1' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedExceptionRegExp:1' => 
         array (
           0 => 'exceptionMessageRegExp',
           1 => NULL,
           2 => false,
           3 => '',
         ),
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setExpectedExceptionRegExp:2' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setExpectedExceptionRegExp:2' => 
         array (
           0 => 'exceptionCode',
           1 => NULL,
@@ -1827,7 +1901,7 @@ return array (
       ),
       'setUseErrorHandler' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setUseErrorHandler:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setUseErrorHandler:0' => 
         array (
           0 => 'useErrorHandler',
           1 => NULL,
@@ -1837,7 +1911,7 @@ return array (
       ),
       'setName' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setName:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setName:0' => 
         array (
           0 => 'name',
           1 => NULL,
@@ -1847,7 +1921,7 @@ return array (
       ),
       'setDependencies' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setDependencies:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setDependencies:0' => 
         array (
           0 => 'dependencies',
           1 => NULL,
@@ -1857,7 +1931,7 @@ return array (
       ),
       'setDependencyInput' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setDependencyInput:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setDependencyInput:0' => 
         array (
           0 => 'dependencyInput',
           1 => NULL,
@@ -1867,7 +1941,7 @@ return array (
       ),
       'setDisallowChangesToGlobalState' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setDisallowChangesToGlobalState:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setDisallowChangesToGlobalState:0' => 
         array (
           0 => 'disallowChangesToGlobalState',
           1 => NULL,
@@ -1877,7 +1951,7 @@ return array (
       ),
       'setBackupGlobals' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setBackupGlobals:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setBackupGlobals:0' => 
         array (
           0 => 'backupGlobals',
           1 => NULL,
@@ -1887,7 +1961,7 @@ return array (
       ),
       'setBackupStaticAttributes' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setBackupStaticAttributes:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setBackupStaticAttributes:0' => 
         array (
           0 => 'backupStaticAttributes',
           1 => NULL,
@@ -1897,7 +1971,7 @@ return array (
       ),
       'setRunTestInSeparateProcess' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setRunTestInSeparateProcess:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setRunTestInSeparateProcess:0' => 
         array (
           0 => 'runTestInSeparateProcess',
           1 => NULL,
@@ -1907,7 +1981,7 @@ return array (
       ),
       'setPreserveGlobalState' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setPreserveGlobalState:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setPreserveGlobalState:0' => 
         array (
           0 => 'preserveGlobalState',
           1 => NULL,
@@ -1917,7 +1991,7 @@ return array (
       ),
       'setInIsolation' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setInIsolation:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setInIsolation:0' => 
         array (
           0 => 'inIsolation',
           1 => NULL,
@@ -1927,7 +2001,7 @@ return array (
       ),
       'setResult' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setResult:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setResult:0' => 
         array (
           0 => 'result',
           1 => NULL,
@@ -1937,7 +2011,7 @@ return array (
       ),
       'setOutputCallback' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setOutputCallback:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setOutputCallback:0' => 
         array (
           0 => 'callback',
           1 => NULL,
@@ -1947,7 +2021,7 @@ return array (
       ),
       'setTestResultObject' => 
       array (
-        'WebinoDev\\Test\\Selenium\\AuthenticationTestCase::setTestResultObject:0' => 
+        'WebinoDev\\Test\\Selenium\\ElementsTestCase::setTestResultObject:0' => 
         array (
           0 => 'result',
           1 => 'PHPUnit_Framework_TestResult',
@@ -2200,80 +2274,6 @@ return array (
         array (
           0 => 'result',
           1 => 'PHPUnit_Framework_TestResult',
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-    ),
-  ),
-  'Application\\Controller\\IndexController' => 
-  array (
-    'supertypes' => 
-    array (
-      0 => 'Zend\\Stdlib\\DispatchableInterface',
-      1 => 'Zend\\EventManager\\EventManagerAwareInterface',
-      2 => 'Zend\\EventManager\\EventsCapableInterface',
-      3 => 'Zend\\Mvc\\InjectApplicationEventInterface',
-      4 => 'Zend\\ServiceManager\\ServiceLocatorAwareInterface',
-      5 => 'Zend\\Mvc\\Controller\\AbstractActionController',
-      6 => 'Zend\\ServiceManager\\ServiceLocatorAwareInterface',
-      7 => 'Zend\\Mvc\\InjectApplicationEventInterface',
-      8 => 'Zend\\EventManager\\EventsCapableInterface',
-      9 => 'Zend\\EventManager\\EventManagerAwareInterface',
-      10 => 'Zend\\Stdlib\\DispatchableInterface',
-      11 => 'Zend\\Mvc\\Controller\\AbstractController',
-      12 => 'Zend\\Stdlib\\DispatchableInterface',
-      13 => 'Zend\\EventManager\\EventManagerAwareInterface',
-      14 => 'Zend\\EventManager\\EventsCapableInterface',
-      15 => 'Zend\\Mvc\\InjectApplicationEventInterface',
-      16 => 'Zend\\ServiceManager\\ServiceLocatorAwareInterface',
-    ),
-    'instantiator' => '__construct',
-    'methods' => 
-    array (
-      'setEventManager' => 3,
-      'setEvent' => 0,
-      'setServiceLocator' => 3,
-      'setPluginManager' => 0,
-    ),
-    'parameters' => 
-    array (
-      'setEventManager' => 
-      array (
-        'Application\\Controller\\IndexController::setEventManager:0' => 
-        array (
-          0 => 'eventManager',
-          1 => 'Zend\\EventManager\\EventManagerInterface',
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setEvent' => 
-      array (
-        'Application\\Controller\\IndexController::setEvent:0' => 
-        array (
-          0 => 'e',
-          1 => 'Zend\\EventManager\\EventInterface',
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setServiceLocator' => 
-      array (
-        'Application\\Controller\\IndexController::setServiceLocator:0' => 
-        array (
-          0 => 'serviceLocator',
-          1 => 'Zend\\ServiceManager\\ServiceLocatorInterface',
-          2 => true,
-          3 => NULL,
-        ),
-      ),
-      'setPluginManager' => 
-      array (
-        'Application\\Controller\\IndexController::setPluginManager:0' => 
-        array (
-          0 => 'plugins',
-          1 => 'Zend\\Mvc\\Controller\\PluginManager',
           2 => true,
           3 => NULL,
         ),
