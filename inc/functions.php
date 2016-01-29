@@ -66,3 +66,13 @@ function pr($subject) {
 function e($msg = '') {
     throw new \WebinoDev\Exception\DevelopmentException($msg);
 }
+
+/**
+ * For testing purposes only
+ *
+ * @return bool
+ */
+function isSelenium()
+{
+    return file_exists('tmp/common/selenium.lock');
+}
