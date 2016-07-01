@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014-2015 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -135,6 +135,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * Get raw source from URL
      *
      * @param string $url
+     * @param null $sessId
      * @return string
      */
     protected function source($url, $sessId = null)
@@ -152,7 +153,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function resolveHost()
     {
         $host = getenv('HOST');
-        empty($host) || $this::$webDriverHost = $host;
+        empty($host) or $this::$webDriverHost = $host;
         return sprintf($this::$webDriverHost, $this->resolvePort());
     }
 
@@ -164,7 +165,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function resolvePort()
     {
         $port = getenv('PORT');
-        empty($port) || $this::$webDriverPort = $port;
+        empty($port) or $this::$webDriverPort = $port;
         return $this::$webDriverPort;
     }
 
@@ -176,7 +177,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function resolveBrowser()
     {
         $browser = getenv('BROWSER');
-        empty($browser) || $this::$browser = $browser;
+        empty($browser) or $this::$browser = $browser;
 
         switch ($this::$browser) {
             case 'chromium':
@@ -224,7 +225,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * Opens URI and asserts not error
      *
      * @param string $path
-     * @return self
+     * @param string $caption
+     * @return $this
      */
     protected function openOk($path = '', $caption = 'Home')
     {
@@ -237,7 +239,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Assert that page is without errors
      *
-     * @return self
+     * @return $this
      */
     protected function assertNotError()
     {
@@ -258,7 +260,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      *
      * @param string $linkText
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     protected function clickLink($linkText, callable $callback = null)
     {
@@ -274,7 +276,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      *
      * @param string $linkText
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     protected function clickAjaxLink($linkText, callable $callback = null)
     {
@@ -291,7 +293,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param string|PHPWebDriver_WebDriverElement $name
      * @param string $value
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     protected function enterInput($name, $value, callable $callback = null)
     {
@@ -312,7 +314,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      *
      * @param string|PHPWebDriver_WebDriverElement $name
      * @param string $value
-     * @return self
+     * @return $this
      */
     protected function submitInput($name, $value)
     {
@@ -328,7 +330,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param string|PHPWebDriver_WebDriverElement $name
      * @param string $expectedValue
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     public function assertInput($name, $expectedValue, callable $callback = null)
     {
@@ -342,7 +344,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * Focus a browser window
      *
      * @param int $index
-     * @return self
+     * @return $this
      */
     protected function focusWindow($index)
     {
@@ -355,7 +357,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Close a browser window
      *
-     * @return self
+     * @return $this
      */
     protected function closeWindow()
     {
@@ -369,7 +371,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      *
      * @param callable $action
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     protected function waitFor(callable $action, callable $callback = null)
     {
@@ -384,7 +386,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * Depends on jQuery.
      *
      * @param float $delay Seconds
-     * @return self
+     * @return $this
      */
     protected function waitForAjax($delay = .1)
     {
