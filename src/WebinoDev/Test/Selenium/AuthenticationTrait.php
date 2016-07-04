@@ -67,7 +67,7 @@ trait AuthenticationTrait
      * @param string $name
      * @param string $value
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     abstract protected function enterInput($name, $value, callable $callback = null);
 
@@ -76,7 +76,7 @@ trait AuthenticationTrait
      *
      * @param callable $action
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     abstract protected function waitFor(callable $action, callable $callback = null);
 
@@ -140,7 +140,7 @@ trait AuthenticationTrait
      * Set login for authentication
      *
      * @param string $identity
-     * @return self
+     * @return $this
      */
     protected function setIdentity($identity)
     {
@@ -152,7 +152,7 @@ trait AuthenticationTrait
      * Set password for authentication
      *
      * @param string $credential
-     * @return self
+     * @return $this
      */
     protected function setCredential($credential)
     {
@@ -162,7 +162,7 @@ trait AuthenticationTrait
 
     /**
      * @param string $locator CSS selector
-     * @return self
+     * @return $this
      */
     protected function setAuthSuccessLocator($locator)
     {
@@ -173,7 +173,7 @@ trait AuthenticationTrait
     /**
      * Authenticate and check for success
      *
-     * @return self
+     * @return $this
      */
     protected function authenticate(callable $callback = null)
     {
@@ -191,7 +191,7 @@ trait AuthenticationTrait
      * Enters the password into input
      *
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     protected function enterIdentity(callable $callback = null)
     {
@@ -203,7 +203,7 @@ trait AuthenticationTrait
      * Enters the password into input
      *
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     protected function enterCredential(callable $callback = null)
     {
@@ -215,7 +215,7 @@ trait AuthenticationTrait
      * Check that we are authenticated successfuly
      *
      * @param callable $callback
-     * @return self
+     * @return $this
      */
     protected function waitToBeAuthenticated(callable $callback = null)
     {
