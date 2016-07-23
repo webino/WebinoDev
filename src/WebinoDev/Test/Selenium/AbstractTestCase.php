@@ -303,14 +303,16 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 
         /** @var PHPWebDriver_WebDriverElement $elm */
         $elm = $resolveElm();
-        $resolveElm()->clear();
-        $elm->sendKeys('');
-        sleep(1);
+        if (null === $callback) {
+            sleep(1);
+            $elm->clear();
+            $elm->sendKeys('');
+            sleep(1);
+        }
         $elm->clear();
         $elm->sendKeys($value);
         $this->attachScreenshot('Input ' . $name);
-        $callback and call_user_func($callback, $elm);
-        sleep(1);
+        is_callable($callback) and call_user_func($callback, $elm);
         return $this;
     }
 
