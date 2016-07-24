@@ -292,10 +292,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      *
      * @param string|PHPWebDriver_WebDriverElement $name
      * @param string $value
-     * @param callable $callback
+     * @param callable|false|null $callback
      * @return $this
      */
-    protected function enterInput($name, $value, callable $callback = null)
+    protected function enterInput($name, $value, $callback = null)
     {
         $resolveElm = function () use ($name) {
             return ($name instanceof PHPWebDriver_WebDriverElement) ? $name : $this->elementByName($name);

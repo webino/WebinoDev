@@ -66,10 +66,10 @@ trait AuthenticationTrait
      *
      * @param string $name
      * @param string $value
-     * @param callable $callback
+     * @param callable|false|null $callback
      * @return $this
      */
-    abstract protected function enterInput($name, $value, callable $callback = null);
+    abstract protected function enterInput($name, $value, $callback = null);
 
     /**
      * Wait for something, then do something else
