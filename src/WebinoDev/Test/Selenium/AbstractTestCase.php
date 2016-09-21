@@ -288,6 +288,18 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param string $name
+     * @param string $value
+     * @return $this
+     */
+    protected function clickSelect($name, $value)
+    {
+        $selector = sprintf('select[name="%s"] option[value="%s"]', $name, $value);
+        $this->elementByCssSelector($selector)->click();
+        return $this;
+    }
+
+    /**
      * Enters the input value
      *
      * @param string|PHPWebDriver_WebDriverElement $name
