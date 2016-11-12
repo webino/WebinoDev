@@ -256,6 +256,20 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @return bool
+     */
+    public function is404()
+    {
+        $url = $this->session->url();
+        $headers = get_headers($url);
+        if (empty($headers[0])) {
+            return true;
+        }
+
+        return 'HTTP/1.0 404 Not Found' === $headers[0];
+    }
+
+    /**
      * Clicks on a link
      *
      * @param string $linkText
