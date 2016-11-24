@@ -15,7 +15,7 @@ Module to ease development of the Webino modules.
 ## Features
 
 - Utility functions
-- Smart dependency injection definition generator
+- Smart dependency injection definition generator (deprecated)
 - DOM testing
 - Mail testing
 - Selenium abstract tests testing
@@ -24,11 +24,12 @@ Module to ease development of the Webino modules.
   - Forms testing
   - Ajax testing
   - Screenshots
+  - Video debug notifications support
 - Fixed Assetic\Cache\FilesystemCache file permissions with umask
 
 ## Requirements
 
-- PHP 5.4
+- PHP 5.6
 - ZendFramework 2
 
 ## Setup
@@ -352,6 +353,10 @@ class AbstractSeleniumTestCaseTest extends \PHPUnit_Framework_TestCase
         $this->object->session = $this->getWebDriverSession();
     }
 ```
+
+## TODO
+
+- Docs debug notifies support
 
 ## Development
 

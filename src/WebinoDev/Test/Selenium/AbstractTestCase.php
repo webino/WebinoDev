@@ -9,6 +9,7 @@
 
 namespace WebinoDev\Test\Selenium;
 
+use Exception;
 use PHPWebDriver_WebDriver;
 use PHPWebDriver_WebDriverWait as Wait;
 use PHPWebDriver_WebDriverElement;
@@ -21,6 +22,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 {
     use ElementTrait;
     use ElementsTrait;
+    use NotifyTrait;
     use ScreenshotTrait;
 
     /**
@@ -70,15 +72,29 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->uri       = $this->resolveUri();
         $this->webDriver = new PHPWebDriver_WebDriver($this->resolveHost());
         $this->session   = $this->webDriver->session($this->resolveBrowser(), $this->resolveCapabilities());
+
+        // TODO more window sizes
+        //$this->session->window()->postSize(['width' => 1280, 'height' => 720]);
+        $this->session->window()->postSize(['width' => 1920, 'height' => 1080]);
     }
 
     /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
+     * @return void
      */
     protected function tearDown()
     {
+        $this->hasFailed() or $this->session->close();
+    }
+
+    /**
+     * @param Exception $exc
+     * @throws Exception
+     */
+    protected function onNotSuccessfulTest(Exception $exc)
+    {
+        $this->notifyError($exc);
         $this->session->close();
+        parent::onNotSuccessfulTest($exc);
     }
 
     /**
@@ -98,6 +114,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param string $bin
      * @return string
      */
     protected function setBrowserBin($bin)
@@ -109,7 +126,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @return \PHPWebDriver_WebDriverSession
      */
-    protected function getSession()
+    public function getSession()
     {
         return $this->session;
     }
@@ -141,7 +158,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function source($url, $sessId = null)
     {
         $sid = $sessId ? $sessId : $this->getSessionId();
-        $opts = ['http' => ['header'=> 'Cookie: PHPSESSID=' . $sid ."\r\n"]];
+        $opts = ['http' => ['header' => 'Cookie: PHPSESSID=' . $sid ."\r\n"]];
         return file_get_contents($url, false, stream_context_create($opts));
     }
 
@@ -222,6 +239,16 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param float $sec
+     * @return $this
+     */
+    protected function sleep($sec)
+    {
+        sleep($sec);
+        return $this;
+    }
+
+    /**
      * Opens URI and asserts not error
      *
      * @param string $path
@@ -231,6 +258,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function openOk($path = '', $caption = 'Home')
     {
         $this->session->open($this->uri . $path);
+        $this->debugNotify($caption);
         $this->attachScreenshot($caption);
         $this->assertNotError();
         return $this;
@@ -302,15 +330,34 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param string $class
+     * @return $this
+     */
+    protected function clickByClass($class)
+    {
+        $this->elementByClassName($class)->click();
+        return $this;
+    }
+
+    /**
      * @param string $name
      * @param string $value
      * @return $this
+     * @deprecated use getSelect()
      */
     protected function clickSelect($name, $value)
     {
         $selector = sprintf('select[name="%s"] option[value="%s"]', $name, $value);
         $this->elementByCssSelector($selector)->click();
         return $this;
+    }
+
+    /**
+     * @return WebDriver\Select
+     */
+    protected function getSelect($name)
+    {
+        return new WebDriver\Select($this->elementByName($name));
     }
 
     /**
