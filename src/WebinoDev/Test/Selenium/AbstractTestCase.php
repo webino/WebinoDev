@@ -242,7 +242,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @param float $sec
      * @return $this
      */
-    protected function sleep($sec)
+    protected function sleep($sec = 2.0)
     {
         sleep($sec);
         return $this;
