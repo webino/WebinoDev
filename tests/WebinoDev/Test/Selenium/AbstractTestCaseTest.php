@@ -82,7 +82,8 @@ class AbstractTestCaseTest extends AbstractTestCase
 
         putenv('URI=test-uri-' . __METHOD__);
         $this->object->setUp();
-        $this->getWebDriverSession()->expects($this->once())
+        $this->getWebDriverSession()
+            ->expects($this->once())
             ->method('getCookie')
             ->with('PHPSESSID')
             ->will($this->returnValue($sess));
@@ -103,7 +104,8 @@ class AbstractTestCaseTest extends AbstractTestCase
 
         putenv('URI=test-uri-' . __METHOD__);
         $this->object->setUp();
-        $this->getWebDriverSession()->expects($this->once())
+        $this->getWebDriverSession()
+            ->expects($this->once())
             ->method('url')
             ->will($this->returnValue($url));
 
@@ -118,8 +120,8 @@ class AbstractTestCaseTest extends AbstractTestCase
     {
         putenv('URI=test-uri-' . __METHOD__);
         $this->object->setUp();
-        $this->assertInstanceOf('WebinoDev\Test\Selenium\WebDriver\TestWebDriver', $this->object->webDriver);
-        $this->assertInstanceOf('WebinoDev\Test\Selenium\WebDriver\TestSession', $this->object->session);
+        $this->assertInstanceOf(WebDriver\TestWebDriver::class, $this->object->webDriver);
+        $this->assertInstanceOf(WebDriver\TestSession::class, $this->object->session);
         $this->assertSame($this->getWebDriverSession(), $this->object->session);
     }
 
@@ -207,6 +209,7 @@ class AbstractTestCaseTest extends AbstractTestCase
 
     /**
      * @Title("Assertion for page error works")
+     * @covers WebinoDev\Test\Selenium\AbstractTestCase::open
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::openOk
      */
     public function testOpenOk()
@@ -214,11 +217,17 @@ class AbstractTestCaseTest extends AbstractTestCase
         $uri  = 'test-uri-' . __METHOD__;
         $path = 'test/page/path';
 
-        $this->getWebDriverSession()->expects($this->once())
+        $this->getWebDriverSession()
+            ->expects($this->once())
             ->method('open')
             ->with($uri . $path);
 
-        $this->getWebDriverSession()->expects($this->once())
+        $this->getWebDriverSession()
+            ->expects($this->once())
+            ->method('execute');
+
+        $this->getWebDriverSession()
+            ->expects($this->once())
             ->method('title')
             ->will($this->returnValue(''));
 
@@ -305,11 +314,6 @@ class AbstractTestCaseTest extends AbstractTestCase
         $element->expects($this->once())
             ->method('click');
 
-//        $this->getWebDriverSession()
-//            ->expects($this->once())
-//            ->method('execute')
-//            ->will($this->returnValue(true));
-
         $this->getWebDriverSession()
             ->expects($this->exactly(2))
             ->method('execute')
@@ -375,7 +379,7 @@ class AbstractTestCaseTest extends AbstractTestCase
             ->method('sendKeys')
             ->with($value);
 
-        $callback = $this->getMock('WebinoDev\Test\Selenium\TestCallback');
+        $callback = $this->getMock(TestCallback::class);
         $callback->expects($this->once())
             ->method('__invoke')
             ->with($elm);
@@ -392,7 +396,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     {
         $name  = 'test_name';
         $value = 'test_value';
-        $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+        $elm   = $this->getMock(WebDriver\TestElement::class);
 
         $this->getWebDriverSession()->expects($this->once())
             ->method('element')
@@ -416,7 +420,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     {
         $name  = 'test_name';
         $value = 'test_value';
-        $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+        $elm   = $this->getMock(WebDriver\TestElement::class);
 
         $this->getWebDriverSession()->expects($this->once())
             ->method('element')
@@ -428,7 +432,7 @@ class AbstractTestCaseTest extends AbstractTestCase
             ->with('value')
             ->will($this->returnValue($value));
 
-        $callback = $this->getMock('WebinoDev\Test\Selenium\TestCallback');
+        $callback = $this->getMock(TestCallback::class);
         $callback->expects($this->once())
             ->method('__invoke')
             ->with($elm);
@@ -443,7 +447,7 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testWaitFor()
     {
-        $action = $this->getMock('WebinoDev\Test\Selenium\TestCallback');
+        $action = $this->getMock(TestCallback::class);
         $action->expects($this->once())
             ->method('__invoke')
             ->will($this->returnValue(true));
@@ -457,14 +461,14 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testWaitForWithCallback()
     {
-        $elm = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+        $elm = $this->getMock(WebDriver\TestElement::class);
 
-        $action = $this->getMock('WebinoDev\Test\Selenium\TestCallback');
+        $action = $this->getMock(TestCallback::class);
         $action->expects($this->once())
             ->method('__invoke')
             ->will($this->returnValue($elm));
 
-        $callback = $this->getMock('WebinoDev\Test\Selenium\TestCallback');
+        $callback = $this->getMock(TestCallback::class);
         $callback->expects($this->once())
             ->method('__invoke')
             ->with($elm);

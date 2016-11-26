@@ -16,19 +16,29 @@ namespace WebinoDev\Test\Selenium\WebDriver;
 interface SessionInterface
 {
     /**
-     *
+     * @return string
      */
     public function url();
 
     /**
-     *
+     * @return string
      */
     public function title();
 
     /**
-     *
+     * @return WindowInterface
+     */
+    public function window();
+
+    /**
+     * @return string
      */
     public function source();
+
+    /**
+     * @return string
+     */
+    public function screenshot();
 
     /**
      * @param array $args

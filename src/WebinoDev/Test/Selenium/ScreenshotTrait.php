@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -20,15 +20,13 @@ trait ScreenshotTrait
 
     /**
      * @return string
-     * @todo phppmd issue https://github.com/phpmd/phpmd/issues/153
      */
-    //abstract protected function getBrowser();
+    abstract protected function getBrowser();
 
     /**
-     * @return \PHPWebDriver_WebDriverSession
-     * @todo phppmd issue https://github.com/phpmd/phpmd/issues/153
+     * @return \PHPWebDriver_WebDriverSession|WebDriver\SessionInterface
      */
-    //abstract protected function getSession();
+    abstract protected function getSession();
 
     /**
      * @return string
@@ -43,10 +41,10 @@ trait ScreenshotTrait
     }
 
     /**
-     * @param string $caption
+     * @param string|null $caption
      * @return $this
      */
-    protected function attachScreenshot($caption = '')
+    protected function takeScreenshot($caption = null)
     {
         $data = $this->screenshot();
         if (empty($data)) {
@@ -58,5 +56,16 @@ trait ScreenshotTrait
         $this->addAttachment($path, $caption, 'image/png');
 
         return $this;
+    }
+
+    /**
+     * @param string|null $caption
+     * @return ScreenshotTrait
+     * @todo remove
+     * @deprecated use takeScreenshot()
+     */
+    protected function attachScreenshot($caption = null)
+    {
+        return $this->takeScreenshot($caption);
     }
 }

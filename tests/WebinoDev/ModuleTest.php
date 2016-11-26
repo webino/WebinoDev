@@ -37,6 +37,10 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue(function_exists('d'));
         $this->assertTrue(function_exists('dd'));
+        $this->assertTrue(function_exists('p'));
+        $this->assertTrue(function_exists('pd'));
+        $this->assertTrue(function_exists('pr'));
+        $this->assertTrue(function_exists('e'));
     }
 
     /**

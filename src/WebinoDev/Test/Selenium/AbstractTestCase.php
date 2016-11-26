@@ -12,7 +12,7 @@ namespace WebinoDev\Test\Selenium;
 use Exception;
 use PHPWebDriver_WebDriver;
 use PHPWebDriver_WebDriverWait as Wait;
-use PHPWebDriver_WebDriverElement;
+use PHPWebDriver_WebDriverElement as WebDriverElement;
 use RuntimeException;
 
 /**
@@ -43,6 +43,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * @var string
      */
     protected static $webDriverBrowser = 'firefox';
+
+    /**
+     * @var string
+     */
+    protected static $webDriverScreen = '1920x1080';
 
     /**
      * @var string
@@ -78,9 +83,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         $this->webDriver = new PHPWebDriver_WebDriver($this->resolveHost());
         $this->session   = $this->webDriver->session($this->resolveBrowser(), $this->resolveCapabilities());
 
-        // TODO more window sizes
-        //$this->session->window()->postSize(['width' => 1280, 'height' => 720]);
-//        $this->session->window()->postSize(['width' => 1920, 'height' => 1080]);
+        $this->session->window()->postSize($this->resolveWindowSize());
     }
 
     /**
@@ -98,7 +101,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function onNotSuccessfulTest(Exception $exc)
     {
         $this->notifyError($exc);
-//        $this->session->close();
+        $this->session->close();
         parent::onNotSuccessfulTest($exc);
     }
 
@@ -252,6 +255,17 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @return array
+     */
+    protected function resolveWindowSize()
+    {
+        $screen = getenv('SCREEN');
+        empty($screen) and $screen = $this::$webDriverScreen;
+        $size = explode('x', $screen);
+        return ['width' => (int) $size[0], 'height' => (int) $size[1]];
+    }
+
+    /**
      * @param float $sec
      * @return $this
      */
@@ -265,16 +279,27 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      * Opens URI and asserts not error
      *
      * @param string $path
-     * @param string $caption
+     * @param string|null $caption
      * @return $this
      */
-    protected function openOk($path = '', $caption = 'Home')
+    protected function open($path = '', $caption = null)
     {
         $this->session->open($this->uri . $path);
         $this->debugNotify($caption);
-        $this->attachScreenshot($caption);
         $this->assertNotError();
         return $this;
+    }
+
+    /**
+     * @param string $path
+     * @param string $caption
+     * @return $this
+     * @todo remove
+     * @deprecated use open()
+     */
+    protected function openOk($path = '', $caption = 'Home')
+    {
+        return $this->open($path, $caption);
     }
 
     /**
@@ -321,7 +346,6 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $elm = $this->elementByLinkText($linkText);
         $elm->click();
-        $this->attachScreenshot('Click ' . $linkText);
         $callback and call_user_func($callback, $elm);
         return $this;
     }
@@ -336,9 +360,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function clickAjaxLink($linkText, callable $callback = null)
     {
         $this->clickLink($linkText, $callback);
-        $this->attachScreenshot('Click ' . $linkText);
         $this->waitForAjax();
-        $this->attachScreenshot($linkText);
         return $this;
     }
 
@@ -377,7 +399,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Enters the input value
      *
-     * @param string|PHPWebDriver_WebDriverElement $name
+     * @param string|WebDriverElement $name
      * @param string $value
      * @param callable|false|null $callback
      * @return $this
@@ -386,14 +408,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     {
         $resolveElm = function () use ($name) {
             if ($name instanceof WebDriver\ElementInterface
-                || $name instanceof PHPWebDriver_WebDriverElement
+                || $name instanceof WebDriverElement
             ) {
                 return $name;
             }
             return $this->elementByName($name);
         };
 
-        /** @var PHPWebDriver_WebDriverElement $elm */
+        /** @var WebDriverElement|WebDriver\ElementInterface $elm */
         $elm = $resolveElm();
         if (null === $callback) {
             $this->sleep(1);
@@ -403,7 +425,6 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
         }
         $elm->clear();
         $elm->sendKeys($value);
-        $this->attachScreenshot('Input ' . $name);
         is_callable($callback) and call_user_func($callback, $elm);
         return $this;
     }
@@ -411,13 +432,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Submit the input value
      *
-     * @param string|PHPWebDriver_WebDriverElement $name
+     * @param string|WebDriverElement $name
      * @param string $value
      * @return $this
      */
     protected function submitInput($name, $value)
     {
         $this->enterInput($name, $value, function ($elm) {
+            /** @var $elm WebDriver\ElementInterface */
             $elm->submit();
         });
         return $this;
@@ -426,14 +448,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Assert that input value is same than expected
      *
-     * @param string|PHPWebDriver_WebDriverElement $name
+     * @param string|WebDriverElement|WebDriver\ElementInterface $name
      * @param string $expectedValue
      * @param callable $callback
      * @return $this
      */
     public function assertInput($name, $expectedValue, callable $callback = null)
     {
-        $elm = ($name instanceof PHPWebDriver_WebDriverElement) ? $name : $this->elementByName($name);
+        $elm = ($name instanceof WebDriverElement) ? $name : $this->elementByName($name);
         $this->assertSame($expectedValue, $elm->attribute('value'));
         $callback and call_user_func($callback, $elm);
         return $this;
@@ -468,8 +490,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * Wait for something, then do something else
      *
-     * @param callable $action
-     * @param callable $callback
+     * @param callable|object $action
+     * @param callable|object $callback
      * @return $this
      */
     protected function waitFor(callable $action, callable $callback = null)

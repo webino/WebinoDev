@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -21,14 +21,13 @@ trait ElementsTrait
      *
      * @return \PHPWebDriver_WebDriverSession
      */
-    // TODO uncomment, https://github.com/phpmd/phpmd/issues/153
-    // abstract protected function getSession();
+    abstract protected function getSession();
 
     /**
      * Returns page elements by class name
      *
      * @param string $className
-     * @return \PHPWebDriver_WebDriverElement[]
+     * @return \PHPWebDriver_WebDriverElement[]|WebDriver\ElementInterface[]
      */
     protected function elementsByClassName($className)
     {
@@ -39,7 +38,7 @@ trait ElementsTrait
      * Returns page elements by CSS selector
      *
      * @param string $selector
-     * @return \PHPWebDriver_WebDriverElement[]
+     * @return \PHPWebDriver_WebDriverElement[]|WebDriver\ElementInterface[]
      */
     protected function elementsByCssSelector($selector)
     {
@@ -50,7 +49,7 @@ trait ElementsTrait
      * Returns page elements by ID
      *
      * @param string $id
-     * @return \PHPWebDriver_WebDriverElement[]
+     * @return \PHPWebDriver_WebDriverElement[]|WebDriver\ElementInterface[]
      */
     protected function elementsById($id)
     {
@@ -61,7 +60,7 @@ trait ElementsTrait
      * Returns page elements by link text
      *
      * @param string $text
-     * @return \PHPWebDriver_WebDriverElement[]
+     * @return \PHPWebDriver_WebDriverElement[]|WebDriver\ElementInterface[]
      */
     protected function elementsByLinkText($text)
     {
@@ -72,7 +71,7 @@ trait ElementsTrait
      * Returns page elements by its name
      *
      * @param string $name
-     * @return \PHPWebDriver_WebDriverElement[]
+     * @return \PHPWebDriver_WebDriverElement[]|WebDriver\ElementInterface[]
      */
     protected function elementsByName($name)
     {
@@ -83,7 +82,7 @@ trait ElementsTrait
      * Returns page elements by its name
      *
      * @param string $name
-     * @return \PHPWebDriver_WebDriverElement[]
+     * @return \PHPWebDriver_WebDriverElement[]|WebDriver\ElementInterface[]
      */
     protected function elementsByPartialLinkText($name)
     {
@@ -94,7 +93,7 @@ trait ElementsTrait
      * Returns page elements by its tag name
      *
      * @param string $tag
-     * @return \PHPWebDriver_WebDriverElement[]
+     * @return \PHPWebDriver_WebDriverElement[]|WebDriver\ElementInterface[]
      */
     protected function elementsByTagName($tag)
     {
@@ -105,7 +104,7 @@ trait ElementsTrait
      * Returns page elements by XPath
      *
      * @param string $xpath
-     * @return \PHPWebDriver_WebDriverElement[]
+     * @return \PHPWebDriver_WebDriverElement[]|WebDriver\ElementInterface[]
      */
     protected function elementsByXpath($xpath)
     {

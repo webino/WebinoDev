@@ -24,7 +24,7 @@ class TestElement implements ElementInterface
     /**
      * {@inheritDoc}
      */
-    public function attribute()
+    public function attribute($name)
     {
     }
 
@@ -45,7 +45,7 @@ class TestElement implements ElementInterface
     /**
      * {@inheritDoc}
      */
-    public function sendKeys()
+    public function sendKeys($keys)
     {
     }
 

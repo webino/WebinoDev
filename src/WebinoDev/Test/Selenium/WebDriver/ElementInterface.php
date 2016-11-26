@@ -21,9 +21,10 @@ interface ElementInterface
     public function text();
 
     /**
-     *
+     * @param string $name
+     * @return string
      */
-    public function attribute();
+    public function attribute($name);
 
     /**
      *
@@ -36,9 +37,9 @@ interface ElementInterface
     public function clear();
 
     /**
-     *
+     * @param string $keys
      */
-    public function sendKeys();
+    public function sendKeys($keys);
 
     /**
      *

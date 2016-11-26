@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -41,7 +41,7 @@ class TestElementTest extends \PHPUnit_Framework_TestCase
      */
     public function testAttribute()
     {
-        $this->object->attribute();
+        $this->object->attribute('test');
     }
 
     /**
@@ -65,7 +65,7 @@ class TestElementTest extends \PHPUnit_Framework_TestCase
      */
     public function testSendKeys()
     {
-        $this->object->sendKeys();
+        $this->object->sendKeys('');
     }
 
     /**
