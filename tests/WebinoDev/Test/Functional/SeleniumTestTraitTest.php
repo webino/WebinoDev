@@ -3,12 +3,13 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
 namespace WebinoDev\Test\Functional;
 
+use WebinoDev\Test\Selenium\WebDriver\TestSession;
 use Yandex\Allure\Adapter\Annotation\Features;
 use Yandex\Allure\Adapter\Annotation\Title;
 
@@ -19,7 +20,7 @@ use Yandex\Allure\Adapter\Annotation\Title;
 class SeleniumTestTraitTest extends SeleniumTestTestCase
 {
     /**
-     * @var AbstractMailTestCase
+     * @var SeleniumTestTestCase
      */
     protected $object;
 
@@ -41,6 +42,6 @@ class SeleniumTestTraitTest extends SeleniumTestTestCase
     {
         $this->object->setUpWebDriver();
         $session = $this->object->getWebDriverSession();
-        $this->assertInstanceOf('WebinoDev\Test\Selenium\WebDriver\TestSession', $session);
+        $this->assertInstanceOf(TestSession::class, $session);
     }
 }

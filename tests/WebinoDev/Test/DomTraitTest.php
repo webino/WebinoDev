@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -19,7 +19,7 @@ use Yandex\Allure\Adapter\Annotation\Title;
 class DomTraitTest extends DomTestCase
 {
     /**
-     * @var AbstractTestCase
+     * @var DomTestCase
      */
     protected $object;
 

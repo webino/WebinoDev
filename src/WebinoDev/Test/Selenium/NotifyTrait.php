@@ -58,7 +58,7 @@ trait NotifyTrait
         $args  = '"' . $title . '", "' . $msg . '", ' . $timeout . ', "' . $type . '"';
         $cmd   = '("function" === typeof _debugNotify) && _debugNotify(' . $args . ');';
 
-        $this->getSession()->execute(['script' => $cmd, 'args' => []]);
+//        $this->getSession()->execute(['script' => $cmd, 'args' => []]);
         sleep($timeout / 1000);
         return $this;
     }

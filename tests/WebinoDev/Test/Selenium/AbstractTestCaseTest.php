@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -54,9 +54,8 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testGetBrowserDefault()
     {
-        $this::$browser = 'test-browser-' . __METHOD__;
         $browser = $this->object->getBrowser();
-        $this->assertSame($this::$browser, $browser);
+        $this->assertSame('firefox', $browser);
     }
 
     /**
@@ -156,7 +155,7 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testResolveDefaultHost()
     {
-        $expected = TestCase::$webDriverHost;
+        $expected = 'http://localhost:4444/wd/hub';
         $host = $this->object->resolveHost();
         $this->assertSame($expected, $host);
     }
@@ -179,7 +178,7 @@ class AbstractTestCaseTest extends AbstractTestCase
      */
     public function testResolveDefaultBrowser()
     {
-        $expected = TestCase::$browser;
+        $expected = TestCase::$webDriverBrowser;
         $host = $this->object->resolveBrowser();
         $this->assertSame($expected, $host);
     }
@@ -199,7 +198,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     /**
      * @Title("URI env var is required")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::resolveUri
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function testResolveUriExpectsUriEnv()
     {
@@ -254,7 +253,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     /**
      * @Title("Assertion for page error fails")
      * @covers WebinoDev\Test\Selenium\AbstractTestCase::assertNotError
-     * @expectedException PHPUnit_Framework_ExpectationFailedException
+     * @expectedException \PHPUnit_Framework_ExpectationFailedException
      */
     public function testAssertNotErrorScream()
     {
@@ -274,7 +273,7 @@ class AbstractTestCaseTest extends AbstractTestCase
     public function testClickLink()
     {
         $linkText = 'Link example';
-        $element  = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+        $element  = $this->getMock(WebDriver\TestElement::class);
 
         $this->getWebDriverSession()->expects($this->once())
             ->method('element')
@@ -295,9 +294,10 @@ class AbstractTestCaseTest extends AbstractTestCase
     public function testClickAjaxLink()
     {
         $linkText = 'Link example';
-        $element  = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+        $element  = $this->getMock(WebDriver\TestElement::class);
 
-        $this->getWebDriverSession()->expects($this->once())
+        $this->getWebDriverSession()
+            ->expects($this->once())
             ->method('element')
             ->with('link text', $linkText)
             ->will($this->returnValue($element));
@@ -305,9 +305,18 @@ class AbstractTestCaseTest extends AbstractTestCase
         $element->expects($this->once())
             ->method('click');
 
-        $this->getWebDriverSession()->expects($this->once())
+//        $this->getWebDriverSession()
+//            ->expects($this->once())
+//            ->method('execute')
+//            ->will($this->returnValue(true));
+
+        $this->getWebDriverSession()
+            ->expects($this->exactly(2))
             ->method('execute')
-            ->will($this->returnValue(true));
+            ->will($this->onConsecutiveCalls(
+                $this->returnValue(false),
+                $this->returnValue(true)
+            ));
 
         $this->object->session = $this->getWebDriverSession();
         $this->object->clickAjaxLink($linkText);
@@ -323,23 +332,21 @@ class AbstractTestCaseTest extends AbstractTestCase
         $value = 'test_value';
         $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
 
-        $this->getWebDriverSession()->expects($this->exactly(2))
+        $this->getWebDriverSession()
+            ->expects($this->once())
             ->method('element')
-            ->withConsecutive(
-                ['name', $name],
-                ['name', $name]
-            )
-            ->will($this->onConsecutiveCalls(
-                $this->returnValue($elm),
-                $this->returnValue($elm)
-            ));
+            ->with('name', $name)
+            ->will($this->returnValue($elm));
 
-        $elm->expects($this->once())
+        $elm->expects($this->exactly(2))
             ->method('clear');
 
-        $elm->expects($this->once())
+        $elm->expects($this->exactly(2))
             ->method('sendKeys')
-            ->with($value);
+            ->withConsecutive(
+                [''],
+                [$value]
+            );
 
         $this->object->session = $this->getWebDriverSession();
         $this->object->enterInput($name, $value);
@@ -353,18 +360,13 @@ class AbstractTestCaseTest extends AbstractTestCase
     {
         $name  = 'test_name';
         $value = 'test_value';
-        $elm   = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+        $elm   = $this->getMock(WebDriver\TestElement::class);
 
-        $this->getWebDriverSession()->expects($this->exactly(2))
+        $this->getWebDriverSession()
+            ->expects($this->once())
             ->method('element')
-            ->withConsecutive(
-                ['name', $name],
-                ['name', $name]
-            )
-            ->will($this->onConsecutiveCalls(
-                $this->returnValue($elm),
-                $this->returnValue($elm)
-            ));
+            ->with('name', $name)
+            ->will($this->returnValue($elm));
 
         $elm->expects($this->once())
             ->method('clear');

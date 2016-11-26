@@ -3,11 +3,13 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 namespace WebinoDev\Test\Functional;
 
+use \PHPUnit_Framework_MockObject_MockObject as MockObject;
+use WebinoDev\Test\Selenium\WebDriver\TestSession;
 use WebinoDev\Test\Selenium\WebDriver\TestWebDriver;
 use WebinoDev\Test\Selenium\WebDriver\SimpleItem;
 
@@ -19,17 +21,17 @@ trait SeleniumTestTrait
     /**
      * Setup Selenium WebDriver mock with session
      *
-     * @return self
+     * @return $this
      */
     protected function setUpWebDriver()
     {
-        TestWebDriver::$session = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestSession');
+        TestWebDriver::$session = $this->getMock(TestSession::class);
         TestWebDriver::$session->expects($this->any())
             ->method('window')
             ->will($this->returnValue(new SimpleItem));
 
-        class_exists('PHPWebDriver_WebDriver', false) or
-            class_alias('WebinoDev\Test\Selenium\WebDriver\TestWebDriver', 'PHPWebDriver_WebDriver');
+        class_exists('PHPWebDriver_WebDriver', false)
+            or class_alias(TestWebDriver::class, 'PHPWebDriver_WebDriver');
 
         return $this;
     }
@@ -37,7 +39,7 @@ trait SeleniumTestTrait
     /**
      * Returns Selenium WebDriver session mock
      *
-     * @return PHPWebDriver_Session
+     * @return \PHPWebDriver_WebDriverSession|\WebinoDev\Test\Selenium\WebDriver\SessionInterface|MockObject
      */
     protected function getWebDriverSession()
     {

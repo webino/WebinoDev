@@ -8,6 +8,7 @@
  */
 
 namespace WebinoDev\Test\Selenium\WebDriver;
+
 use PHPWebDriver_Support_WebDriverSelect;
 
 /**

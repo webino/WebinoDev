@@ -42,7 +42,12 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @var string
      */
-    protected static $browser = 'firefox';
+    protected static $webDriverBrowser = 'firefox';
+
+    /**
+     * @var string
+     */
+    protected $browser;
 
     /**
      * @var string
@@ -60,7 +65,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected $webDriver;
 
     /**
-     * @var \PHPWebDriver_WebDriverSession
+     * @var \PHPWebDriver_WebDriverSession|WebDriver\SessionInterface
      */
     protected $session;
 
@@ -75,7 +80,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 
         // TODO more window sizes
         //$this->session->window()->postSize(['width' => 1280, 'height' => 720]);
-        $this->session->window()->postSize(['width' => 1920, 'height' => 1080]);
+//        $this->session->window()->postSize(['width' => 1920, 'height' => 1080]);
     }
 
     /**
@@ -93,7 +98,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function onNotSuccessfulTest(Exception $exc)
     {
         $this->notifyError($exc);
-        $this->session->close();
+//        $this->session->close();
         parent::onNotSuccessfulTest($exc);
     }
 
@@ -102,7 +107,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function getBrowser()
     {
-        return $this::$browser;
+        return $this->browser ? $this->browser : $this::$webDriverBrowser;
     }
 
     /**
@@ -124,7 +129,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPWebDriver_WebDriverSession
+     * @return \PHPWebDriver_WebDriverSession|WebDriver\SessionInterface
      */
     public function getSession()
     {
@@ -170,8 +175,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function resolveHost()
     {
         $host = getenv('HOST');
-        empty($host) or $this::$webDriverHost = $host;
-        return sprintf($this::$webDriverHost, $this->resolvePort());
+        empty($host) and $host = $this::$webDriverHost;
+        return sprintf($host, $this->resolvePort());
     }
 
     /**
@@ -182,8 +187,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function resolvePort()
     {
         $port = getenv('PORT');
-        empty($port) or $this::$webDriverPort = $port;
-        return $this::$webDriverPort;
+        empty($port) and $port = $this::$webDriverPort;
+        return $port;
     }
 
     /**
@@ -194,11 +199,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function resolveBrowser()
     {
         $browser = getenv('BROWSER');
-        empty($browser) or $this::$browser = $browser;
+        empty($browser) and $browser = $this::$webDriverBrowser;
 
-        switch ($this::$browser) {
+        switch ($browser) {
             case 'chromium':
-                $this::$browser = 'chrome';
+                $browser = 'chrome';
                 $this->setBrowserBin('/usr/bin/chromium-browser');
                 break;
             case 'firefox':
@@ -206,7 +211,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
                 break;
         }
 
-        return $this::$browser;
+        return $this->browser = $browser;
     }
 
     /**
@@ -361,6 +366,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param string $name
      * @return WebDriver\Select
      */
     protected function getSelect($name)
@@ -379,16 +385,21 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function enterInput($name, $value, $callback = null)
     {
         $resolveElm = function () use ($name) {
-            return ($name instanceof PHPWebDriver_WebDriverElement) ? $name : $this->elementByName($name);
+            if ($name instanceof WebDriver\ElementInterface
+                || $name instanceof PHPWebDriver_WebDriverElement
+            ) {
+                return $name;
+            }
+            return $this->elementByName($name);
         };
 
         /** @var PHPWebDriver_WebDriverElement $elm */
         $elm = $resolveElm();
         if (null === $callback) {
-            sleep(1);
+            $this->sleep(1);
             $elm->clear();
             $elm->sendKeys('');
-            sleep(1);
+            $this->sleep(1);
         }
         $elm->clear();
         $elm->sendKeys($value);

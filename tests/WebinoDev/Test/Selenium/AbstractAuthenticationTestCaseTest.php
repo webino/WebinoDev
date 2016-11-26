@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -61,7 +61,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
     /**
      * @Title("Identity env var is required")
      * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getIdentity
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function testGetIdentityExpectsIdentityEnv()
     {
@@ -96,7 +96,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
     /**
      * @Title("Credential env var is required")
      * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getCredential
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function testGetCredentialExpectsCredentialEnv()
     {
@@ -119,7 +119,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
     /**
      * @Title("Required to call setAuthSuccessLocator() before authentication()")
      * @covers WebinoDev\Test\Selenium\AuthenticationTrait::getAuthSuccessLocator
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function testGetAuthSuccessLocatorEmptyThrowsException()
     {
@@ -128,6 +128,8 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
 
     /**
      * Setup authentication test prerequisites
+     *
+     * @return array
      */
     private function prepareAuthenticateTest()
     {
@@ -136,37 +138,40 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
         $credential = 'test-credential-' . __METHOD__;
         putenv('CREDENTIAL=' . $credential);
 
-        $identityElm    = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
-        $credentialElm  = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
-        $successElm     = $this->getMock('WebinoDev\Test\Selenium\WebDriver\TestElement');
+        $identityElm    = $this->getMock(WebDriver\TestElement::class);
+        $credentialElm  = $this->getMock(WebDriver\TestElement::class);
+        $successElm     = $this->getMock(WebDriver\TestElement::class);
         $successLocator = '.test-success';
 
-        $this->getWebDriverSession()->expects($this->exactly(9))
+        $this->getWebDriverSession()->expects($this->exactly(5))
             ->method('element')
             ->withConsecutive(
                 ['name', 'identity'],
-                ['name', 'identity'],
                 ['name', 'credential'],
-                ['name', 'credential'],
+                ['css selector', $successLocator],
                 ['css selector', $successLocator],
                 ['css selector', $successLocator]
             )
             ->will($this->onConsecutiveCalls(
                 $this->returnValue($identityElm),
-                $this->returnValue($identityElm),
-                $this->returnValue($credentialElm),
                 $this->returnValue($credentialElm),
                 $this->returnValue(false),
                 $this->returnValue(false),
-                $this->returnValue(false),
-                $this->returnValue(false),
-                $this->returnValue($successElm),
                 $this->returnValue($successElm)
             ));
 
-        $identityElm->expects($this->once())
+        $identityElm->expects($this->exactly(2))
+            ->method('clear');
+
+        $identityElm->expects($this->exactly(2))
             ->method('sendKeys')
-            ->with($identity);
+            ->withConsecutive(
+                [''],
+                [$identity]
+            );
+
+        $credentialElm->expects($this->once())
+            ->method('clear');
 
         $credentialElm->expects($this->once())
             ->method('sendKeys')
@@ -198,7 +203,7 @@ class AbstractAuthenticationTestCaseTest extends AbstractAuthenticationTestCase
     {
         $args = $this->prepareAuthenticateTest();
 
-        $callback = $this->getMock('WebinoDev\Test\Selenium\TestCallback');
+        $callback = $this->getMock(TestCallback::class);
         $callback->expects($this->once())
             ->method('__invoke')
             ->with($args[1]);

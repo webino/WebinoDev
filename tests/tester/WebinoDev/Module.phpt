@@ -16,5 +16,8 @@ require __DIR__ . '/../bootstrap.php';
 $module = new Module;
 $config = $module->getConfig();
 
-
 Assert::true(is_array($config));
+Assert::true(function_exists('p'));
+Assert::true(function_exists('pd'));
+Assert::true(function_exists('d'));
+Assert::true(function_exists('dd'));

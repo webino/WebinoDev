@@ -23,7 +23,7 @@ Module to ease development of the Webino modules.
   - Authentication testing
   - Forms testing
   - Ajax testing
-  - Screenshots
+  - Browser screenshots
   - Video debug notifications support
 - Fixed Assetic\Cache\FilesystemCache file permissions with umask
 
@@ -356,7 +356,11 @@ class AbstractSeleniumTestCaseTest extends \PHPUnit_Framework_TestCase
 
 ## TODO
 
+- Use Facebook WebDriver instead of Element34
+- Use Nette\Tester instead of PHPUnit as tests runner
 - Docs debug notifies support
+- Upgrade Zend MVC
+- Upgrade Zend Mail
 
 ## Development
 

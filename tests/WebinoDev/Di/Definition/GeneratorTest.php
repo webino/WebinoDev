@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2016 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -16,6 +16,8 @@ use Yandex\Allure\Adapter\Annotation\Title;
 /**
  * @Title("Dependency injection definition generator test")
  * @Features({"Dependency Injection"})
+ * @TODO remove, DI definition deprecated
+ * @deprecated
  */
 class GeneratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -53,7 +55,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param string $dir
+     * @param string $root
      */
     private function createFilesystemMockup($root)
     {
