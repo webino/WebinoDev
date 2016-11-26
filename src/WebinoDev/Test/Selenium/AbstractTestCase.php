@@ -42,7 +42,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @var string
      */
-    protected static $browser = 'htmlunit';
+    protected static $browser = 'firefox';
 
     /**
      * @var string
@@ -201,6 +201,9 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
                 $this::$browser = 'chrome';
                 $this->setBrowserBin('/usr/bin/chromium-browser');
                 break;
+            case 'firefox':
+                $this->setBrowserBin('/var/lib/webino/firefox/firefox');
+                break;
         }
 
         return $this::$browser;
@@ -220,6 +223,11 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
                 $bin  = $this->getBrowserBin();
                 $bin and $opts+= ['binary' => $bin];
                 return ['chromeOptions' => $opts];
+            case 'firefox':
+                $opts = [];
+                $bin  = $this->getBrowserBin();
+                $bin and $opts+= ['firefox_binary' => $bin];
+                return $opts;
         }
         return [];
     }
