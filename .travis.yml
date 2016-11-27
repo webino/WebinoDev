@@ -14,7 +14,7 @@ before_script:
 script:
   - curl -s https://get.webino.org/support/travis/script | sh
 after_failure:
-  - cat /tmp/selenium/port-4444.log
+  - curl -s https://get.webino.org/support/travis/after-failure | sh
 after_success:
   - curl -s https://get.webino.org/support/travis/after-success | sh
 env:

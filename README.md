@@ -373,3 +373,5 @@ Learn [How to develop Webino modules](https://github.com/webino/Webino/wiki/How-
 ## Addendum
 
 Please, if you are interested in this Zend Framework module report any issues and don't hesitate to contribute.
+
+[Report a bug](https://github.com/webino/WebinoDev/issues) | [Fork me](https://github.com/webino/WebinoDev)
