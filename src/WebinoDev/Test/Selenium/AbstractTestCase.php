@@ -271,7 +271,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function sleep($sec = 2.0)
     {
-        sleep($sec);
+        $sec && sleep($sec);
         return $this;
     }
 
@@ -340,13 +340,15 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      *
      * @param string $linkText
      * @param callable $callback
+     * @param float $sleep
      * @return $this
      */
-    protected function clickLink($linkText, callable $callback = null)
+    protected function clickLink($linkText, callable $callback = null, $sleep = 2.0)
     {
         $elm = $this->elementByLinkText($linkText);
         $elm->click();
         $callback and call_user_func($callback, $elm);
+        $this->sleep($sleep);
         return $this;
     }
 
@@ -359,7 +361,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function clickAjaxLink($linkText, callable $callback = null)
     {
-        $this->clickLink($linkText, $callback);
+        $this->clickLink($linkText, $callback, 0);
         $this->waitForAjax();
         return $this;
     }

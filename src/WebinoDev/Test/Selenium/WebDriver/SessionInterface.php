@@ -16,6 +16,12 @@ namespace WebinoDev\Test\Selenium\WebDriver;
 interface SessionInterface
 {
     /**
+     * @param string $url
+     * @return string
+     */
+    public function open($url);
+
+    /**
      * @return string
      */
     public function url();
