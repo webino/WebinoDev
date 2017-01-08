@@ -2,10 +2,9 @@
 
 namespace WebinoDev\Config\App;
 
-use BjyProfiler\Db\Adapter\ProfilingAdapter;
-use BjyProfiler\Db\Profiler\Profiler;
 use WebinoDev\Assetic\Cache\FilesystemCache;
-use ZendDeveloperTools\Collector\DbCollector;
+use WebinoDev\Factory\ProfilingAdapterFactory;
+use Zend\Db\Adapter\Adapter;
 
 /**
  * Application local config
@@ -39,34 +38,8 @@ class Local
     {
         return array_replace_recursive(
             [
-                'di' => [
-                    'instance' => [
-                        'alias' => [
-                            'dbProfiler' => Profiler::class,
-                        ],
-                        Profiler::class    => ['parameters' => ['enabled' => 'true']],
-                        DbCollector::class => ['parameters' => ['profiler' => 'dbProfiler']],
-                    ],
-                ],
                 'service_manager' => [
-                    'factories' => [
-                        'defaultDb' => function ($services) {
-                            $config = $services->get('Config')['db'];
-                            if (empty($config)) {
-                                return null;
-                            }
-
-                            $profiler = $services->get('dbProfiler');
-                            if (class_exists(ProfilingAdapter::class)) {
-                                $adapter = new ProfilingAdapter($config);
-                                $adapter->setProfiler($profiler);
-                                $adapter->injectProfilingStatementPrototype();
-                            } else {
-                                $adapter = new Adapter($config);
-                            }
-                            return $adapter;
-                        },
-                    ],
+                    'factories' => [Adapter::class => ProfilingAdapterFactory::class],
                 ],
                 'view_manager' => [
                     'display_not_found_reason' => true,
