@@ -4,6 +4,7 @@ namespace WebinoDev\Config\App;
 
 use BjyProfiler\Db\Adapter\ProfilingAdapter;
 use BjyProfiler\Db\Profiler\Profiler;
+use WebinoDev\Assetic\Cache\FilesystemCache;
 use ZendDeveloperTools\Collector\DbCollector;
 
 /**
@@ -43,16 +44,8 @@ class Local
                         'alias' => [
                             'dbProfiler' => Profiler::class,
                         ],
-                        Profiler::class => [
-                            'parameters' => [
-                                'enabled' => 'true',
-                            ],
-                        ],
-                        DbCollector::class => [
-                            'parameters' => [
-                                'profiler' => 'dbProfiler',
-                            ],
-                        ],
+                        Profiler::class    => ['parameters' => ['enabled' => 'true']],
+                        DbCollector::class => ['parameters' => ['profiler' => 'dbProfiler']],
                     ],
                 ],
                 'service_manager' => [
@@ -82,16 +75,12 @@ class Local
                 'asset_manager' => [
                     'caching' => [
                         'default' => [
-                            'cache' => 'FilePath',
-                            'options' => [
-                                'dir' => $this->dir . '/../../public',
-                            ],
+                            'cache'   => 'FilePath',
+                            'options' => ['dir' => $this->dir . '/../../public'],
                         ],
                         'favicon.ico' => [
-                            'cache' => 'Filesystem',
-                            'options' => [
-                                'dir' => 'tmp/cache/common/assets',
-                            ],
+                            'cache'   => FilesystemCache::class,
+                            'options' => ['dir' => 'tmp/cache/common/assets'],
                         ],
                     ],
                 ],
