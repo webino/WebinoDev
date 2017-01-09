@@ -38,7 +38,8 @@
         "zendframework/zend-session": "2.*",
         "zendframework/zend-console": "2.*",
         "zendframework/zend-version": "2.*",
-        "kriswallsmith/assetic": "1.*"
+        "kriswallsmith/assetic": "1.*",
+        "phpunit/phpunit": "4.*"
     },
     "suggest": {
         "allure-framework/allure-phpunit": "Test reports",
@@ -61,7 +62,7 @@
     "extra": {
         "webino-devkit": {
             "ZendSkeletonApplication": "release-2.2.8",
-            "context": ["module", "auth", "zend"]
+            "context": ["module", "auth", "github", "zend"]
         }
     }
 }
