@@ -23,14 +23,12 @@ function createTestCase()
  */
 function createApp() {
 
-    // WebinoBase module support
+    // Webino support
     if (class_exists(BaseModulePath::class)) {
-        /** @noinspection PhpIncludeInspection */
-        require (new BaseModulePath) . '/inc/app.php';
+        return require (new BaseModulePath) . '/inc/app.php';
     }
 
-    // common initialization
-    /** @noinspection PhpIncludeInspection */
+    // Zend initialization
     return Application::init(require 'config/application.config.php');
 }
 
