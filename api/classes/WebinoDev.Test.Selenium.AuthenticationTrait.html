@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>WebinoDev</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">WebinoDev</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/WebinoDev.html">\WebinoDev</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">117</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1260726293"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1260726293" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1567851479"></a>
+                                <a href="../namespaces/WebinoDev.html" style="margin-left: 30px; padding-left: 0">WebinoDev</a>
+            </div>
+            <div id="namespace-1567851479" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-4359915"></a>
+                                <a href="../namespaces/WebinoDev.Assetic.html" style="margin-left: 30px; padding-left: 0">Assetic</a>
+            </div>
+            <div id="namespace-4359915" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-657326993"></a>
+                                <a href="../namespaces/WebinoDev.Assetic.Cache.html" style="margin-left: 30px; padding-left: 0">Cache</a>
+            </div>
+            <div id="namespace-657326993" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Assetic.Cache.FilesystemCache.html">FilesystemCache</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-887154272"></a>
+                                <a href="../namespaces/WebinoDev.Config.html" style="margin-left: 30px; padding-left: 0">Config</a>
+            </div>
+            <div id="namespace-887154272" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1876888789"></a>
+                                <a href="../namespaces/WebinoDev.Config.App.html" style="margin-left: 30px; padding-left: 0">App</a>
+            </div>
+            <div id="namespace-1876888789" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Config.App.Developer.html">Developer</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Config.App.Local.html">Local</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1013131066"></a>
+                                <a href="../namespaces/WebinoDev.Di.html" style="margin-left: 30px; padding-left: 0">Di</a>
+            </div>
+            <div id="namespace-1013131066" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-677446570"></a>
+                                <a href="../namespaces/WebinoDev.Di.Definition.html" style="margin-left: 30px; padding-left: 0">Definition</a>
+            </div>
+            <div id="namespace-677446570" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Di.Definition.Generator.html">Generator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1891686378"></a>
+                                <a href="../namespaces/WebinoDev.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-1891686378" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Exception.ExceptionInterface.html">ExceptionInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Exception.DevelopmentException.html">DevelopmentException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-717219728"></a>
+                                <a href="../namespaces/WebinoDev.Factory.html" style="margin-left: 30px; padding-left: 0">Factory</a>
+            </div>
+            <div id="namespace-717219728" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Factory.ProfilingAdapterFactory.html">ProfilingAdapterFactory</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2049633619"></a>
+                                <a href="../namespaces/WebinoDev.Mail.html" style="margin-left: 30px; padding-left: 0">Mail</a>
+            </div>
+            <div id="namespace-2049633619" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Mail.Message.html">Message</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1639502318"></a>
+                                <a href="../namespaces/WebinoDev.Test.html" style="margin-left: 30px; padding-left: 0">Test</a>
+            </div>
+            <div id="namespace-1639502318" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1727606724"></a>
+                                <a href="../namespaces/WebinoDev.Test.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-1727606724" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Test.Exception.ExceptionInterface.html">ExceptionInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Test.Exception.RuntimeException.html">RuntimeException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-386946966"></a>
+                                <a href="../namespaces/WebinoDev.Test.Functional.html" style="margin-left: 30px; padding-left: 0">Functional</a>
+            </div>
+            <div id="namespace-386946966" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/WebinoDev.Test.Functional.MailTrait.html">MailTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Functional.SeleniumTestTrait.html">SeleniumTestTrait</a></li>
+                                                                            <li class="class"><a href="../classes/WebinoDev.Test.Functional.AbstractMailTestCase.html">AbstractMailTestCase</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-16721651"></a>
+                                <a href="../namespaces/WebinoDev.Test.Selenium.html" style="margin-left: 30px; padding-left: 0">Selenium</a>
+            </div>
+            <div id="namespace-16721651" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1993592428"></a>
+                                <a href="../namespaces/WebinoDev.Test.Selenium.WebDriver.html" style="margin-left: 30px; padding-left: 0">WebDriver</a>
+            </div>
+            <div id="namespace-1993592428" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">ElementInterface</a></li>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.SessionInterface.html">SessionInterface</a></li>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.WindowInterface.html">WindowInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.Select.html">Select</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.SimpleItem.html">SimpleItem</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.TestElement.html">TestElement</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.TestSession.html">TestSession</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.TestWebDriver.html">TestWebDriver</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.TestWindow.html">TestWindow</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html">AuthenticationTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html">ElementsTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html">ElementTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.MailTrait.html">MailTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html">NotifyTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html">ScreenshotTrait</a></li>
+                                                                            <li class="class"><a href="../classes/WebinoDev.Test.Selenium.AbstractAuthenticationTestCase.html">AbstractAuthenticationTestCase</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.AbstractMailTestCase.html">AbstractMailTestCase</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html">AbstractTestCase</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/WebinoDev.Test.DomTrait.html">DomTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.MailTrait.html">MailTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.PdfTrait.html">PdfTrait</a></li>
+                                                                            <li class="class"><a href="../classes/WebinoDev.Test.Autoloader.html">Autoloader</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.TestCase.html">TestCase</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-648851589"></a>
+                                <a href="../namespaces/WebinoDev.Tester.html" style="margin-left: 30px; padding-left: 0">Tester</a>
+            </div>
+            <div id="namespace-648851589" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Tester.Bootstrap.html">Bootstrap</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2143536612"></a>
+                                <a href="../namespaces/WebinoDev.Vfs.html" style="margin-left: 30px; padding-left: 0">Vfs</a>
+            </div>
+            <div id="namespace-2143536612" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Vfs.StreamWrapper.html">StreamWrapper</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Module.html">Module</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/WebinoDev.Test.Selenium.html">\WebinoDev\Test\Selenium</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\WebinoDev\Test\Selenium</small>AuthenticationTrait</h1>
+                    <p><em>WebDriver test authentication trait</em></p>
+                    <p>Use this trait when you want a WebDriver test authentication handling.</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <em>No public methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#property_identityEnv" class="">$identityEnv</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#property_credentialEnv" class="">$credentialEnv</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#property_identityName" class="">$identityName</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#property_credentialName" class="">$credentialName</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_enterInput" class="">enterInput()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_waitFor" class="">waitFor()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_elementByCssSelector" class="">elementByCssSelector()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_getIdentity" class="">getIdentity()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_getCredential" class="">getCredential()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_getAuthSuccessLocator" class="">getAuthSuccessLocator()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_setIdentity" class="">setIdentity()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_setCredential" class="">setCredential()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_setAuthSuccessLocator" class="">setAuthSuccessLocator()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_authenticate" class="">authenticate()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_enterIdentity" class="">enterIdentity()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_enterCredential" class="">enterCredential()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#method_waitToBeAuthenticated" class="">waitToBeAuthenticated()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#property_identity" class="">$identity</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#property_credential" class="">$credential</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html#property_authSuccessLocator" class="">$authSuccessLocator</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\WebinoDev\Test\Selenium\AuthenticationTrait</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_identityEnv" name="property_identityEnv" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$identityEnv</h3>
+                <pre class="signature">$identityEnv : </pre>
+                <p><em>Key to resolve identity from an environment</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_credentialEnv" name="property_credentialEnv" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$credentialEnv</h3>
+                <pre class="signature">$credentialEnv : </pre>
+                <p><em>Key to resolve credential from an environment</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_identityName" name="property_identityName" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$identityName</h3>
+                <pre class="signature">$identityName : string</pre>
+                <p><em>Login input name</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_credentialName" name="property_credentialName" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$credentialName</h3>
+                <pre class="signature">$credentialName : string</pre>
+                <p><em>Password input name</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_identity" name="property_identity" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$identity</h3>
+                <pre class="signature">$identity : string</pre>
+                <p><em>Login</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_credential" name="property_credential" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$credential</h3>
+                <pre class="signature">$credential : </pre>
+                <p><em>Password</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_authSuccessLocator" name="property_authSuccessLocator" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$authSuccessLocator</h3>
+                <pre class="signature">$authSuccessLocator : string</pre>
+                <p><em>CSS selector of element to assert after successful authentication</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_enterInput" name="method_enterInput" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">enterInput()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">enterInput(string  <span class="argument">$name</span>, string  <span class="argument">$value</span>, callable|false|null  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Enters the input value</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>callable|false|null</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_waitFor" name="method_waitFor" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">waitFor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">waitFor(callable  <span class="argument">$action</span>, callable  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Wait for something, then do something else</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$action </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementByCssSelector" name="method_elementByCssSelector" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementByCssSelector()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementByCssSelector(string  <span class="argument">$selector</span>) : \PHPWebDriver_WebDriverElement</pre>
+                <p><em>Returns element by CSS selector</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$selector </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverElement
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getIdentity" name="method_getIdentity" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getIdentity()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getIdentity() : string</pre>
+                <p><em>Resolve test identity from an environment variable</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCredential" name="method_getCredential" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getCredential()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCredential() : string</pre>
+                <p><em>Resolve test credential from an environment variable</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAuthSuccessLocator" name="method_getAuthSuccessLocator" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getAuthSuccessLocator()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAuthSuccessLocator() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\RuntimeException</dt>
+                            <dd><p>Use setAuthSuccessLocator() first</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setIdentity" name="method_setIdentity" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setIdentity()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setIdentity(string  <span class="argument">$identity</span>) : $this</pre>
+                <p><em>Set login for authentication</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$identity </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCredential" name="method_setCredential" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setCredential()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCredential(string  <span class="argument">$credential</span>) : $this</pre>
+                <p><em>Set password for authentication</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$credential </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setAuthSuccessLocator" name="method_setAuthSuccessLocator" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setAuthSuccessLocator()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setAuthSuccessLocator(string  <span class="argument">$locator</span>) : $this</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$locator </td>
+                                <td><p>CSS selector</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_authenticate" name="method_authenticate" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">authenticate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">authenticate(callable  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Authenticate and check for success</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_enterIdentity" name="method_enterIdentity" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">enterIdentity()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">enterIdentity(callable  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Enters the password into input</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_enterCredential" name="method_enterCredential" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">enterCredential()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">enterCredential(callable  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Enters the password into input</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_waitToBeAuthenticated" name="method_waitToBeAuthenticated" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">waitToBeAuthenticated()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">waitToBeAuthenticated(callable  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Check that we are authenticated successfuly</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                    <dt>File</dt>
+                    <dd><a href="../files/Test.Selenium.AuthenticationTrait.html"><div class="path-wrapper">Test/Selenium/AuthenticationTrait.php</div></a></dd>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">AuthenticationTrait.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Test/Selenium/AuthenticationTrait.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/WebinoDev.html">\WebinoDev</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on January 12th, 2017 at 08:17.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

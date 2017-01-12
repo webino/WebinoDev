@@ -1,0 +1,2973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>WebinoDev</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">WebinoDev</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/WebinoDev.html">\WebinoDev</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">117</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1902900800"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1902900800" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-359326499"></a>
+                                <a href="../namespaces/WebinoDev.html" style="margin-left: 30px; padding-left: 0">WebinoDev</a>
+            </div>
+            <div id="namespace-359326499" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-435453690"></a>
+                                <a href="../namespaces/WebinoDev.Assetic.html" style="margin-left: 30px; padding-left: 0">Assetic</a>
+            </div>
+            <div id="namespace-435453690" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1726876737"></a>
+                                <a href="../namespaces/WebinoDev.Assetic.Cache.html" style="margin-left: 30px; padding-left: 0">Cache</a>
+            </div>
+            <div id="namespace-1726876737" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Assetic.Cache.FilesystemCache.html">FilesystemCache</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1240557269"></a>
+                                <a href="../namespaces/WebinoDev.Config.html" style="margin-left: 30px; padding-left: 0">Config</a>
+            </div>
+            <div id="namespace-1240557269" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-814946570"></a>
+                                <a href="../namespaces/WebinoDev.Config.App.html" style="margin-left: 30px; padding-left: 0">App</a>
+            </div>
+            <div id="namespace-814946570" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Config.App.Developer.html">Developer</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Config.App.Local.html">Local</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-754553790"></a>
+                                <a href="../namespaces/WebinoDev.Di.html" style="margin-left: 30px; padding-left: 0">Di</a>
+            </div>
+            <div id="namespace-754553790" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1137974298"></a>
+                                <a href="../namespaces/WebinoDev.Di.Definition.html" style="margin-left: 30px; padding-left: 0">Definition</a>
+            </div>
+            <div id="namespace-1137974298" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Di.Definition.Generator.html">Generator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-462602160"></a>
+                                <a href="../namespaces/WebinoDev.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-462602160" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Exception.ExceptionInterface.html">ExceptionInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Exception.DevelopmentException.html">DevelopmentException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1003868208"></a>
+                                <a href="../namespaces/WebinoDev.Factory.html" style="margin-left: 30px; padding-left: 0">Factory</a>
+            </div>
+            <div id="namespace-1003868208" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Factory.ProfilingAdapterFactory.html">ProfilingAdapterFactory</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1338888830"></a>
+                                <a href="../namespaces/WebinoDev.Mail.html" style="margin-left: 30px; padding-left: 0">Mail</a>
+            </div>
+            <div id="namespace-1338888830" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Mail.Message.html">Message</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1205034617"></a>
+                                <a href="../namespaces/WebinoDev.Test.html" style="margin-left: 30px; padding-left: 0">Test</a>
+            </div>
+            <div id="namespace-1205034617" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1004358256"></a>
+                                <a href="../namespaces/WebinoDev.Test.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-1004358256" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Test.Exception.ExceptionInterface.html">ExceptionInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Test.Exception.RuntimeException.html">RuntimeException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1750805336"></a>
+                                <a href="../namespaces/WebinoDev.Test.Functional.html" style="margin-left: 30px; padding-left: 0">Functional</a>
+            </div>
+            <div id="namespace-1750805336" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/WebinoDev.Test.Functional.MailTrait.html">MailTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Functional.SeleniumTestTrait.html">SeleniumTestTrait</a></li>
+                                                                            <li class="class"><a href="../classes/WebinoDev.Test.Functional.AbstractMailTestCase.html">AbstractMailTestCase</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-941677305"></a>
+                                <a href="../namespaces/WebinoDev.Test.Selenium.html" style="margin-left: 30px; padding-left: 0">Selenium</a>
+            </div>
+            <div id="namespace-941677305" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-883223194"></a>
+                                <a href="../namespaces/WebinoDev.Test.Selenium.WebDriver.html" style="margin-left: 30px; padding-left: 0">WebDriver</a>
+            </div>
+            <div id="namespace-883223194" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">ElementInterface</a></li>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.SessionInterface.html">SessionInterface</a></li>
+                                                    <li class="interface"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.WindowInterface.html">WindowInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.Select.html">Select</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.SimpleItem.html">SimpleItem</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.TestElement.html">TestElement</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.TestSession.html">TestSession</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.TestWebDriver.html">TestWebDriver</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.WebDriver.TestWindow.html">TestWindow</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.AuthenticationTrait.html">AuthenticationTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html">ElementsTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html">ElementTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.MailTrait.html">MailTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html">NotifyTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html">ScreenshotTrait</a></li>
+                                                                            <li class="class"><a href="../classes/WebinoDev.Test.Selenium.AbstractAuthenticationTestCase.html">AbstractAuthenticationTestCase</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.AbstractMailTestCase.html">AbstractMailTestCase</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html">AbstractTestCase</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/WebinoDev.Test.DomTrait.html">DomTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.MailTrait.html">MailTrait</a></li>
+                                                    <li class="trait"><a href="../classes/WebinoDev.Test.PdfTrait.html">PdfTrait</a></li>
+                                                                            <li class="class"><a href="../classes/WebinoDev.Test.Autoloader.html">Autoloader</a></li>
+                                                    <li class="class"><a href="../classes/WebinoDev.Test.TestCase.html">TestCase</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1822347653"></a>
+                                <a href="../namespaces/WebinoDev.Tester.html" style="margin-left: 30px; padding-left: 0">Tester</a>
+            </div>
+            <div id="namespace-1822347653" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Tester.Bootstrap.html">Bootstrap</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1117737463"></a>
+                                <a href="../namespaces/WebinoDev.Vfs.html" style="margin-left: 30px; padding-left: 0">Vfs</a>
+            </div>
+            <div id="namespace-1117737463" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Vfs.StreamWrapper.html">StreamWrapper</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/WebinoDev.Module.html">Module</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/WebinoDev.Test.Selenium.html">\WebinoDev\Test\Selenium</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\WebinoDev\Test\Selenium</small>AbstractTestCase</h1>
+                    <p><em>Base test case for Selenium WebDriver tests</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_getSession" class="">getSession()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html#method_getName" class="">getName()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_is404" class="">is404()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_assertInput" class="">assertInput()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html#method_elementByClassName" class="">elementByClassName()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html#method_elementByCssSelector" class="">elementByCssSelector()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html#method_elementById" class="">elementById()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html#method_elementByLinkText" class="">elementByLinkText()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html#method_elementByName" class="">elementByName()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html#method_elementByPartialLinkText" class="">elementByPartialLinkText()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html#method_elementByTagName" class="">elementByTagName()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html#method_elementByXpath" class="">elementByXpath()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html#method_elementsByClassName" class="">elementsByClassName()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html#method_elementsByCssSelector" class="">elementsByCssSelector()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html#method_elementsById" class="">elementsById()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html#method_elementsByLinkText" class="">elementsByLinkText()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html#method_elementsByName" class="">elementsByName()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html#method_elementsByPartialLinkText" class="">elementsByPartialLinkText()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html#method_elementsByTagName" class="">elementsByTagName()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html#method_elementsByXpath" class="">elementsByXpath()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html#method_notifyInfo" class="">notifyInfo()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html#method_notifyError" class="">notifyError()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html#method_debugNotify" class="">debugNotify()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_getBrowser" class="">getBrowser()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html#method_screenshot" class="">screenshot()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html#method_takeScreenshot" class="">takeScreenshot()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html#method_attachScreenshot" class="deprecated">attachScreenshot()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_setUp" class="">setUp()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_tearDown" class="">tearDown()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_onNotSuccessfulTest" class="">onNotSuccessfulTest()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_getBrowserBin" class="">getBrowserBin()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_setBrowserBin" class="">setBrowserBin()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_getSessionId" class="">getSessionId()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_getServerUrl" class="">getServerUrl()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_source" class="">source()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_resolveHost" class="">resolveHost()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_resolvePort" class="">resolvePort()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_resolveBrowser" class="">resolveBrowser()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_resolveCapabilities" class="">resolveCapabilities()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_resolveUri" class="">resolveUri()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_resolveWindowSize" class="">resolveWindowSize()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_sleep" class="">sleep()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_open" class="">open()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_openOk" class="deprecated">openOk()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_assertNotError" class="">assertNotError()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_clickLink" class="">clickLink()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_clickAjaxLink" class="">clickAjaxLink()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_clickByClass" class="">clickByClass()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_clickSelect" class="deprecated">clickSelect()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_getSelect" class="">getSelect()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_enterInput" class="">enterInput()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_submitInput" class="">submitInput()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_focusWindow" class="">focusWindow()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_closeWindow" class="">closeWindow()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_waitFor" class="">waitFor()</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#method_waitForAjax" class="">waitForAjax()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#property_webDriverHost" class="">$webDriverHost</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#property_webDriverPort" class="">$webDriverPort</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#property_webDriverBrowser" class="">$webDriverBrowser</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#property_webDriverScreen" class="">$webDriverScreen</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#property_browser" class="">$browser</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#property_browserBin" class="">$browserBin</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#property_uri" class="">$uri</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#property_webDriver" class="">$webDriver</a><br />
+                                                                    <a href="../classes/WebinoDev.Test.Selenium.AbstractTestCase.html#property_session" class="">$session</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                            <span class="label label-info">abstract</span>
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Test.Selenium.AbstractTestCase.html"><div class="path-wrapper">Test/Selenium/AbstractTestCase.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper">\PHPUnit_Framework_TestCase</div>
+                                                                                                    <div class="namespace-wrapper">\WebinoDev\Test\Selenium\AbstractTestCase</div>
+                            </dd>
+
+                        
+                                                                                    <dt>Uses traits</dt>
+                                                        <dd>
+                                <a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html">                                    <div class="namespace-wrapper">\WebinoDev\Test\Selenium\ElementTrait</div>
+                                </a>                            </dd>
+                                                                                <dd>
+                                <a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html">                                    <div class="namespace-wrapper">\WebinoDev\Test\Selenium\ElementsTrait</div>
+                                </a>                            </dd>
+                                                                                <dd>
+                                <a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html">                                    <div class="namespace-wrapper">\WebinoDev\Test\Selenium\NotifyTrait</div>
+                                </a>                            </dd>
+                                                                                <dd>
+                                <a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html">                                    <div class="namespace-wrapper">\WebinoDev\Test\Selenium\ScreenshotTrait</div>
+                                </a>                            </dd>
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_webDriverHost" name="property_webDriverHost" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$webDriverHost</h3>
+                <pre class="signature">$webDriverHost : string</pre>
+                <p><em>Selenium Web Driver host URI</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_webDriverPort" name="property_webDriverPort" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$webDriverPort</h3>
+                <pre class="signature">$webDriverPort : string</pre>
+                <p><em>Selenium Web Driver port</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_webDriverBrowser" name="property_webDriverBrowser" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$webDriverBrowser</h3>
+                <pre class="signature">$webDriverBrowser : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_webDriverScreen" name="property_webDriverScreen" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$webDriverScreen</h3>
+                <pre class="signature">$webDriverScreen : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_browser" name="property_browser" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$browser</h3>
+                <pre class="signature">$browser : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_browserBin" name="property_browserBin" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$browserBin</h3>
+                <pre class="signature">$browserBin : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_uri" name="property_uri" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$uri</h3>
+                <pre class="signature">$uri : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_webDriver" name="property_webDriver" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$webDriver</h3>
+                <pre class="signature">$webDriver : \PHPWebDriver_WebDriver</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \PHPWebDriver_WebDriver
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_session" name="property_session" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$session</h3>
+                <pre class="signature">$session : \PHPWebDriver_WebDriverSession|\WebinoDev\Test\Selenium\WebDriver\SessionInterface</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \PHPWebDriver_WebDriverSession|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.SessionInterface.html">\WebinoDev\Test\Selenium\WebDriver\SessionInterface</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSession" name="method_getSession" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSession()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSession() : \PHPWebDriver_WebDriverSession|\WebinoDev\Test\Selenium\WebDriver\SessionInterface</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverSession|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.SessionInterface.html">\WebinoDev\Test\Selenium\WebDriver\SessionInterface</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getName" name="method_getName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getName(boolean  <span class="argument">$withDataSet = true</span>) : string</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$withDataSet </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                        <span class="label label-info">abstract</span>
+                                                <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\NotifyTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_is404" name="method_is404" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">is404()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">is404() : boolean</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_assertInput" name="method_assertInput" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">assertInput()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">assertInput(string|\PHPWebDriver_WebDriverElement|\WebinoDev\Test\Selenium\WebDriver\ElementInterface  <span class="argument">$name</span>, string  <span class="argument">$expectedValue</span>, callable  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Assert that input value is same than expected</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|\PHPWebDriver_WebDriverElement|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$expectedValue </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementByClassName" name="method_elementByClassName" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementByClassName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementByClassName(string  <span class="argument">$className</span>) : \PHPWebDriver_WebDriverElement|\WebinoDev\Test\Selenium\WebDriver\ElementInterface</pre>
+                <p><em>Returns page element by class name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$className </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverElement|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementByCssSelector" name="method_elementByCssSelector" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementByCssSelector()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementByCssSelector(string  <span class="argument">$selector</span>) : \PHPWebDriver_WebDriverElement|\WebinoDev\Test\Selenium\WebDriver\ElementInterface</pre>
+                <p><em>Returns page element by CSS selector</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$selector </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverElement|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementById" name="method_elementById" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementById()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementById(string  <span class="argument">$id</span>) : \PHPWebDriver_WebDriverElement|\WebinoDev\Test\Selenium\WebDriver\ElementInterface</pre>
+                <p><em>Returns page element by ID</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverElement|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementByLinkText" name="method_elementByLinkText" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementByLinkText()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementByLinkText(string  <span class="argument">$text</span>) : \PHPWebDriver_WebDriverElement|\WebinoDev\Test\Selenium\WebDriver\ElementInterface</pre>
+                <p><em>Returns page element by link text</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$text </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverElement|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementByName" name="method_elementByName" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementByName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementByName(string  <span class="argument">$name</span>) : \PHPWebDriver_WebDriverElement|\WebinoDev\Test\Selenium\WebDriver\ElementInterface</pre>
+                <p><em>Returns page element by its name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverElement|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementByPartialLinkText" name="method_elementByPartialLinkText" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementByPartialLinkText()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementByPartialLinkText(string  <span class="argument">$name</span>) : \PHPWebDriver_WebDriverElement|\WebinoDev\Test\Selenium\WebDriver\ElementInterface</pre>
+                <p><em>Returns page element by partial link text</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverElement|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementByTagName" name="method_elementByTagName" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementByTagName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementByTagName(string  <span class="argument">$tag</span>) : \PHPWebDriver_WebDriverElement|\WebinoDev\Test\Selenium\WebDriver\ElementInterface</pre>
+                <p><em>Returns page element by its tag name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tag </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverElement|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementByXpath" name="method_elementByXpath" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementByXpath()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementByXpath(string  <span class="argument">$xpath</span>) : \PHPWebDriver_WebDriverElement|\WebinoDev\Test\Selenium\WebDriver\ElementInterface</pre>
+                <p><em>Returns page element by XPath</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$xpath </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \PHPWebDriver_WebDriverElement|<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementsByClassName" name="method_elementsByClassName" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementsByClassName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementsByClassName(string  <span class="argument">$className</span>) : array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,\WebinoDev\Test\Selenium\WebDriver\ElementInterface&gt;</pre>
+                <p><em>Returns page elements by class name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$className </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementsTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementsByCssSelector" name="method_elementsByCssSelector" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementsByCssSelector()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementsByCssSelector(string  <span class="argument">$selector</span>) : array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,\WebinoDev\Test\Selenium\WebDriver\ElementInterface&gt;</pre>
+                <p><em>Returns page elements by CSS selector</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$selector </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementsTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementsById" name="method_elementsById" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementsById()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementsById(string  <span class="argument">$id</span>) : array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,\WebinoDev\Test\Selenium\WebDriver\ElementInterface&gt;</pre>
+                <p><em>Returns page elements by ID</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$id </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementsTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementsByLinkText" name="method_elementsByLinkText" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementsByLinkText()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementsByLinkText(string  <span class="argument">$text</span>) : array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,\WebinoDev\Test\Selenium\WebDriver\ElementInterface&gt;</pre>
+                <p><em>Returns page elements by link text</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$text </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementsTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementsByName" name="method_elementsByName" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementsByName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementsByName(string  <span class="argument">$name</span>) : array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,\WebinoDev\Test\Selenium\WebDriver\ElementInterface&gt;</pre>
+                <p><em>Returns page elements by its name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementsTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementsByPartialLinkText" name="method_elementsByPartialLinkText" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementsByPartialLinkText()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementsByPartialLinkText(string  <span class="argument">$name</span>) : array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,\WebinoDev\Test\Selenium\WebDriver\ElementInterface&gt;</pre>
+                <p><em>Returns page elements by its name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementsTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementsByTagName" name="method_elementsByTagName" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementsByTagName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementsByTagName(string  <span class="argument">$tag</span>) : array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,\WebinoDev\Test\Selenium\WebDriver\ElementInterface&gt;</pre>
+                <p><em>Returns page elements by its tag name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$tag </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementsTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_elementsByXpath" name="method_elementsByXpath" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">elementsByXpath()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">elementsByXpath(string  <span class="argument">$xpath</span>) : array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,\WebinoDev\Test\Selenium\WebDriver\ElementInterface&gt;</pre>
+                <p><em>Returns page elements by XPath</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$xpath </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,\PHPWebDriver_WebDriverElement&gt;|array&lt;mixed,<a href="../classes/WebinoDev.Test.Selenium.WebDriver.ElementInterface.html">\WebinoDev\Test\Selenium\WebDriver\ElementInterface</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ElementsTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ElementsTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_notifyInfo" name="method_notifyInfo" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">notifyInfo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">notifyInfo(string  <span class="argument">$msg</span>) : $this</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$msg </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\NotifyTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_notifyError" name="method_notifyError" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">notifyError()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">notifyError(string  <span class="argument">$msg</span>) : $this</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$msg </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\NotifyTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_debugNotify" name="method_debugNotify" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">debugNotify()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">debugNotify(string  <span class="argument">$msg</span>, integer  <span class="argument">$timeout = 2000</span>, string  <span class="argument">$type = &#039;info&#039;</span>) : $this</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$msg </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$timeout </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$type </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.NotifyTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\NotifyTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBrowser" name="method_getBrowser" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getBrowser()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBrowser() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_screenshot" name="method_screenshot" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">screenshot()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">screenshot() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ScreenshotTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_takeScreenshot" name="method_takeScreenshot" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">takeScreenshot()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">takeScreenshot(string|null  <span class="argument">$caption = null</span>) : $this</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$caption </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ScreenshotTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_attachScreenshot" name="method_attachScreenshot" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected deprecated">attachScreenshot()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">attachScreenshot(string|null  <span class="argument">$caption = null</span>) : \WebinoDev\Test\Selenium\ScreenshotTrait</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$caption </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html">\WebinoDev\Test\Selenium\ScreenshotTrait</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    use takeScreenshot()
+                </aside>
+                        <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/WebinoDev.Test.Selenium.ScreenshotTrait.html"><div class="path-wrapper">\WebinoDev\Test\Selenium\ScreenshotTrait</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>remove</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setUp" name="method_setUp" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setUp()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setUp() </pre>
+                <p><em>Resolves URI to open session</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_tearDown" name="method_tearDown" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">tearDown()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">tearDown() : void</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_onNotSuccessfulTest" name="method_onNotSuccessfulTest" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">onNotSuccessfulTest()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">onNotSuccessfulTest(\Exception  <span class="argument">$exc</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Exception</td>
+                                <td>$exc </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBrowserBin" name="method_getBrowserBin" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getBrowserBin()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBrowserBin() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setBrowserBin" name="method_setBrowserBin" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">setBrowserBin()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setBrowserBin(string  <span class="argument">$bin</span>) : string</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$bin </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSessionId" name="method_getSessionId" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getSessionId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSessionId() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getServerUrl" name="method_getServerUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getServerUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getServerUrl() : string</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_source" name="method_source" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">source()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">source(string  <span class="argument">$url</span>, null  <span class="argument">$sessId = null</span>) : string</pre>
+                <p><em>Get raw source from URL</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>null</td>
+                                <td>$sessId </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resolveHost" name="method_resolveHost" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">resolveHost()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resolveHost() : string</pre>
+                <p><em>Resolve Selenium WebDriver host</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resolvePort" name="method_resolvePort" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">resolvePort()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resolvePort() : string</pre>
+                <p><em>Resolve Selenium WebDriver port</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resolveBrowser" name="method_resolveBrowser" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">resolveBrowser()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resolveBrowser() : string</pre>
+                <p><em>Resolve test session browser</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resolveCapabilities" name="method_resolveCapabilities" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">resolveCapabilities()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resolveCapabilities() : array</pre>
+                <p><em>Resolve test session capabilities</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resolveUri" name="method_resolveUri" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">resolveUri()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resolveUri() : string</pre>
+                <p><em>Resolve test target URI</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resolveWindowSize" name="method_resolveWindowSize" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">resolveWindowSize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resolveWindowSize() : array</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sleep" name="method_sleep" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">sleep()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sleep(float  <span class="argument">$sec = 2.0</span>) : $this</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$sec </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_open" name="method_open" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">open()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">open(string  <span class="argument">$path = &#039;&#039;</span>, string|null  <span class="argument">$caption = null</span>) : $this</pre>
+                <p><em>Opens URI and asserts not error</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string|null</td>
+                                <td>$caption </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_openOk" name="method_openOk" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected deprecated">openOk()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">openOk(string  <span class="argument">$path = &#039;&#039;</span>, string  <span class="argument">$caption = &#039;Home&#039;</span>) : $this</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$path </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$caption </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    use open()
+                </aside>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>remove</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_assertNotError" name="method_assertNotError" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">assertNotError()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">assertNotError() : $this</pre>
+                <p><em>Assert that page is without errors</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_clickLink" name="method_clickLink" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">clickLink()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">clickLink(string  <span class="argument">$linkText</span>, callable  <span class="argument">$callback = null</span>, float  <span class="argument">$sleep = 2.0</span>) : $this</pre>
+                <p><em>Clicks on a link</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$linkText </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>float</td>
+                                <td>$sleep </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_clickAjaxLink" name="method_clickAjaxLink" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">clickAjaxLink()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">clickAjaxLink(string  <span class="argument">$linkText</span>, callable  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Clicks on ajax-link</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$linkText </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>callable</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_clickByClass" name="method_clickByClass" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">clickByClass()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">clickByClass(string  <span class="argument">$class</span>) : $this</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$class </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_clickSelect" name="method_clickSelect" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected deprecated">clickSelect()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">clickSelect(string  <span class="argument">$name</span>, string  <span class="argument">$value</span>) : $this</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                                <aside class="alert alert-block alert-error">
+                    <h4>Deprecated</h4>
+                    use getSelect()
+                </aside>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSelect" name="method_getSelect" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getSelect()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSelect(string  <span class="argument">$name</span>) : \WebinoDev\Test\Selenium\WebDriver\Select</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/WebinoDev.Test.Selenium.WebDriver.Select.html">\WebinoDev\Test\Selenium\WebDriver\Select</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_enterInput" name="method_enterInput" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">enterInput()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">enterInput(string|\PHPWebDriver_WebDriverElement  <span class="argument">$name</span>, string  <span class="argument">$value</span>, callable|false|null  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Enters the input value</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|\PHPWebDriver_WebDriverElement</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>callable|false|null</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_submitInput" name="method_submitInput" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">submitInput()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">submitInput(string|\PHPWebDriver_WebDriverElement  <span class="argument">$name</span>, string  <span class="argument">$value</span>) : $this</pre>
+                <p><em>Submit the input value</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string|\PHPWebDriver_WebDriverElement</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_focusWindow" name="method_focusWindow" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">focusWindow()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">focusWindow(integer  <span class="argument">$index</span>) : $this</pre>
+                <p><em>Focus a browser window</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$index </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_closeWindow" name="method_closeWindow" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">closeWindow()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">closeWindow() : $this</pre>
+                <p><em>Close a browser window</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_waitFor" name="method_waitFor" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">waitFor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">waitFor(callable|object  <span class="argument">$action</span>, callable|object  <span class="argument">$callback = null</span>) : $this</pre>
+                <p><em>Wait for something, then do something else</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>callable|object</td>
+                                <td>$action </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>callable|object</td>
+                                <td>$callback </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_waitForAjax" name="method_waitForAjax" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">waitForAjax()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">waitForAjax(float  <span class="argument">$delay = 0.1</span>) : $this</pre>
+                <p><em>Ajax wait</em></p>
+                <p>Depends on jQuery.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$delay </td>
+                                <td><p>Seconds</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    $this
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">AbstractTestCase.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Test/Selenium/AbstractTestCase.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/WebinoDev.html">\WebinoDev</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on January 12th, 2017 at 08:17.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
