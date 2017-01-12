@@ -61,8 +61,8 @@
     },
     "extra": {
         "webino-devkit": {
-            "ZendSkeletonApplication": "release-2.2.8",
-            "context": ["module", "auth", "github", "zend"]
+            "context": ["module", "auth", "github", "zend"],
+            "ZendSkeletonApplication": "release-2.2.8"
         }
     }
 }

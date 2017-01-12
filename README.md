@@ -364,8 +364,6 @@ class AbstractSeleniumTestCaseTest extends \PHPUnit_Framework_TestCase
 
 ## Development
 
-[![Dependency Status](https://www.versioneye.com/user/projects/54e2ff588bd69f07ae000019/badge.svg)](https://www.versioneye.com/user/projects/54e2ff588bd69f07ae000019)
-
 We will appreciate any contributions on development of this module.
 
 Learn [How to develop Webino modules](https://github.com/webino/Webino/wiki/How-to-develop-Webino-module)
