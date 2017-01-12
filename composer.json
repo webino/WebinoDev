@@ -24,7 +24,7 @@
     "require": {
         "php": ">=5.6",
         "rwoverdijk/assetmanager": "1.6.*",
-        "bjyoungblood/bjy-profiler": "1.*"
+        "bjyoungblood/bjy-profiler": "dev-master"
     },
     "require-dev": {
         "zendframework/zend-mvc": "2.6.*",
