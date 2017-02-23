@@ -29,7 +29,7 @@ trait MailTrait
     /**
      * Assert that no mail was sent
      *
-     * @return self
+     * @return $this
      */
     protected function assertNoMail()
     {
@@ -98,6 +98,33 @@ trait MailTrait
         }
 
         return $mail;
+    }
+
+    /**
+     * Checks no mail For a certain time
+     *
+     * @return $this
+     */
+    protected function waitAssertNoMail()
+    {
+        $tout = 5;
+        $tn   = 0;
+
+        while (1) {
+            $tn++;
+            sleep(1);
+
+            $this->assertNoMail();
+            if ($this->hasFailed()) {
+                return $this;
+            }
+
+            if ($tn >= $tout) {
+                return $this;
+            }
+        }
+
+        return $this;
     }
 
     /**
