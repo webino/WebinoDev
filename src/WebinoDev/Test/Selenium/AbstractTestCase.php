@@ -101,7 +101,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function onNotSuccessfulTest(Exception $exc)
     {
         $this->notifyError($exc);
-        $this->session->close();
+        $this->session and $this->session->close();
         parent::onNotSuccessfulTest($exc);
     }
 
