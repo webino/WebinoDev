@@ -50,6 +50,7 @@
         "phpunit/phpunit": "PHPUnit tests support (deprecated)",
         "smalot/pdfparser": "PDF parser",
         "nette/tester": "Better tests runner (instead of PHPUnit)",
+        "webino/webino-debug": "Better var dumping",
         "zendframework/zend-mail": "Mail testing",
         "zendframework/zend-modulemanager": "To use as a Zend Framework module",
         "zendframework/zend-code": "To use DI definition generator (deprecated)",

@@ -7,6 +7,8 @@
  * @license     BSD-3-Clause
  */
 
+use Tracy\Debugger;
+
 /**
  * Alias for var_dump()
  *
@@ -41,6 +43,11 @@ function p($subject) {
  * @param mixed $subject
  */
 function pd($subject) {
+    if (class_exists(Debugger::class)) {
+        Debugger::dump($subject);
+        exit;
+    }
+
     print_r($subject);
     exit;
 }
@@ -52,6 +59,10 @@ function pd($subject) {
  * @return string
  */
 function pr($subject) {
+    if (class_exists(Debugger::class)) {
+        return Debugger::dump($subject, true);
+    }
+
     return print_r($subject, true);
 }
 
