@@ -34,6 +34,11 @@ function dd($subject) {
  * @param mixed $subject
  */
 function p($subject) {
+    if (class_exists(Debugger::class)) {
+        Debugger::dump($subject);
+        return;
+    }
+
     print_r($subject);
 }
 
