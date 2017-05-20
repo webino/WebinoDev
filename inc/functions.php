@@ -72,6 +72,17 @@ function pr($subject) {
 }
 
 /**
+ * Debugger bar dump
+ *
+ * @param mixed $subject
+ */
+function bd($subject) {
+    if (class_exists(Debugger::class)) {
+        Debugger::barDump($subject);
+    }
+}
+
+/**
  * Web debugger break point
  *
  * Sometimes is useful by throwing an exception to check a backtrace.
