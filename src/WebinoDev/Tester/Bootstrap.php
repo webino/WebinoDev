@@ -39,10 +39,14 @@ class Bootstrap
         ini_set('date.timezone', 'Europe/Bratislava');
     }
 
+    /**
+     * @return string
+     */
     protected function resolveRoot()
     {
         $dir  = $this->dir . '/../../._test/';
         $zend = $dir . 'ZendSkeletonApplication';
-        return file_exists($zend) ? $zend : $dir . 'WebinoSkeletonApplication';
+        $root = file_exists($zend) ? $zend : $dir . 'WebinoSkeletonApplication';
+        return file_exists($root) ? $root : $this->dir;
     }
 }
