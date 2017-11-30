@@ -10,12 +10,10 @@
 namespace WebinoDev\Di\Definition;
 
 use Zend\Di\Definition\CompilerDefinition;
-use Yandex\Allure\Adapter\Annotation\Features;
-use Yandex\Allure\Adapter\Annotation\Title;
 
 /**
- * @Title("Dependency injection definition generator test")
- * @Features({"Dependency Injection"})
+ * Dependency injection definition generator test
+ *
  * @TODO remove, DI definition deprecated
  * @deprecated
  */
@@ -114,7 +112,8 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("setIgnore() works as expected")
+     * Check that setIgnore() works as expected
+     *
      * @covers WebinoDev\Di\Definition\Generator::setIgnore
      */
     public function testSetIgnore()
@@ -123,7 +122,8 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Custom compiler can be injected")
+     * Custom compiler can be injected
+     *
      * @covers WebinoDev\Di\Definition\Generator::setCompiler
      */
     public function testSetCompiler()
@@ -132,7 +132,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Basic compilation")
+     * Basic compilation
      */
     public function testCompile()
     {
@@ -148,7 +148,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Compiler exclude ignored files")
+     * Compiler exclude ignored files
      */
     public function testCompileWithIgnore()
     {
@@ -165,7 +165,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Custom files compilation")
+     * Custom files compilation
      */
     public function testCompileWithCustomFiles()
     {
@@ -182,7 +182,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Optional compilation")
+     * Optional compilation
      */
     public function testCompileOptional()
     {

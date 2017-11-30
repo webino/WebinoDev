@@ -9,10 +9,8 @@
 
 namespace WebinoDev;
 
-use Yandex\Allure\Adapter\Annotation\Title;
-
 /**
- * @Title("WebinDev module tests")
+ * WebinDev module tests
  */
 class ModuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -31,7 +29,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Module initialization")
+     * Module initialization
      */
     public function testInit()
     {
@@ -44,7 +42,8 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Title("Module getConfig()")
+     * Module getConfig()
+     *
      * @covers WebinoDev\Module::getConfig
      */
     public function testGetConfig()

@@ -9,12 +9,8 @@
 
 namespace WebinoDev\Test;
 
-use Yandex\Allure\Adapter\Annotation\Features;
-use Yandex\Allure\Adapter\Annotation\Title;
-
 /**
- * @Title("PDF trait for tests")
- * @Features({"Testing"})
+ * PDF trait for tests
  */
 class PdfTraitTest extends PdfTestCase
 {
@@ -33,7 +29,7 @@ class PdfTraitTest extends PdfTestCase
     }
 
     /**
-     * @Title("Create PDF")
+     * Create PDF
      * @covers WebinoDev\Test\PdfTrait::createPdf
      */
     public function testCreatePdf()

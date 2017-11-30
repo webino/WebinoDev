@@ -9,14 +9,17 @@
 
 namespace WebinoDev\Test\Selenium;
 
-use Yandex\Allure\Adapter\Support\AttachmentSupport;
-
 /**
  * Capture test screenshots
  */
 trait ScreenshotTrait
 {
-    use AttachmentSupport;
+    /**
+     * Taken screenshots directory
+     *
+     * @var string
+     */
+    protected $screenshotsDir;
 
     /**
      * @return string
@@ -41,19 +44,26 @@ trait ScreenshotTrait
     }
 
     /**
-     * @param string|null $caption
+     * @param string|null $imgName
      * @return $this
      */
-    protected function takeScreenshot($caption = null)
+    protected function takeScreenshot($imgName = null)
     {
         $data = $this->screenshot();
         if (empty($data)) {
             return $this;
         }
 
-        $path = sys_get_temp_dir() . '/' . md5(__METHOD__) . '.png';
+        if (empty($this->screenshotsDir) || !file_exists($this->screenshotsDir)) {
+            return $this;
+        }
+
+        if (empty($imgName)) {
+            $imgName = count(glob($this->screenshotsDir . '/*.png')) + 1;
+        }
+
+        $path = $this->screenshotsDir . '/' . $imgName . '.png';
         file_put_contents($path, $data);
-        $this->addAttachment($path, $caption, 'image/png');
 
         return $this;
     }

@@ -10,30 +10,28 @@
 namespace WebinoDev;
 
 use WebinoDev\Test\Selenium\AbstractTestCase;
-use Yandex\Allure\Adapter\Annotation\Features;
-use Yandex\Allure\Adapter\Annotation\Title;
 
 /**
- * @Title("Test abstract test cases for Selenium WebDriver")
+ * Test abstract test cases for Selenium WebDriver
  */
 class HomeTest extends AbstractTestCase
 {
     /**
-     * @Title("Simple web check")
+     * Simple web check
      */
     public function testHome()
     {
-        $this->openOk();
+        $this->open();
         $this->elementByClassName('jumbotron');
         $this->clickLink('issue tracker');
     }
 
     /**
-     * @Title("Advanced web check")
+     * Advanced web check
      */
     public function testAdvanced()
     {
-        $this->openOk('application/index/test');
+        $this->open('application/index/test');
 
         $value = 'Test example value';
         $this->enterInput('example', $value);
@@ -41,12 +39,11 @@ class HomeTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Wait for ajax to finish")
-     * @Features({"Ajax testing"})
+     * Wait for ajax to finish
      */
     public function testWaitForAjax()
     {
-        $this->openOk('application/index/ajax');
+        $this->open('application/index/ajax');
 
         $this->elementByClassName('ajax-btn')->click();
         $this->waitForAjax();
@@ -61,12 +58,11 @@ class HomeTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Clicking ajax-link")
-     * @Features({"Ajax testing"})
+     * Clicking ajax-link
      */
     public function testClickAjaxLink()
     {
-        $this->openOk('application/index/ajax');
+        $this->open('application/index/ajax');
 
         $this->clickAjaxLink('Ajax link');
         $elm = $this->elementByClassName('ajax-content');
@@ -74,8 +70,7 @@ class HomeTest extends AbstractTestCase
     }
 
     /**
-     * @Title("Getting raw source")
-     * @Features({"Raw source"})
+     * Getting raw source
      */
     public function testRawSource()
     {
@@ -87,7 +82,7 @@ class HomeTest extends AbstractTestCase
         $this->assertSame($sid, $src);
 
         // with current session
-        $this->openOk($uri);
+        $this->open($uri);
         $src = $this->source($this->uri . $uri);
         $this->assertSame($this->getSessionId(), $src);
     }

@@ -9,12 +9,8 @@
 
 namespace WebinoDev\Test;
 
-use Yandex\Allure\Adapter\Annotation\Features;
-use Yandex\Allure\Adapter\Annotation\Title;
-
 /**
- * @Title("DOM trait for tests works")
- * @Features({"Testing"})
+ * DOM trait for tests works
  */
 class DomTraitTest extends DomTestCase
 {

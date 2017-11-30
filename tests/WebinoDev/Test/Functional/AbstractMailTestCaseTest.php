@@ -10,13 +10,10 @@
 namespace WebinoDev\Test\Functional;
 
 use org\bovigo\vfs\vfsStream;
-use Yandex\Allure\Adapter\Annotation\Features;
-use Yandex\Allure\Adapter\Annotation\Title;
 use Zend\Mail\Message;
 
 /**
- * @Title("Abstract class for functional mail tests works")
- * @Features({"Functional testing"})
+ * Abstract class for functional mail tests works
  */
 class AbstractMailTestCaseTest extends AbstractMailTestCase
 {
@@ -42,7 +39,8 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     }
 
     /**
-     * @Title("Mail virtual filesystem works")
+     * Mail virtual filesystem works
+     *
      * @covers WebinoDev\Test\Functional\AbstractMaiLTestCase::setUp
      * @covers WebinoDev\Test\Functional\MailTrait::setUpMailVfs
      * @covers WebinoDev\Test\Functional\MailTrait::getMailDir
@@ -54,7 +52,8 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     }
 
     /**
-     * @Title("Mail virtual filesystem works")
+     * Mail virtual filesystem works
+     *
      * @covers WebinoDev\Test\Functional\AbstractMaiLTestCase::tearDown
      * @covers WebinoDev\Test\Functional\MailTrait::unregisterMailVfs
      * @covers WebinoDev\Vfs\StreamWrapper::unregister
@@ -67,7 +66,8 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     }
 
     /**
-     * @Title("Read mail works")
+     * Read mail works
+     *
      * @covers WebinoDev\Test\Functional\MailTrait::readMail
      */
     public function testReadMail()
@@ -84,7 +84,8 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     }
 
     /**
-     * @Title("Read no mail works")
+     * Read no mail works
+     *
      * @covers WebinoDev\Test\Functional\MailTrait::readMail
      * @expectedException \WebinoDev\Test\Exception\RuntimeException
      */

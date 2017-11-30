@@ -42,7 +42,6 @@
         "phpunit/phpunit": "4.*"
     },
     "suggest": {
-        "allure-framework/allure-phpunit": "Test reports",
         "element-34/php-webdriver": "Selenium tests",
         "exorus/php-mime-mail-parser": "Mail parser",
         "kriswallsmith/assetic": "Filesystem cache umask fix",

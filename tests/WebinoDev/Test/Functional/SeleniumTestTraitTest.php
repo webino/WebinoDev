@@ -10,12 +10,9 @@
 namespace WebinoDev\Test\Functional;
 
 use WebinoDev\Test\Selenium\WebDriver\TestSession;
-use Yandex\Allure\Adapter\Annotation\Features;
-use Yandex\Allure\Adapter\Annotation\Title;
 
 /**
- * @Title("Trait for functional selenium tests works")
- * @Features({"Functional testing"})
+ * Trait for functional selenium tests works
  */
 class SeleniumTestTraitTest extends SeleniumTestTestCase
 {
@@ -34,7 +31,8 @@ class SeleniumTestTraitTest extends SeleniumTestTestCase
     }
 
     /**
-     * @Title("Selenium functional test trait works")
+     * Selenium functional test trait works
+     *
      * @covers WebinoDev\Test\Functional\SeleniumTestTrait::setUpWebDriver
      * @covers WebinoDev\Test\Functional\SeleniumTestTrait::getWebDriverSession
      */
