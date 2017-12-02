@@ -1,11 +1,21 @@
 # Webino developer's module <br /> for Zend Framework 2
 
+[![Build Status](https://secure.travis-ci.org/webino/WebinoDev.png?branch=develop)](http://travis-ci.org/webino/WebinoDev "Develop Build Status")
+[![Coverage Status](https://coveralls.io/repos/webino/WebinoDev/badge.png?branch=develop)](https://coveralls.io/r/webino/WebinoDev?branch=develop "Develop Coverage Status")
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/webino/WebinoDev/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/webino/WebinoDev/?branch=develop "Develop Quality Score")
+[![Dependency Status](https://www.versioneye.com/user/projects/54e2ff538bd69f54f1000067/badge.svg)](https://www.versioneye.com/user/projects/54e2ff538bd69f54f1000067 "Develop Dependency Status")
+<br />
+[![Latest Stable Version](https://poser.pugx.org/webino/webino-dev/v/stable.svg)](https://packagist.org/packages/webino/webino-dev)
+[![Total Downloads](https://poser.pugx.org/webino/webino-dev/downloads)](https://packagist.org/packages/webino/webino-dev) 
+[![Latest Unstable Version](https://poser.pugx.org/webino/webino-dev/v/unstable.svg)](https://packagist.org/packages/webino/webino-dev) 
+[![License](https://poser.pugx.org/webino/webino-dev/license.svg)](https://packagist.org/packages/webino/webino-dev)
+
 Module to ease development of the Webino modules.
 
 ## Features
 
 - Utility functions
-- Smart dependency injection definition generator
+- Smart dependency injection definition generator (deprecated)
 - DOM testing
 - Mail testing
 - Selenium abstract tests testing
@@ -13,10 +23,13 @@ Module to ease development of the Webino modules.
   - Authentication testing
   - Forms testing
   - Ajax testing
+  - Browser screenshots
+  - Video debug notifications support
+- Fixed Assetic\Cache\FilesystemCache file permissions with umask
 
 ## Requirements
 
-- PHP 5.4
+- PHP 5.6
 - ZendFramework 2
 
 ## Setup
@@ -106,9 +119,16 @@ class HomeTest extends AbstractTestCase
 
         $this->elementByPartialLinkText('Link text too long');
 
-        $this->elementByTagName('tagname);
+        $this->elementByTagName('tagname');
 
         $this->elementByXpath('//test/xpath');
+
+        /**
+         * Screenshots
+         */
+        $data = $this->screenshot();
+        // or
+        $this->attachScreenshot('Example caption');
     }
 }
 ```
@@ -165,13 +185,16 @@ class AuthenticationTest extends AbstractTestCase
 #### Testing forms
 
 ```php
-use PHPWebDriver_WebDriverBy as By;
 use WebinoDev\Test\Selenium\AbstractTestCase;
 
 class HomeTest extends AbstractTestCase
 {
     public function testHome()
     {
+        $this->submitImput('email', 'test@example.com');
+    
+        // or
+    
         $this->enterInput('email', 'test@example.com', function ($elm) {
             $elm->submit();
         });
@@ -193,7 +216,6 @@ class HomeTest extends AbstractTestCase
 #### Testing AJAX
 
 ```php
-use PHPWebDriver_WebDriverBy as By;
 use WebinoDev\Test\Selenium\AbstractTestCase;
 
 class HomeTest extends AbstractTestCase
@@ -332,12 +354,22 @@ class AbstractSeleniumTestCaseTest extends \PHPUnit_Framework_TestCase
     }
 ```
 
+## TODO
+
+- Use Facebook WebDriver instead of Element34
+- Use Nette\Tester instead of PHPUnit as tests runner
+- Docs debug notifies support
+- Upgrade Zend MVC
+- Upgrade Zend Mail
+
 ## Development
 
 We will appreciate any contributions on development of this module.
 
-Learn [How to develop Webino modules](https://github.com/webino/Webino/wiki/How-to-develop-Webino-modules)
+Learn [How to develop Webino modules](https://github.com/webino/Webino/wiki/How-to-develop-Webino-module)
 
 ## Addendum
 
 Please, if you are interested in this Zend Framework module report any issues and don't hesitate to contribute.
+
+[Report a bug](https://github.com/webino/WebinoDev/issues) | [Fork me](https://github.com/webino/WebinoDev)

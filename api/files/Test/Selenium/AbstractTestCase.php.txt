@@ -101,7 +101,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     protected function onNotSuccessfulTest(Exception $exc)
     {
         $this->notifyError($exc);
-        $this->session->close();
+        $this->session and $this->session->close();
         parent::onNotSuccessfulTest($exc);
     }
 
@@ -309,10 +309,12 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
      */
     protected function assertNotError()
     {
-        $this->assertNotContains('Error', $this->session->title());
+        $title = $this->session->title();
+        $this->assertNotContains('Error', $title);
+        $this->assertNotContains('Exception', $title);
 
         // strip script contents & tags
-        $text = $this->session->source();
+        $text = substr($this->session->source(), 0, 10000);
         $expr = '~<(script).*?>.*?</script>~si';
         $src  = strip_tags(preg_replace($expr, '', $text));
 

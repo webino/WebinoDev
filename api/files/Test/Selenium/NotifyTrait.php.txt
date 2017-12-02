@@ -53,12 +53,18 @@ trait NotifyTrait
      */
     protected function debugNotify($msg, $timeout = 2000, $type = 'info')
     {
+        $session = $this->getSession();
+        if (empty($session)) {
+            // fail silently
+            return $this;
+        }
+
         $title = get_class($this) . '::' . $this->getName(false);
         $msg   = trim(addslashes(preg_replace('~[[:space:]]+~', ' ', nl2br($msg))));
         $args  = '"' . $title . '", "' . $msg . '", ' . $timeout . ', "' . $type . '"';
         $cmd   = '("function" === typeof _debugNotify) && _debugNotify(' . $args . ');';
 
-        $this->getSession()->execute(['script' => $cmd, 'args' => []]);
+        $session->execute(['script' => $cmd, 'args' => []]);
         sleep($timeout / 1000);
         return $this;
     }

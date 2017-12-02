@@ -25,7 +25,7 @@ trait PdfTrait
 
     /**
      *
-     * @return type
+     * @return Parser
      */
     private function getParser()
     {
