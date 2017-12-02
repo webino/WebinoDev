@@ -29,7 +29,7 @@ Module to ease development of the Webino modules.
 
 ## Requirements
 
-- PHP 5.6
+- PHP 7.1
 - ZendFramework 2
 
 ## Setup
@@ -352,6 +352,7 @@ class AbstractSeleniumTestCaseTest extends \PHPUnit_Framework_TestCase
         $this->object = new SeleniumTestCase;
         $this->object->session = $this->getWebDriverSession();
     }
+}
 ```
 
 ## TODO
@@ -362,14 +363,9 @@ class AbstractSeleniumTestCaseTest extends \PHPUnit_Framework_TestCase
 - Upgrade Zend MVC
 - Upgrade Zend Mail
 
-## Development
-
-We will appreciate any contributions on development of this module.
-
-Learn [How to develop Webino modules](https://github.com/webino/Webino/wiki/How-to-develop-Webino-module)
-
 ## Addendum
 
 Please, if you are interested in this Zend Framework module report any issues and don't hesitate to contribute.
+We will appreciate any contributions on development of this module.
 
-[Report a bug](https://github.com/webino/WebinoDev/issues) | [Fork me](https://github.com/webino/WebinoDev)
+[Issue](https://github.com/webino/WebinoDev/issues) | [Fork](https://github.com/webino/WebinoDev) | [Develop](https://github.com/webino/Webino/wiki/How-to-develop-Webino-module)
