@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014-2017 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2018 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -65,7 +65,7 @@ trait MailTrait
         ksort($files);
 
         $path    = current($files);
-        $message = Message::fromString(join(PHP_EOL, file($path, FILE_IGNORE_NEW_LINES)));
+        $message = Message::fromFile($path);
 
         unlink($path);
         return $message;
@@ -88,7 +88,7 @@ trait MailTrait
 
             try {
                 $mail = $this->readMail();
-            } catch (\Exception $exc) {
+            } catch (\Throwable $exc) {
 
             }
 

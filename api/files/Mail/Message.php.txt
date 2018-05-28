@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014-2017 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2014-2018 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -38,6 +38,18 @@ class Message extends BaseMessage
     }
 
     /**
+     * Return mail sent date
+     *
+     * @return string
+     */
+    public function getDate()
+    {
+        /** @var \Zend\Mail\Header\Date $date */
+        $date = $this->getHeaders()->get('Date');
+        return $date->getFieldValue();
+    }
+
+    /**
      * Return the message body
      *
      * @return string
@@ -45,7 +57,11 @@ class Message extends BaseMessage
     public function getBody()
     {
         if ($this->getAttachments()) {
-            return $this->getParser()->getMessageBody('html');
+            try {
+                return $this->getParser()->getMessageBody('html');
+            } catch (\Throwable $exc) {
+                error_log($exc);
+            }
         }
         return parent::getBody();
     }
@@ -57,7 +73,9 @@ class Message extends BaseMessage
      */
     public function getAttachments()
     {
-        return $this->getParser()->getAttachments();
+        /** @var \eXorus\PhpMimeMailParser\Attachment[] $attachments */
+        $attachments = $this->getParser()->getAttachments();
+        return $attachments;
     }
 
     /**
@@ -72,6 +90,19 @@ class Message extends BaseMessage
             $name = $header->getFieldName();
             $headers->has($name) or $headers->addHeader($header);
         }
+    }
+
+    /**
+     * Create mail object from file
+     *
+     * @param string $path Mail file path
+     * @return self
+     */
+    public static function fromFile($path)
+    {
+        /** @var self $message */
+        $message = static::fromString(join(PHP_EOL, file($path, FILE_IGNORE_NEW_LINES)));
+        return $message;
     }
 }
 
