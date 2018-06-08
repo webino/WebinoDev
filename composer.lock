@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "b63d5a5940d552fcee19c3d3e029b751",
@@ -223,7 +223,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.40",
+            "version": "v2.8.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -272,16 +272,16 @@
         },
         {
             "name": "webino/zend-db-profiler",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webino/ZendDbProfiler.git",
-                "reference": "4fa509dac75b205d8ffd809ca7aef257b7515ec9"
+                "reference": "19076c8a3065faaacf41c2e3ac8bf94bd514d2ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webino/ZendDbProfiler/zipball/4fa509dac75b205d8ffd809ca7aef257b7515ec9",
-                "reference": "4fa509dac75b205d8ffd809ca7aef257b7515ec9",
+                "url": "https://api.github.com/repos/webino/ZendDbProfiler/zipball/19076c8a3065faaacf41c2e3ac8bf94bd514d2ae",
+                "reference": "19076c8a3065faaacf41c2e3ac8bf94bd514d2ae",
                 "shasum": ""
             },
             "require": {
@@ -319,7 +319,7 @@
                 "zdt",
                 "zf2"
             ],
-            "time": "2018-05-22T17:58:41+00:00"
+            "time": "2018-05-24T17:06:59+00:00"
         },
         {
             "name": "zendframework/zend-config",
@@ -2235,7 +2235,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.10",
+            "version": "v3.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
