@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2017 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2017-2018 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -11,6 +11,8 @@ namespace WebinoDev\Test\Selenium;
 
 /**
  * Raise client-side notifications
+ *
+ * @property-read object $session
  */
 trait NotifyTrait
 {
@@ -21,7 +23,7 @@ trait NotifyTrait
     abstract public function getName($withDataSet = true);
 
     /**
-     * @return \PHPWebDriver_WebDriverSession
+     * @return object|\PHPWebDriver_WebDriverSession
      */
     abstract protected function getSession();
 
@@ -53,8 +55,7 @@ trait NotifyTrait
      */
     protected function debugNotify($msg, $timeout = 2000, $type = 'info')
     {
-        $session = $this->getSession();
-        if (empty($session)) {
+        if (empty($this->session)) {
             // fail silently
             return $this;
         }
@@ -64,7 +65,7 @@ trait NotifyTrait
         $args  = '"' . $title . '", "' . $msg . '", ' . $timeout . ', "' . $type . '"';
         $cmd   = '("function" === typeof _debugNotify) && _debugNotify(' . $args . ');';
 
-        $session->execute(['script' => $cmd, 'args' => []]);
+        $this->session->execute(['script' => $cmd, 'args' => []]);
         sleep($timeout / 1000);
         return $this;
     }
