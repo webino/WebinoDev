@@ -13,11 +13,11 @@ class Developer
     protected $options = [];
 
     /**
-     * @param array|object $options
+     * @param array|object|null $options
      */
-    public function __construct($options)
+    public function __construct($options = null)
     {
-        $this->options = is_object($options) ? $options->toArray() : $options;
+        $options and $this->options = is_object($options) ? $options->toArray() : $options;
     }
 
     /**
