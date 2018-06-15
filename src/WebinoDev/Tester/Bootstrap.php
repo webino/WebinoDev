@@ -37,6 +37,7 @@ class Bootstrap
         chdir($this->resolveRoot());
         Environment::setup();
         ini_set('date.timezone', 'Europe/Bratislava');
+        error_reporting((E_ALL | E_STRICT) & ~E_USER_DEPRECATED);
     }
 
     /**
