@@ -97,9 +97,11 @@ function e($msg = '') {
 /**
  * For testing purposes only
  *
+ * @deprecated do not use
  * @return bool
  */
 function isSelenium()
 {
+    trigger_error(__FUNCTION__, E_USER_DEPRECATED);
     return file_exists('tmp/common/selenium.lock');
 }
