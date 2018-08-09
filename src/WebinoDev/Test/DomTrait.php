@@ -38,13 +38,18 @@ trait DomTrait
      * Create DOM document from XML source
      *
      * @param string $xml
+     * @param string $namespace
      * @return DOMDocument
      */
-    protected function createXmlDom($xml)
+    protected function createXmlDom($xml, $namespacePrefix = null)
     {
         $dom = new DOMDocument;
         $dom->loadXML($xml);
         $dom->xpath = new DOMXPath($dom);
+
+        $namespacePrefix
+            and $dom->xpath->registerNamespace($namespacePrefix, $dom->lookupNamespaceUri($dom->namespaceURI));
+
         return $dom;
     }
 }
