@@ -97,6 +97,7 @@ function e($msg = '') {
 /**
  * For testing purposes only
  *
+ * @TODO remove
  * @deprecated do not use
  * @return bool
  */
