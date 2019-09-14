@@ -55,4 +55,11 @@ class TestElement implements ElementInterface
     public function submit()
     {
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function displayed()
+    {
+    }
 }

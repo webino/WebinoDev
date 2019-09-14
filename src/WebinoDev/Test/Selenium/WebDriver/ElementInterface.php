@@ -17,7 +17,7 @@ interface ElementInterface
     /**
      * @return string
      */
-    public function text(): string;
+    public function text();
 
     /**
      * @param string $name
@@ -48,5 +48,5 @@ interface ElementInterface
     /**
      * @return bool
      */
-    public function displayed(): bool;
+    public function displayed();
 }
