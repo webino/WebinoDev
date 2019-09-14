@@ -25,7 +25,7 @@ trait MailTrait
     /**
      * Setup virtual filesystem
      */
-    protected function setUpMailVfs()
+    public function setUpMailVfs()
     {
         StreamWrapper::register();
         StreamWrapper::setRoot(vfsStream::setup('root', null, ['tmp' => ['mail' => []]]));
@@ -36,7 +36,7 @@ trait MailTrait
      *
      * @return string
      */
-    protected function getMailDir()
+    public function getMailDir()
     {
         return vfsStream::url('root/tmp/mail');
     }
@@ -44,7 +44,7 @@ trait MailTrait
     /**
      * Destroy virtual filesystem
      */
-    protected function unregisterMailVfs()
+    public function unregisterMailVfs()
     {
         StreamWrapper::unregister();
     }

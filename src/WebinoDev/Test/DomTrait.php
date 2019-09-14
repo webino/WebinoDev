@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014-2017 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2012-2019 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -25,7 +25,7 @@ trait DomTrait
      * @param string $xhtml
      * @return DOMDocument
      */
-    protected function createDom($xhtml)
+    public function createDom($xhtml)
     {
         $dom = new DOMDocument;
         libxml_use_internal_errors(true);
@@ -38,17 +38,17 @@ trait DomTrait
      * Create DOM document from XML source
      *
      * @param string $xml
-     * @param string $namespace
+     * @param null $namespace
      * @return DOMDocument
      */
-    protected function createXmlDom($xml, $namespacePrefix = null)
+    public function createXmlDom($xml, $namespace = null)
     {
         $dom = new DOMDocument;
         $dom->loadXML($xml);
         $dom->xpath = new DOMXPath($dom);
 
-        $namespacePrefix
-            and $dom->xpath->registerNamespace($namespacePrefix, $dom->lookupNamespaceUri($dom->namespaceURI));
+        $namespace
+            and $dom->xpath->registerNamespace($namespace, $dom->lookupNamespaceUri($dom->namespaceURI));
 
         return $dom;
     }

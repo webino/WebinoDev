@@ -3,7 +3,7 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014-2017 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2012-2019 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
 
@@ -18,7 +18,7 @@ use Zend\Mvc\Application;
  *
  * For mocking and legacy PHPUnit tests.
  *
- * @return TestCase
+ * @return TestCase|\PHPUnit_Framework_TestCase|object
  */
 function createTestCase()
 {
@@ -43,6 +43,7 @@ function createApp() {
  * Create a virtual filesystem
  *
  * @param array $structure
+ * @throws \org\bovigo\vfs\vfsStreamException
  */
 function createVfs(array $structure)
 {

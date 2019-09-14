@@ -23,6 +23,8 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.1",
+        "ext-dom": "*",
+        "ext-libxml": "*",
         "rwoverdijk/assetmanager": "1.6.*",
         "webino/zend-db-profiler": "1.*"
     },
