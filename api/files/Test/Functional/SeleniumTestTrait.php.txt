@@ -3,9 +3,10 @@
  * Webino (http://webino.sk/)
  *
  * @link        https://github.com/webino/WebinoDev/ for the canonical source repository
- * @copyright   Copyright (c) 2014-2017 Webino, s. r. o. (http://webino.sk/)
+ * @copyright   Copyright (c) 2012-2019 Webino, s. r. o. (http://webino.sk/)
  * @license     BSD-3-Clause
  */
+
 namespace WebinoDev\Test\Functional;
 
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
@@ -24,7 +25,7 @@ trait SeleniumTestTrait
      *
      * @return $this
      */
-    protected function setUpWebDriver()
+    public function setUpWebDriver()
     {
         TestWebDriver::$session = $this->getMock(TestSession::class);
         TestWebDriver::$session
@@ -43,7 +44,7 @@ trait SeleniumTestTrait
      *
      * @return \PHPWebDriver_WebDriverSession|\WebinoDev\Test\Selenium\WebDriver\SessionInterface|MockObject
      */
-    protected function getWebDriverSession()
+    public function getWebDriverSession()
     {
         return TestWebDriver::$session;
     }

@@ -24,14 +24,14 @@ trait MailTrait
     /**
      * Returns path to the mail directory
      */
-    protected abstract function getMailDir();
+    public abstract function getMailDir();
 
     /**
      * Assert that no mail was sent
      *
      * @return $this
      */
-    protected function assertNoMail()
+    public function assertNoMail()
     {
         try {
             $this->readMail();
@@ -50,7 +50,7 @@ trait MailTrait
      * @return Message
      * @throws RuntimeException
      */
-    protected function readMail()
+    public function readMail()
     {
         $files = [];
         foreach ($this->createMailDirIterator() as $fileInfo) {
@@ -77,7 +77,7 @@ trait MailTrait
      * @return Message
      * @throws RuntimeException
      */
-    protected function waitForMail()
+    public function waitForMail()
     {
         $tout = 30;
         $tn   = 0;
@@ -105,7 +105,7 @@ trait MailTrait
      *
      * @return $this
      */
-    protected function waitAssertNoMail()
+    public function waitAssertNoMail()
     {
         $tout = 5;
         $tn   = 0;
@@ -132,7 +132,7 @@ trait MailTrait
      *
      * @return RegexIterator
      */
-    protected function createMailDirIterator()
+    public function createMailDirIterator()
     {
         return new RegexIterator(new DirectoryIterator($this->getMailDir()), '~ZendMail_~');
     }
