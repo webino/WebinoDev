@@ -40,7 +40,7 @@ function setUpTestCase($testCase)
 }
 
 /**
- * @param TestCase|\PHPUnit_Framework|object_$testCase
+ * @param TestCase|\PHPUnit_Framework_TestCase|object $testCase
  * @return TestCase|\PHPUnit_Framework_TestCase|object
  * @throws ReflectionException
  */
