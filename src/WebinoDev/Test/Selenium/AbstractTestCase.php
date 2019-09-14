@@ -116,6 +116,16 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param \PHPWebDriver_WebDriverSession|WebDriver\SessionInterface $session
+     * @return $this
+     */
+    public function setSession($session)
+    {
+        $this->session = $session;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     protected function getBrowser()
