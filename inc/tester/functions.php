@@ -19,10 +19,37 @@ use Zend\Mvc\Application;
  * For mocking and legacy PHPUnit tests.
  *
  * @return TestCase|\PHPUnit_Framework_TestCase|object
+ * @throws ReflectionException
  */
 function createTestCase()
 {
-    return new TestCase;
+    return setUpTestCase(new TestCase);
+}
+
+/**
+ * @param TestCase|\PHPUnit_Framework_TestCase|object $testCase
+ * @return TestCase|\PHPUnit_Framework_TestCase|object
+ * @throws ReflectionException
+ */
+function setUpTestCase($testCase)
+{
+    $reflection = new ReflectionMethod(get_class($testCase), 'setUp');
+    $reflection->setAccessible(true);
+    $reflection->invoke($testCase);
+    return $testCase;
+}
+
+/**
+ * @param TestCase|\PHPUnit_Framework|object_$testCase
+ * @return TestCase|\PHPUnit_Framework_TestCase|object
+ * @throws ReflectionException
+ */
+function tearDownTestCase($testCase)
+{
+    $reflection = new ReflectionMethod(get_class($testCase), 'tearDown');
+    $reflection->setAccessible(true);
+    $reflection->invoke($testCase);
+    return $testCase;
 }
 
 /**
