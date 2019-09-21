@@ -41,9 +41,9 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     /**
      * Mail virtual filesystem works
      *
-     * @covers WebinoDev\Test\Functional\AbstractMaiLTestCase::setUp
-     * @covers WebinoDev\Test\Functional\MailTrait::setUpMailVfs
-     * @covers WebinoDev\Test\Functional\MailTrait::getMailDir
+     * @covers \WebinoDev\Test\Functional\AbstractMaiLTestCase::setUp
+     * @covers \WebinoDev\Test\Functional\MailTrait::setUpMailVfs
+     * @covers \WebinoDev\Test\Functional\MailTrait::getMailDir
      */
     public function testSetUpMailVfs()
     {
@@ -54,9 +54,9 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     /**
      * Mail virtual filesystem works
      *
-     * @covers WebinoDev\Test\Functional\AbstractMaiLTestCase::tearDown
-     * @covers WebinoDev\Test\Functional\MailTrait::unregisterMailVfs
-     * @covers WebinoDev\Vfs\StreamWrapper::unregister
+     * @covers \WebinoDev\Test\Functional\AbstractMaiLTestCase::tearDown
+     * @covers \WebinoDev\Test\Functional\MailTrait::unregisterMailVfs
+     * @covers \WebinoDev\Vfs\StreamWrapper::unregister
      */
     public function testUnregisterMailVfs()
     {
@@ -68,7 +68,7 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     /**
      * Read mail works
      *
-     * @covers WebinoDev\Test\Functional\MailTrait::readMail
+     * @covers \WebinoDev\Test\Functional\MailTrait::readMail
      */
     public function testReadMail()
     {
@@ -86,7 +86,7 @@ class AbstractMailTestCaseTest extends AbstractMailTestCase
     /**
      * Read no mail works
      *
-     * @covers WebinoDev\Test\Functional\MailTrait::readMail
+     * @covers \WebinoDev\Test\Functional\MailTrait::readMail
      * @expectedException \WebinoDev\Test\Exception\RuntimeException
      */
     public function testReadNoMail()
