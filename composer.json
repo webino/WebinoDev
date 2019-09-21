@@ -29,11 +29,11 @@
         "webino/zend-db-profiler": "1.*"
     },
     "require-dev": {
+        "webino/zend-mail": "2.6.*",
         "zendframework/zend-mvc": "2.6.*",
         "zendframework/zend-modulemanager": "2.*",
         "zendframework/zend-code": "2.*",
         "zendframework/zend-di": "2.*",
-        "zendframework/zend-mail": "2.6.*",
         "zendframework/zend-log": "2.*",
         "zendframework/zend-http": "2.*",
         "zendframework/zend-view": "2.*",
