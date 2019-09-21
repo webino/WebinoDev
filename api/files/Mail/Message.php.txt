@@ -10,6 +10,7 @@
 namespace WebinoDev\Mail;
 
 use eXorus\PhpMimeMailParser\Parser;
+use Zend\Mail\Headers;
 use Zend\Mail\Message as BaseMessage;
 
 /**
@@ -101,7 +102,7 @@ class Message extends BaseMessage
     public static function fromFile($path)
     {
         /** @var self $message */
-        $message = static::fromString(join(PHP_EOL, file($path, FILE_IGNORE_NEW_LINES)));
+        $message = static::fromString(join(Headers::EOL, file($path, FILE_IGNORE_NEW_LINES)));
         return $message;
     }
 }
