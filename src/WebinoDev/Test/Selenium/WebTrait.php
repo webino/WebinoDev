@@ -9,6 +9,8 @@
 
 namespace WebinoDev\Test\Selenium;
 
+use WebinoBase\Test\Selenium\BaseTestTrait;
+
 /**
  * Trait SourceTrait
  *
@@ -16,6 +18,7 @@ namespace WebinoDev\Test\Selenium;
  *
  * @method assertContains($haystack, $needle)
  * @method assertNotContains($haystack, $needle)
+ * @method assertStringEndsWith($suffix, $string)
  */
 trait WebTrait
 {
@@ -120,6 +123,18 @@ trait WebTrait
     {
         $this->assertWebNotError();
         return $this;
+    }
+
+    /**
+     * Asserts that actual URL path (wuthout ?query) ends with expected string
+     *
+     * @param string $suffix
+     * @param string $string
+     * @return $this
+     */
+    public function assertUrlPathEndsWith($suffix, $string)
+    {
+        $this->assertStringEndsWith($suffix, explode('?', $string, 2)[0]);
     }
 
     /**
